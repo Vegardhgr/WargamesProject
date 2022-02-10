@@ -1,5 +1,12 @@
 package no.ntnu.idatg2001.wargames.units;
 
+/**
+ * This is an abstract superclass and contains everything that
+ * the units, or the subclasses, have in common.
+ *
+ * @author Vegard Groder
+ * @version 10.02.2022
+ */
 public abstract class Unit {
     /**
      * Fields that all units have in common
