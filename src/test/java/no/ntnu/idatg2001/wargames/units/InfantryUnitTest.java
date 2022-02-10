@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 10.02.2022
  */
 class InfantryUnitTest {
-    // A object made global
+    // A InfantryUnit object made global
     InfantryUnit barbarian;
 
     @BeforeEach
