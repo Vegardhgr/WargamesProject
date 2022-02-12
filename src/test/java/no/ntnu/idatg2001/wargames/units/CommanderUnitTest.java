@@ -11,11 +11,9 @@ public class CommanderUnitTest {
     CommanderUnit archer;
     CommanderUnit barbarian;
 
-    /**
-     * Initializes the global objects
-     */
     @BeforeEach
     void setUp() {
+        // Initializes the global objects
         archer = new CommanderUnit("Archer", 20);
         barbarian = new CommanderUnit("Barbarian", 20);
     }
