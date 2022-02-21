@@ -73,13 +73,7 @@ public class Army {
      * @param unit A unit object
      */
     public void remove(Unit unit) {
-        Iterator<Unit> it = units.iterator();
-        while (it.hasNext()) {
-            Unit aUnit = it.next();
-            if (aUnit.equals(unit)) {
-                remove(aUnit);
-            }
-        }
+        units.remove(unit);
     }
 
     /**
