@@ -25,6 +25,12 @@ public abstract class Unit {
      */
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
+        if (health > 0) {
+            setHealth(health);
+        } else {
+            // If health is zero or less
+            setHealth(0);
+        }
         this.health = health;
         this.attack = attack;
         this.armor = armor;
@@ -35,7 +41,7 @@ public abstract class Unit {
      * @param opponent
      */
     public void attack(Unit opponent) {
-        int health = opponent.getHealth() - (attack + getAttackBonus()) + (opponent.armor + opponent.getResistBonus());
+        int health = opponent.health - (attack + getAttackBonus()) + (opponent.armor + opponent.getResistBonus());
         opponent.setHealth(health);
     }
 
@@ -78,6 +84,17 @@ public abstract class Unit {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    /**
+     * Returns how a unit object should be printed
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "Unit: " + getName() + " | Health: " + getHealth() +
+                " | Attack: " + getAttack() + " | Armor: " + getArmor();
+    }
+
     public abstract int getAttackBonus();
     public abstract int getResistBonus();
 }
