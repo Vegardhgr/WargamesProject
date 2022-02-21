@@ -25,12 +25,7 @@ public abstract class Unit {
      */
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
-        if (health > 0) {
-            setHealth(health);
-        } else {
-            // If health is zero or less
-            setHealth(0);
-        }
+        setHealth(health);
         this.health = health;
         this.attack = attack;
         this.armor = armor;
@@ -82,7 +77,11 @@ public abstract class Unit {
      * @param health
      */
     public void setHealth(int health) {
-        this.health = health;
+        if (health < 0) {
+            this.health = 0;
+        } else {
+            this.health = health;
+        }
     }
 
     /**
