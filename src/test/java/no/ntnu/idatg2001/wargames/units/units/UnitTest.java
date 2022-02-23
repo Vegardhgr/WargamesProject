@@ -1,5 +1,6 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.units.units;
 
+import no.ntnu.idatg2001.wargames.units.units.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -67,6 +68,8 @@ class UnitTest {
     void setHealth() {
         unit.setHealth(unit.getHealth()-5);
         assertEquals(95, unit.getHealth());
+        unit.setHealth(-100);
+        assertEquals(0, unit.getHealth());
     }
 
     @Test

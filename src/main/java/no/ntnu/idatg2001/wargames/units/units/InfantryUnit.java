@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.units.units;
 
 /**
  * A subclass of Unit. This unit, infantry unit, has its
