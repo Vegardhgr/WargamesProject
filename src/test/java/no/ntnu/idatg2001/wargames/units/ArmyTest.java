@@ -1,10 +1,12 @@
 package no.ntnu.idatg2001.wargames.units;
 
+import no.ntnu.idatg2001.wargames.units.units.CavalryUnit;
+import no.ntnu.idatg2001.wargames.units.units.CommanderUnit;
+import no.ntnu.idatg2001.wargames.units.units.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 

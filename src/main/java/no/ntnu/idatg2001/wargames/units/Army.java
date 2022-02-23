@@ -1,7 +1,8 @@
 package no.ntnu.idatg2001.wargames.units;
 
+import no.ntnu.idatg2001.wargames.units.units.Unit;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
