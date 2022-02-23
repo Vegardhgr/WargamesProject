@@ -1,21 +1,28 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.units.units;
 
+import no.ntnu.idatg2001.wargames.units.units.CavalryUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CommanderUnitTest {
+/**
+ * A test class for the CavalryUnit class.
+ *
+ * @author Vegard Grøder
+ * @version 10.02.2022
+ */
+class CavalryUnitTest {
 
-    // CommanderUnit objects made global
-    CommanderUnit archer;
-    CommanderUnit barbarian;
+    // CavalryUnit objects made global
+    CavalryUnit archer;
+    CavalryUnit barbarian;
 
     @BeforeEach
     void setUp() {
         // Initializes the global objects
-        archer = new CommanderUnit("Archer", 20);
-        barbarian = new CommanderUnit("Barbarian", 20);
+        archer = new CavalryUnit("Archer", 10, 3, 1);
+        barbarian = new CavalryUnit("Barbarian", 11, 2, 2);
     }
 
     /**
@@ -32,7 +39,7 @@ public class CommanderUnitTest {
     }
 
     /**
-     * Tests that the getResistBonus method returns the correct resist bonus
+     * Tests that the method returns the correct resist bonus
      */
     @Test
     void getResistBonus() {
