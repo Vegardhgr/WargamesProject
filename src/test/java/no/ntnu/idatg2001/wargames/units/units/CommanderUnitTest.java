@@ -49,6 +49,6 @@ public class CommanderUnitTest {
     void attack() {
         assertEquals(0, barbarian.getAttackCounter());
         barbarian.attack(archer);
-        assertEquals(1,barbarian.getAttackCounter());
+        assertEquals(1, barbarian.getAttackCounter());
     }
 }

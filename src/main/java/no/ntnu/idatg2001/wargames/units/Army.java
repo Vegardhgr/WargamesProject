@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * This class creates an army
  *
- * @author  Vegard Grøder
+ * @author Vegard Grøder
  * @version 18.02.2022
  */
 public class Army {
@@ -31,7 +31,7 @@ public class Army {
     /**
      * Initializes the class fields
      *
-     * @param name The name of the army
+     * @param name  The name of the army
      * @param units A list containing unit objects
      */
     public Army(String name, List<Unit> units) {

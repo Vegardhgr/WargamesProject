@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UnitTest {
     Unit unit;
+
     @BeforeEach
     void setUp() {
         unit = new Unit("Archer", 100, 10, 5) {
@@ -37,10 +38,10 @@ class UnitTest {
                 return 0;
             }
         };
-        
+
         assertEquals(100, unit.getHealth());
         unit2.attack(unit);
-        assertEquals(90,unit.getHealth());
+        assertEquals(90, unit.getHealth());
     }
 
     @Test
@@ -66,7 +67,7 @@ class UnitTest {
 
     @Test
     void setHealth() {
-        unit.setHealth(unit.getHealth()-5);
+        unit.setHealth(unit.getHealth() - 5);
         assertEquals(95, unit.getHealth());
         unit.setHealth(-100);
         assertEquals(0, unit.getHealth());

@@ -7,7 +7,7 @@ package no.ntnu.idatg2001.wargames.units.units;
  * @author Vegard Groder
  * @version 10.02.2022
  */
-public class CommanderUnit extends CavalryUnit{
+public class CommanderUnit extends CavalryUnit {
 
     // Constant variables
     private static final int ATTACK = 25;
@@ -16,10 +16,10 @@ public class CommanderUnit extends CavalryUnit{
     /**
      * Initializes all the fields in the superclass.
      *
-     * @param name Name of the character
+     * @param name   Name of the character
      * @param health The character's health
      * @param attack The amount of damage the character does
-     * @param armor The amount of health the character regains after being attacked
+     * @param armor  The amount of health the character regains after being attacked
      */
     public CommanderUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
@@ -30,7 +30,7 @@ public class CommanderUnit extends CavalryUnit{
      * and uses the constants ATTACK and ARMOR to define the amount of
      * damage the character does, and how much armor the character has.
      *
-     * @param name The characters name
+     * @param name   The characters name
      * @param health The characters health
      */
     public CommanderUnit(String name, int health) {
