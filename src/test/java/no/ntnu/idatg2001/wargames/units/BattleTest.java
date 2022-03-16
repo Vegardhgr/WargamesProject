@@ -156,7 +156,7 @@ class BattleTest {
             }
         }
 
-        double ratio = ((double) strongArmyWins / (double) strongArmy2Wins)-1;
+        double ratio = ((double) strongArmyWins / (double) strongArmy2Wins) - 1;
 
 
         /* If the ratio between strongArmyWins and strongArmy2Wins is more than

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 10.02.2022
  */
 class RangedUnitTest {
-    
+
     // RangedUnit objects made global
     RangedUnit archer;
     RangedUnit barbarian;
@@ -41,7 +41,6 @@ class RangedUnitTest {
      */
     @Test
     void getResistBonus() {
-        archer.attack(barbarian);
         assertEquals(6, barbarian.getResistBonus());
         archer.attack(barbarian);
         assertEquals(4, barbarian.getResistBonus());

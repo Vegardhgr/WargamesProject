@@ -19,10 +19,10 @@ public class RangedUnit extends Unit {
     /**
      * Initializes all the fields in the superclass.
      *
-     * @param name Name of the character
+     * @param name   Name of the character
      * @param health The character's health
      * @param attack The amount of damage the character does
-     * @param armor The amount of health the character regains after being attacked
+     * @param armor  The amount of health the character regains after being attacked
      */
     public RangedUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
@@ -33,7 +33,7 @@ public class RangedUnit extends Unit {
      * and uses the constants ATTACK and ARMOR to define the amount of
      * damage the character does, and how much armor the character has.
      *
-     * @param name The characters name
+     * @param name   The characters name
      * @param health The characters health
      */
     public RangedUnit(String name, int health) {

@@ -5,7 +5,7 @@ import no.ntnu.idatg2001.wargames.units.units.Unit;
 /**
  * This class creates a battle between two armies
  *
- * @author  Vegard Grøder
+ * @author Vegard Grøder
  * @version 23.02.2022
  */
 public class Battle {
@@ -16,6 +16,7 @@ public class Battle {
 
     /**
      * Initializes the global army objects
+     *
      * @param armyOne, Army object
      * @param armyTwo, Army object
      */
@@ -26,6 +27,7 @@ public class Battle {
 
     /**
      * Simulates a battle between two armies
+     *
      * @return winningArmy, the winner of the battle
      */
     public Army simulate() {
@@ -70,10 +72,11 @@ public class Battle {
     /**
      * Before a battle, it returns which armies that are fighting.
      * After a battle it returnes the winning army
+     *
      * @return String
      */
     @Override
-    public String toString( ) {
+    public String toString() {
         if (winningArmy == null) {
             return armyOne.getName() + " vs " + armyTwo.getName();
         } else {

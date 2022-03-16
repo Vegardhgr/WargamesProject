@@ -18,6 +18,7 @@ public abstract class Unit {
 
     /**
      * Initializes all the fields
+     *
      * @param name
      * @param health
      * @param attack
@@ -33,6 +34,7 @@ public abstract class Unit {
 
     /**
      * The opponent's health after getting attacked
+     *
      * @param opponent
      */
     public void attack(Unit opponent) {
@@ -42,6 +44,7 @@ public abstract class Unit {
 
     /**
      * Returns the name of the character
+     *
      * @return name
      */
     public String getName() {
@@ -50,6 +53,7 @@ public abstract class Unit {
 
     /**
      * Returns the health of the character
+     *
      * @return health
      */
     public int getHealth() {
@@ -58,6 +62,7 @@ public abstract class Unit {
 
     /**
      * Returns attack value
+     *
      * @return attack
      */
     public int getAttack() {
@@ -66,6 +71,7 @@ public abstract class Unit {
 
     /**
      * Returns the armor value
+     *
      * @return armor
      */
     public int getArmor() {
@@ -74,6 +80,7 @@ public abstract class Unit {
 
     /**
      * Sets the character's new health
+     *
      * @param health
      */
     public void setHealth(int health) {
@@ -86,6 +93,7 @@ public abstract class Unit {
 
     /**
      * Returns how a unit object should be printed
+     *
      * @return String
      */
     @Override
@@ -95,5 +103,6 @@ public abstract class Unit {
     }
 
     public abstract int getAttackBonus();
+
     public abstract int getResistBonus();
 }
