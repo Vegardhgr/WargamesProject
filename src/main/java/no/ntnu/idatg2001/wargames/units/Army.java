@@ -1,10 +1,11 @@
 package no.ntnu.idatg2001.wargames.units;
 
-import no.ntnu.idatg2001.wargames.units.units.Unit;
+import no.ntnu.idatg2001.wargames.units.units.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * This class creates an army
@@ -46,6 +47,50 @@ public class Army {
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * Returns a list of all the infantry units in one army
+     * @return List<Unit>, a list of infantry units
+     */
+    private List<Unit> getInfantryUnit() {
+        return units
+                .stream()
+                .filter(unit -> unit.getClass() == InfantryUnit.class)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns a list of all the cavalry units in one army
+     * @return List<Unit>, a list of cavalry units
+     */
+    private List<Unit> getCavalryUnit() {
+        return units
+                .stream()
+                .filter(unit -> unit.getClass() == CavalryUnit.class)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns a list of all the commander units in one army
+     * @return List<Unit>, a list of commander units
+     */
+    private List<Unit> getCommanderUnitList() {
+        return units
+                .stream()
+                .filter(unit -> unit.getClass() == CommanderUnit.class)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns a list of all the ranged units in one army
+     * @return List<Unit>, a list of ranged units
+     */
+    private List<Unit> getRangedUnitList() {
+        return units
+                .stream()
+                .filter(unit -> unit.getClass() == RangedUnit.class)
+                .collect(Collectors.toList());
     }
 
     /**
