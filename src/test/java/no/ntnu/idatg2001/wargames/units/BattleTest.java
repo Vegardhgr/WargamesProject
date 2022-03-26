@@ -160,9 +160,9 @@ class BattleTest {
 
 
         /* If the ratio between strongArmyWins and strongArmy2Wins is more than
-           1%, it ain't a fair battle.
+           5%, it ain't a fair battle.
          */
-        double fairBattle = 0.01;
+        double fairBattle = 0.05;
         if (Math.abs(ratio) < fairBattle) {
             assertTrue(true);
         } else {
