@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -87,8 +88,34 @@ class ArmyFileHandlerTest {
         unitsFromFile.forEach(unit -> assertEquals("Footman", unit.getName()));
     }
 
+    public static void writeUnitsToFile(Army army, String filename) throws IOException {
+        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename))) {
+            int i = 0;
+            for (Unit unit : army.getUnitList()) {
+                if (i == 0) {
+                    writer.write(army.getName() + "\n");
+                } else {
+                    writer.write(unit.getClass().getSimpleName() + "," + unit.getName() + "," + unit.getHealth() + "\n");
+                }
+                i++;
+            }
+        } catch (IOException e) {
+            assertThrows(IOException.class, () -> ArmyFileHandler.writeCSV(army, filename), e.getMessage());
+        }
+    }
+
     @Test
     void readCSV() {
         getUnitsFromCSV("src/humanArmy.csv");
+    }
+
+    @Test
+    void writeCSV() throws IOException {
+        List<Unit> units = new ArrayList<>();
+        units.add(new CommanderUnit("Mountain King", 180));
+        units.add(new InfantryUnit("Footman", 100));
+        units.add(new CavalryUnit("Knight", 100));
+        units.add(new RangedUnit("Archer", 100));
+        writeUnitsToFile(new Army("Army 1", units), "src/orcishHordeArmy.csv");
     }
 }
