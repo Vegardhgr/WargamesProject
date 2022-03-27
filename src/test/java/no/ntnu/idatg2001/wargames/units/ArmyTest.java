@@ -3,10 +3,6 @@ package no.ntnu.idatg2001.wargames.units;
 import no.ntnu.idatg2001.wargames.units.units.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.ranges.Range;
-
-import java.io.FilterOutputStream;
-import java.security.spec.RSAOtherPrimeInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,23 +24,24 @@ class ArmyTest {
     private Unit barbarian;
     private List<Unit> units;
     private List<Unit> inputUnits;
-    List<Unit> infantryUnitList;
-    List<Unit> cavalryUnitList;
-    List<Unit> commanderUnitList;
-    List<Unit> rangedUnitList;
+    private List<Unit> infantryUnitList;
+    private List<Unit> cavalryUnitList;
+    private List<Unit> commanderUnitList;
+    private List<Unit> rangedUnitList;
 
     @BeforeEach
     void setUp() {
         // Initializing the class fields
-        army1 = new Army("Army1");
-        archer = new CommanderUnit("Archer", 10);
-        barbarian = new CavalryUnit("Barbarian", 12);
         this.infantryUnitList = new ArrayList<>();
         this.cavalryUnitList = new ArrayList<>();
         this.commanderUnitList = new ArrayList<>();
         this.rangedUnitList = new ArrayList<>();
-        units = new ArrayList<>();
-        inputUnits = new ArrayList<>();
+        this.army1 = new Army("Army1");
+        this.archer = new CommanderUnit("Archer", 10);
+        this.barbarian = new CavalryUnit("Barbarian", 12);
+        this.units = new ArrayList<>();
+        this.inputUnits = new ArrayList<>();
+        addAllTypesOfUnitsToInputUnitsList();
         inputUnits.add(archer);
         inputUnits.add(barbarian);
     }
@@ -180,48 +177,53 @@ class ArmyTest {
     }
 
     @Test
-    void testGetSpecificUnits() {
-        addAllTypesOfUnitsToInputUnitsList();
+    void getInfantryUnitsFromInputList() {
         assertTrue(infantryUnitList.size() == 0);
-        assertTrue(cavalryUnitList.size() == 0);
-        assertTrue(commanderUnitList.size() == 0);
-        assertTrue(rangedUnitList.size() == 0);
-
         this.infantryUnitList = getInfantryUnit();
-        this.cavalryUnitList = getCavalryUnit();
-        this.commanderUnitList = getCommanderUnitList();
-        this.rangedUnitList = getRangedUnitList();
-
         assertTrue(infantryUnitList.size() != 0);
-        assertTrue(cavalryUnitList.size() != 0);
-        assertTrue(commanderUnitList.size() != 0);
-        assertTrue(rangedUnitList.size() != 0);
-
         infantryUnitList.forEach(unit -> assertTrue(unit.getClass() == InfantryUnit.class));
-        cavalryUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CavalryUnit.class));
-        commanderUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CommanderUnit.class));
-        rangedUnitList.forEach(unit -> assertTrue(unit.getClass() == RangedUnit.class));
-
-        /* Tests specifically that commanderUnitList does not contain any units with
-            type CavalryUnit, since the CommanderUnit class inherits from CavalryUnit*/
-        commanderUnitList.forEach(unit -> assertFalse(unit.getClass() == CavalryUnit.class));
-
         infantryUnitList.forEach(unit ->
-            assertFalse(unit.getClass() ==  CavalryUnit.class ||
-                    unit.getClass() == CommanderUnit.class || unit.getClass() == RangedUnit.class)
-        );
-        cavalryUnitList.forEach(unit ->
-            assertFalse(unit.getClass() == InfantryUnit.class ||
-                    unit.getClass() == CommanderUnit.class || unit.getClass() == RangedUnit.class)
-        );
-        commanderUnitList.forEach(unit ->
-            assertFalse(unit.getClass() == InfantryUnit.class ||
-                    unit.getClass() == CavalryUnit.class || unit.getClass() == RangedUnit.class)
-        );
-        rangedUnitList.forEach(unit ->
-            assertFalse(unit.getClass() == InfantryUnit.class ||
-                    unit.getClass() == CavalryUnit.class || unit.getClass() == CommanderUnit.class)
+                assertFalse(unit.getClass() ==  CavalryUnit.class ||
+                        unit.getClass() == CommanderUnit.class || unit.getClass() == RangedUnit.class)
         );
     }
 
+    @Test
+    void getCavalryUnitsFromInputList() {
+        assertTrue(cavalryUnitList.size() == 0);
+        this.cavalryUnitList = getCavalryUnit();
+        assertTrue(cavalryUnitList.size() != 0);
+        cavalryUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CavalryUnit.class));
+        cavalryUnitList.forEach(unit ->
+                assertFalse(unit.getClass() == InfantryUnit.class ||
+                        unit.getClass() == CommanderUnit.class || unit.getClass() == RangedUnit.class)
+        );
+    }
+
+    @Test
+    void getCommanderUnitsFromInputList() {
+        assertTrue(commanderUnitList.size() == 0);
+        this.commanderUnitList = getCommanderUnitList();
+        assertTrue(commanderUnitList.size() != 0);
+        commanderUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CommanderUnit.class));
+        /* Tests specifically that commanderUnitList does not contain any units with
+            type CavalryUnit, since the CommanderUnit class inherits from CavalryUnit*/
+        commanderUnitList.forEach(unit -> assertFalse(unit.getClass() == CavalryUnit.class));
+        commanderUnitList.forEach(unit ->
+                assertFalse(unit.getClass() == InfantryUnit.class ||
+                        unit.getClass() == CavalryUnit.class || unit.getClass() == RangedUnit.class)
+        );
+    }
+
+    @Test
+    void getRangedUnitsFromInputList() {
+        assertTrue(rangedUnitList.size() == 0);
+        this.rangedUnitList = getRangedUnitList();
+        assertTrue(rangedUnitList.size() != 0);
+        rangedUnitList.forEach(unit -> assertTrue(unit.getClass() == RangedUnit.class));
+        rangedUnitList.forEach(unit ->
+                assertFalse(unit.getClass() == InfantryUnit.class ||
+                        unit.getClass() == CavalryUnit.class || unit.getClass() == CommanderUnit.class)
+        );
+    }
 }
