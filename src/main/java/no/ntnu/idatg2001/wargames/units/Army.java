@@ -17,7 +17,7 @@ public class Army {
 
     // The class fields
     private String name;
-    private List<Unit> units;
+    private List<Unit> unitList;
 
     /**
      * Initializes the class fields
@@ -26,18 +26,18 @@ public class Army {
      */
     public Army(String name) {
         this.name = name;
-        this.units = new ArrayList<>();
+        this.unitList = new ArrayList<>();
     }
 
     /**
      * Initializes the class fields
      *
      * @param name  The name of the army
-     * @param units A list containing unit objects
+     * @param unitList A list containing unit objects
      */
-    public Army(String name, List<Unit> units) {
+    public Army(String name, List<Unit> unitList) {
         this.name = name;
-        this.units = units;
+        this.unitList = unitList;
     }
 
     /**
@@ -54,7 +54,7 @@ public class Army {
      * @return List<Unit>, a list of infantry units
      */
     private List<Unit> getInfantryUnit() {
-        return units
+        return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == InfantryUnit.class)
                 .collect(Collectors.toList());
@@ -65,7 +65,7 @@ public class Army {
      * @return List<Unit>, a list of cavalry units
      */
     private List<Unit> getCavalryUnit() {
-        return units
+        return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == CavalryUnit.class)
                 .collect(Collectors.toList());
@@ -76,7 +76,7 @@ public class Army {
      * @return List<Unit>, a list of commander units
      */
     private List<Unit> getCommanderUnitList() {
-        return units
+        return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == CommanderUnit.class)
                 .collect(Collectors.toList());
@@ -87,7 +87,7 @@ public class Army {
      * @return List<Unit>, a list of ranged units
      */
     private List<Unit> getRangedUnitList() {
-        return units
+        return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == RangedUnit.class)
                 .collect(Collectors.toList());
@@ -99,7 +99,7 @@ public class Army {
      * @param unit A unit object
      */
     public void add(Unit unit) {
-        units.add(unit);
+        this.unitList.add(unit);
     }
 
     /**
@@ -109,7 +109,7 @@ public class Army {
      */
     public void addAll(List<Unit> units) {
         for (Unit unit : units) {
-            this.units.add(unit);
+            this.unitList.add(unit);
         }
     }
 
@@ -119,7 +119,7 @@ public class Army {
      * @param unit A unit object
      */
     public void remove(Unit unit) {
-        units.remove(unit);
+        this.unitList.remove(unit);
     }
 
     /**
@@ -129,7 +129,7 @@ public class Army {
      */
     public boolean hasUnit() {
         boolean listNotEmpty = true;
-        if (units.isEmpty()) {
+        if (this.unitList.isEmpty()) {
             return !listNotEmpty;
         }
         return listNotEmpty;
@@ -142,8 +142,8 @@ public class Army {
      */
     public Unit getRandom() {
         Random randNr = new Random();
-        int upperbound = units.size();
+        int upperbound = this.unitList.size();
         int randomNumber = randNr.nextInt(upperbound);
-        return units.get(randomNumber);
+        return this.unitList.get(randomNumber);
     }
 }
