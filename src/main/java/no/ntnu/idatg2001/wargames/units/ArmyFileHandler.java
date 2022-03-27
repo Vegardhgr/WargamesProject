@@ -11,11 +11,30 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * This class handles the CSV files
+ *
+ * @author Vegard Groder
+ * @version 20.03.2022
+ */
 public class ArmyFileHandler {
     private static String armyName;
+    private static String armyType;
+    private static String unitName;
+    private static String unitHealth;
 
+    /**
+     * This method reads and handles the content of a file that is passed as
+     * a parameter
+     * @param filename, the path of the file
+     * @return List<Unit>, a list of the units
+     * @throws IOException, if the file does not exist
+     * @throws NumberFormatException, if a String cannot be parsed to an integer
+     * @throws ArrayIndexOutOfBoundsException
+     */
     public static List<Unit> readCSV(String filename) throws IOException, NumberFormatException,
             ArrayIndexOutOfBoundsException {
+        boolean isAUnit = true;
         List<Unit> unitsFromFile = new ArrayList<>();
 
         Path path = Path.of(filename);
@@ -34,14 +53,20 @@ public class ArmyFileHandler {
                 if (iterations == 0) {
                     armyName = words[0];
                 } else {
-                    if (words[0].equalsIgnoreCase("InfantryUnit")) {
-                        unitsFromFile.add(new InfantryUnit(words[1], Integer.parseInt(words[2])));
-                    } else if (words[0].equalsIgnoreCase("CavalryUnit")) {
-                        unitsFromFile.add(new CavalryUnit(words[1], Integer.parseInt(words[2])));
-                    } else if (words[0].equalsIgnoreCase("CommanderUnit")) {
-                        unitsFromFile.add(new CommanderUnit(words[1], Integer.parseInt(words[2])));
-                    } else if (words[0].equalsIgnoreCase("RangedUnit")) {
-                        unitsFromFile.add(new RangedUnit(words[1], Integer.parseInt(words[2])));
+                    armyType = words[0];
+                    unitName = words[1];
+                    unitHealth = words[2];
+                    if (armyType.equalsIgnoreCase("InfantryUnit")) {
+                        unitsFromFile.add(new InfantryUnit(unitName, Integer.parseInt(unitHealth)));
+                    } else if (armyType.equalsIgnoreCase("CavalryUnit")) {
+                        unitsFromFile.add(new CavalryUnit(unitName, Integer.parseInt(unitHealth)));
+                    } else if (armyType.equalsIgnoreCase("CommanderUnit")) {
+                        unitsFromFile.add(new CommanderUnit(unitName, Integer.parseInt(unitHealth)));
+                    } else if (armyType.equalsIgnoreCase("RangedUnit")) {
+                        unitsFromFile.add(new RangedUnit(unitName, Integer.parseInt(unitHealth)));
+                    } else {
+                        // If armyType does not match any of the army types above
+                        isAUnit = false;
                     }
                 }
                 iterations++;
@@ -54,6 +79,9 @@ public class ArmyFileHandler {
             throw new ArrayIndexOutOfBoundsException("Please make sure that you have entered three values, " +
                     "and that all the values are seperated with comma");
         }
+        if (!isAUnit)
+             throw new IllegalArgumentException("Please enter a legal unit type");
+
         return unitsFromFile;
     }
 }
