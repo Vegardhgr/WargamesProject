@@ -50,6 +50,15 @@ public class Army {
     }
 
     /**
+     * Returns the army list
+     *
+     * @return name The name of the army
+     */
+    public List<Unit> getUnitList() {
+        return this.unitList;
+    }
+
+    /**
      * Returns a list of all the infantry units in one army
      * @return List<Unit>, a list of infantry units
      */
