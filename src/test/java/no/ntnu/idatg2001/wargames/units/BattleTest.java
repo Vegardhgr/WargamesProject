@@ -141,6 +141,7 @@ class BattleTest {
 
     @Test
     void fairBattle() {
+        boolean battleIsFair = true;
         int strongArmyWins = 0;
         int strongArmy2Wins = 0;
         for (int i = 0; i < 1000; i++) {
@@ -164,9 +165,9 @@ class BattleTest {
          */
         double fairBattle = 0.05;
         if (Math.abs(ratio) < fairBattle) {
-            assertTrue(true);
+            assertTrue(battleIsFair);
         } else {
-            assertTrue(false);
+            assertFalse(!battleIsFair);
         }
     }
 }
