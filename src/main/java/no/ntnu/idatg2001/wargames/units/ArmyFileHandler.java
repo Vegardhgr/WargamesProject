@@ -3,7 +3,9 @@ package no.ntnu.idatg2001.wargames.units;
 import no.ntnu.idatg2001.wargames.units.units.*;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -83,5 +85,27 @@ public class ArmyFileHandler {
              throw new IllegalArgumentException("Please enter a legal unit type");
 
         return unitsFromFile;
+    }
+
+    /**
+     * This method writes to a file
+     * @param army, an army of units
+     * @param filename, a file where the units will be listed
+     * @throws IOException, if the file does not exist
+     */
+    public static void writeCSV(Army army, String filename) throws IOException {
+        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename))) {
+            int i = 0;
+            for(Unit unit : army.getUnitList()) {
+                if (i == 0) {
+                    writer.write(army.getName() + "\n");
+                } else {
+                    writer.write(unit.getClass().getSimpleName() + "," + unit.getName() + "," + unit.getHealth() + "\n");
+                }
+                i++;
+            }
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        }
     }
 }
