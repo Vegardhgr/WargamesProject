@@ -116,6 +116,6 @@ class ArmyFileHandlerTest {
         units.add(new InfantryUnit("Footman", 100));
         units.add(new CavalryUnit("Knight", 100));
         units.add(new RangedUnit("Archer", 100));
-        writeUnitsToFile(new Army("Army 1", units), "src/orcishHordeArmy.csv");
+        writeUnitsToFile(new Army("Orcish Horde Army", units), "src/orcishHordeArmy.csv");
     }
 }
