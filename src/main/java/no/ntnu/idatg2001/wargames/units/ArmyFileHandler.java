@@ -34,7 +34,7 @@ public class ArmyFileHandler {
      * @throws NumberFormatException, if a String cannot be parsed to an integer
      * @throws ArrayIndexOutOfBoundsException
      */
-    public static List<Unit> readCSV(String filename) throws IOException, NumberFormatException,
+    public static Army readCSV(String filename) throws IOException, NumberFormatException,
             ArrayIndexOutOfBoundsException {
         boolean isAUnit = true;
         List<Unit> unitsFromFile = new ArrayList<>();
@@ -84,7 +84,7 @@ public class ArmyFileHandler {
         if (!isAUnit)
              throw new IllegalArgumentException("Please enter a legal unit type");
 
-        return unitsFromFile;
+        return new Army(armyName,unitsFromFile);
     }
 
     /**
