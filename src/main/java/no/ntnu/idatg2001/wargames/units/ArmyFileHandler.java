@@ -29,7 +29,7 @@ public class ArmyFileHandler {
      * This method reads and handles the content of a file that is passed as
      * a parameter
      * @param filename, the path of the file
-     * @return List<Unit>, a list of the units
+     * @return Army, an army object
      * @throws IOException, if the file does not exist
      * @throws NumberFormatException, if a String cannot be parsed to an integer
      * @throws ArrayIndexOutOfBoundsException
