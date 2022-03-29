@@ -20,10 +20,8 @@ import java.util.List;
  * @version 20.03.2022
  */
 public class ArmyFileHandler {
-    private static String armyName;
-    private static String armyType;
-    private static String unitName;
-    private static String unitHealth;
+
+    private ArmyFileHandler() {}
 
     /**
      * This method reads and handles the content of a file that is passed as
@@ -36,6 +34,7 @@ public class ArmyFileHandler {
      */
     public static Army readCSV(String filename) throws IOException, NumberFormatException,
             ArrayIndexOutOfBoundsException {
+        String armyName = null;
         boolean isAUnit = true;
         List<Unit> unitsFromFile = new ArrayList<>();
 
@@ -55,9 +54,9 @@ public class ArmyFileHandler {
                 if (iterations == 0) {
                     armyName = words[0];
                 } else {
-                    armyType = words[0];
-                    unitName = words[1];
-                    unitHealth = words[2];
+                    String armyType = words[0];
+                    String unitName = words[1];
+                    String unitHealth = words[2];
                     if (armyType.equalsIgnoreCase("InfantryUnit")) {
                         unitsFromFile.add(new InfantryUnit(unitName, Integer.parseInt(unitHealth)));
                     } else if (armyType.equalsIgnoreCase("CavalryUnit")) {
