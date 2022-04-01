@@ -1,6 +1,6 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames;
 
-import no.ntnu.idatg2001.wargames.units.units.*;
+import no.ntnu.idatg2001.wargames.units.*;
 
 import java.util.ArrayList;
 import java.util.List;

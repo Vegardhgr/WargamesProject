@@ -1,11 +1,10 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames;
 
-import no.ntnu.idatg2001.wargames.units.units.*;
+import no.ntnu.idatg2001.wargames.units.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;

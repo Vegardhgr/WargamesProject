@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.units.units;
+package no.ntnu.idatg2001.wargames.units;
 
 /**
  * A subclass of Unit. This unit, cavalry unit, has the
