@@ -14,7 +14,6 @@ class BattleTest {
 
     private Army strongArmy;
     private Army weakArmy;
-    private Army strongArmy2;
     private String winningArmy;
     private Battle battle;
 
@@ -91,35 +90,6 @@ class BattleTest {
         return weakArmyList;
     }
 
-    private List<Unit> makeStrongArmy2() {
-        List<Unit> strongArmyList2 = new ArrayList<>();
-        int infantryUnitsMade = 0;
-        int cavalryUnitsMade = 0;
-        int rangedUnitsMade = 0;
-        int commanderUnitsMade = 0;
-        while (infantryUnitsMade < 500) {
-            infantryUnits = new InfantryUnit("Footman", 100);
-            strongArmyList2.add(infantryUnits);
-            infantryUnitsMade++;
-        }
-        while (cavalryUnitsMade < 100) {
-            cavalryUnits = new CavalryUnit("Knight", 100);
-            strongArmyList2.add(cavalryUnits);
-            cavalryUnitsMade++;
-        }
-        while (rangedUnitsMade < 200) {
-            rangedUnits = new RangedUnit("Archer", 100);
-            strongArmyList2.add(rangedUnits);
-            rangedUnitsMade++;
-        }
-        while (commanderUnitsMade < 1) {
-            commanderUnits = new CommanderUnit("Mountain King", 180);
-            strongArmyList2.add(commanderUnits);
-            commanderUnitsMade++;
-        }
-        return strongArmyList2;
-    }
-
     //Lag en init der man lager et battle objekt.
 
     @Test
@@ -137,37 +107,5 @@ class BattleTest {
 
         String winningArmy = battle.toString();
         assertEquals("The winning army is " + strongArmy.getName(), winningArmy);
-    }
-
-    @Test
-    void fairBattle() {
-        boolean battleIsFair = true;
-        int strongArmyWins = 0;
-        int strongArmy2Wins = 0;
-        for (int i = 0; i < 1000; i++) {
-            this.strongArmy = new Army("Strong army", makeStrongArmy());
-            this.strongArmy2 = new Army("Strong army2", makeStrongArmy2());
-            Battle battle = new Battle(strongArmy, strongArmy2);
-            winningArmy = battle.simulate().getName();
-
-            if (winningArmy.equals("Strong army")) {
-                strongArmyWins++;
-            } else {
-                strongArmy2Wins++;
-            }
-        }
-
-        double ratio = ((double) strongArmyWins / (double) strongArmy2Wins) - 1;
-
-        /* If the ratio between strongArmyWins and strongArmy2Wins is more than
-           5%, it ain't a fair battle.
-         */
-        double fairBattle = 0.05;
-
-        if (Math.abs(ratio) > fairBattle) {
-            battleIsFair = !battleIsFair;
-        }
-
-        assertTrue(battleIsFair);
     }
 }
