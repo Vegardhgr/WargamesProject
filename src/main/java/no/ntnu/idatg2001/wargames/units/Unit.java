@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.units.units;
+package no.ntnu.idatg2001.wargames.units;
 
 /**
  * This is an abstract superclass and contains everything that

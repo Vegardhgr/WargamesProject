@@ -1,6 +1,6 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames;
 
-import no.ntnu.idatg2001.wargames.units.units.Unit;
+import no.ntnu.idatg2001.wargames.units.Unit;
 
 /**
  * This class creates a battle between two armies

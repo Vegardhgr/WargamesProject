@@ -1,6 +1,5 @@
-package no.ntnu.idatg2001.wargames.units.units;
+package no.ntnu.idatg2001.wargames.units;
 
-import no.ntnu.idatg2001.wargames.units.units.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
