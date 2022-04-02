@@ -3,10 +3,10 @@ package no.ntnu.idatg2001.wargames;
 import no.ntnu.idatg2001.wargames.units.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,33 +17,20 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 18.02.2022
  */
 class ArmyTest {
-
     // Class fields
-    private Army army1;
+    private Army army;
     private Unit archer;
     private Unit barbarian;
-    private List<Unit> units;
     private List<Unit> inputUnits;
-    private List<Unit> infantryUnitList;
-    private List<Unit> cavalryUnitList;
-    private List<Unit> commanderUnitList;
-    private List<Unit> rangedUnitList;
 
     @BeforeEach
     void setUp() {
         // Initializing the class fields
-        this.infantryUnitList = new ArrayList<>();
-        this.cavalryUnitList = new ArrayList<>();
-        this.commanderUnitList = new ArrayList<>();
-        this.rangedUnitList = new ArrayList<>();
-        this.army1 = new Army("Army1");
+        this.army = new Army("Army1");
         this.archer = new CommanderUnit("Archer", 10);
         this.barbarian = new CavalryUnit("Barbarian", 12);
-        this.units = new ArrayList<>();
         this.inputUnits = new ArrayList<>();
         addAllTypesOfUnitsToInputUnitsList();
-        inputUnits.add(archer);
-        inputUnits.add(barbarian);
     }
 
     private void addAllTypesOfUnitsToInputUnitsList() {
@@ -62,7 +49,14 @@ class ArmyTest {
      */
     @Test
     void getName() {
-        assertEquals("Army1", army1.getName());
+        assertEquals("Army1", army.getName());
+    }
+
+    @Test
+    void getUnitListTest() {
+        assertEquals(0, army.getUnitList().size());
+        army.add(new CommanderUnit("Dan'gul", 200));
+        assertEquals(1, army.getUnitList().size());
     }
 
     /**
@@ -70,117 +64,100 @@ class ArmyTest {
      */
     @Test
     void add() {
-        assertEquals(0, units.size());
-        units.add(archer);
-        assertEquals(1, units.size());
-        units.add(barbarian);
-        assertEquals(2, units.size());
+        assertEquals(0, army.getUnitList().size());
+        army.add(archer);
+        assertEquals(1, army.getUnitList().size());
+        army.add(barbarian);
+        assertEquals(2, army.getUnitList().size());
+    }
+
+    /**
+     * Tests the second constructor in the army class, that includes
+     * both name and a list of units as parameters.
+     */
+    @Test
+    void testSecondConstructor() {
+        Army army2 = new Army("Army2", inputUnits);
+        assertEquals(4, army2.getUnitList().size());
+        inputUnits.add(new CavalryUnit("Cavalry", 24));
+        assertEquals(5, army2.getUnitList().size());
     }
 
     /**
      * Tests that it adds all the units from a list, into the army
      */
     @Test
-    void addAll() {
-        assertEquals(0, units.size());
-        for (Unit unit : inputUnits) {
-            units.add(unit);
-        }
-
-        assertEquals(inputUnits.size(), units.size());
+    void addAllTest() {
+        assertEquals(4, inputUnits.size());
+        assertEquals(0, army.getUnitList().size());
+        army.addAll(inputUnits);
+        assertEquals(4, army.getUnitList().size());
     }
 
     /**
      * Tests that it removes one element from the army
      */
     @Test
-    void remove() {
+    void removeRandomElement() {
+        assertEquals(4, inputUnits.size());
+        assertEquals(0, army.getUnitList().size());
+        army.addAll(inputUnits);
+        assertEquals(4, army.getUnitList().size());
         Random randNr = new Random();
-        int upperbound = units.size() + 1;
+        int upperbound = army.getUnitList().size();
         int randomNumber = randNr.nextInt(upperbound);
-
-        assertEquals(0, units.size());
-
-        addAll();
-        assertEquals(inputUnits.size(), units.size());
-
-        units.remove(randomNumber);
-        assertEquals(inputUnits.size() - 1, units.size());
+        assertEquals(4, army.getUnitList().size());
+        army.remove(army.getUnitList().get(randomNumber));
+        assertEquals(3, army.getUnitList().size());
     }
 
     /**
-     * Checks it returns false if the list is empty and
+     * Tests that it gets a random unit from army list
+     */
+    @Test
+    void getRandomTest() {
+        assertEquals(4, inputUnits.size());
+        assertEquals(0, army.getUnitList().size());
+        army.addAll(inputUnits);
+        assertEquals(4, army.getUnitList().size());
+        Unit randomUnit = army.getRandom();
+        switch (randomUnit.getClass().getSimpleName().toUpperCase()) {
+            case "INFATRYUNIT":
+                assertEquals(InfantryUnit.class.getSimpleName(), randomUnit.getClass().getSimpleName());
+                break;
+            case "CAVALRYUNIT":
+                assertEquals(CavalryUnit.class.getSimpleName(), randomUnit.getClass().getSimpleName());
+                break;
+            case "COMMANDERUNIT":
+                assertEquals(CommanderUnit.class.getSimpleName(), randomUnit.getClass().getSimpleName());
+                break;
+            case "RANGEDUNIT":
+                assertEquals(RangedUnit.class.getSimpleName(), randomUnit.getClass().getSimpleName());
+        }
+    }
+
+    /**
+     * Checks that hasUnit returns false if the list is empty and
      * true if the list is not empty
      */
     @Test
-    void hasUnit() {
-        assertEquals(0, units.size());
-        if (units.isEmpty()) {
-            assertFalse(false);
-        }
-        units.add(archer);
-        assertEquals(1, units.size());
-        if (!units.isEmpty()) {
-            assertTrue(true);
-        }
-    }
-
-    /**
-     * Checks if the method generates a random number and
-     * that it gets the expected unit
-     */
-    @Test
-    void getRandom() {
-        Random random = new Random();
-        assertEquals(0, units.size());
-        units.add(archer);
-        units.add(barbarian);
-        assertEquals(2, units.size());
-        int upperbound = units.size();
-
-        int randomNumber = random.nextInt(upperbound);
-        units.get(randomNumber);
-
-        if (randomNumber == 0) {
-            assertEquals(archer, units.get(randomNumber));
-        } else if (randomNumber == 1) {
-            assertEquals(barbarian, units.get(randomNumber));
-        }
-    }
-
-    private List<Unit> getInfantryUnit() {
-        return inputUnits
-                .stream()
-                .filter(unit -> unit.getClass() == InfantryUnit.class)
-                .collect(Collectors.toList());
-    }
-
-    private List<Unit> getCavalryUnit() {
-        return inputUnits
-                .stream()
-                .filter(unit -> unit.getClass() == CavalryUnit.class)
-                .collect(Collectors.toList());
-    }
-
-    private List<Unit> getCommanderUnitList() {
-        return inputUnits
-                .stream()
-                .filter(unit -> unit.getClass() == CommanderUnit.class)
-                .collect(Collectors.toList());
-    }
-
-    private List<Unit> getRangedUnitList() {
-        return inputUnits
-                .stream()
-                .filter(unit -> unit.getClass() == RangedUnit.class)
-                .collect(Collectors.toList());
+    void hasUnitTest() {
+        assertEquals(0, army.getUnitList().size());
+        // List is empty if army1.hasUnit() returns false
+        assertFalse(army.hasUnit());
+        //List is not empty if army1.hasUnit() returns true
+        army.addAll(inputUnits);
+        assertTrue(army.hasUnit());
+        assertEquals(4, army.getUnitList().size());
     }
 
     @Test
     void getInfantryUnitsFromInputList() {
-        assertTrue(infantryUnitList.size() == 0);
-        this.infantryUnitList = getInfantryUnit();
-        assertTrue(infantryUnitList.size() != 0);
+        List<Unit> infantryUnitList = new ArrayList<>();
+        assertEquals(0, infantryUnitList.size());
+        army.addAll(inputUnits);
+        infantryUnitList = army.getInfantryUnit();
+        assertEquals(1, infantryUnitList.size());
         infantryUnitList.forEach(unit -> assertTrue(unit.getClass() == InfantryUnit.class));
         infantryUnitList.forEach(unit ->
                 assertFalse(unit.getClass() ==  CavalryUnit.class ||
@@ -190,9 +167,11 @@ class ArmyTest {
 
     @Test
     void getCavalryUnitsFromInputList() {
-        assertTrue(cavalryUnitList.size() == 0);
-        this.cavalryUnitList = getCavalryUnit();
-        assertTrue(cavalryUnitList.size() != 0);
+        List<Unit> cavalryUnitList = new ArrayList<>();
+        assertEquals(0, cavalryUnitList.size());
+        army.addAll(inputUnits);
+        cavalryUnitList = army.getCavalryUnit();
+        assertEquals(1, cavalryUnitList.size());
         cavalryUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CavalryUnit.class));
         cavalryUnitList.forEach(unit ->
                 assertFalse(unit.getClass() == InfantryUnit.class ||
@@ -202,9 +181,11 @@ class ArmyTest {
 
     @Test
     void getCommanderUnitsFromInputList() {
-        assertTrue(commanderUnitList.size() == 0);
-        this.commanderUnitList = getCommanderUnitList();
-        assertTrue(commanderUnitList.size() != 0);
+        List<Unit> commanderUnitList = new ArrayList<>();
+        assertEquals(0, commanderUnitList.size());
+        army.addAll(inputUnits);
+        commanderUnitList = army.getCommanderUnitList();
+        assertEquals(1, commanderUnitList.size());
         commanderUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CommanderUnit.class));
         /* Tests specifically that commanderUnitList does not contain any units with
             type CavalryUnit, since the CommanderUnit class inherits from CavalryUnit*/
@@ -217,9 +198,11 @@ class ArmyTest {
 
     @Test
     void getRangedUnitsFromInputList() {
-        assertTrue(rangedUnitList.size() == 0);
-        this.rangedUnitList = getRangedUnitList();
-        assertTrue(rangedUnitList.size() != 0);
+        List<Unit> rangedUnitList = new ArrayList<>();
+        assertEquals(0, rangedUnitList.size());
+        army.addAll(inputUnits);
+        rangedUnitList = army.getRangedUnitList();
+        assertEquals(1, rangedUnitList.size());
         rangedUnitList.forEach(unit -> assertTrue(unit.getClass() == RangedUnit.class));
         rangedUnitList.forEach(unit ->
                 assertFalse(unit.getClass() == InfantryUnit.class ||
