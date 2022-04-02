@@ -56,4 +56,10 @@ class CavalryUnitTest {
         barbarian.attack(archer);
         assertEquals(1, barbarian.getAttackCounter());
     }
+
+    @Test
+    void toStringTest() {
+        Unit unit = new CavalryUnit("Cavalry", 10);
+        assertEquals("Unit: Cavalry | Health: 10 | Attack: 20 | Armor: 12", unit.toString());
+    }
 }

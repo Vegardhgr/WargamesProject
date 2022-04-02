@@ -36,4 +36,10 @@ class InfantryUnitTest {
     void getResistBonus() {
         assertEquals(1, barbarian.getResistBonus());
     }
+
+    @Test
+    void toStringTest() {
+        Unit unit = new InfantryUnit("Infantry", 10);
+        assertEquals("Unit: Infantry | Health: 10 | Attack: 15 | Armor: 10", unit.toString());
+    }
 }

@@ -50,4 +50,10 @@ public class CommanderUnitTest {
         barbarian.attack(archer);
         assertEquals(1, barbarian.getAttackCounter());
     }
+
+    @Test
+    void toStringTest() {
+        Unit unit = new CommanderUnit("Commander", 10);
+        assertEquals("Unit: Commander | Health: 10 | Attack: 25 | Armor: 15", unit.toString());
+    }
 }

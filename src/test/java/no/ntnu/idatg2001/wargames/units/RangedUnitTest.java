@@ -48,4 +48,10 @@ class RangedUnitTest {
         archer.attack(barbarian);
         assertEquals(2, barbarian.getResistBonus());
     }
+
+    @Test
+    void toStringTest() {
+        Unit unit = new RangedUnit("Ranged", 10);
+        assertEquals("Unit: Ranged | Health: 10 | Attack: 15 | Armor: 8", unit.toString());
+    }
 }
