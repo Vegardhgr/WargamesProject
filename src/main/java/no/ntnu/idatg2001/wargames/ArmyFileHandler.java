@@ -20,15 +20,17 @@ import java.util.List;
  */
 public class ArmyFileHandler {
 
-    private ArmyFileHandler() {}
+    private ArmyFileHandler() {
+    }
 
     /**
      * This method reads and handles the content of a file that is passed as
      * a parameter
+     *
      * @param filename, the path of the file
      * @return Army, an army object
-     * @throws IOException, if the file does not exist
-     * @throws NumberFormatException, if a String cannot be parsed to an integer
+     * @throws IOException,                   if the file does not exist
+     * @throws NumberFormatException,         if a String cannot be parsed to an integer
      * @throws ArrayIndexOutOfBoundsException
      */
     public static Army readCSV(String filename) throws IOException, NumberFormatException,
@@ -42,7 +44,7 @@ public class ArmyFileHandler {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String lineOfText;
             int iterations = 0;
-            while ((lineOfText = reader.readLine()) != null && iterations < 2) {
+            while ((lineOfText = reader.readLine()) != null) {
                 int i = 0;
                 String[] words = lineOfText.split(",");
                 Iterator it = Arrays.stream(words).iterator();
@@ -80,27 +82,23 @@ public class ArmyFileHandler {
                     "and that all the values are seperated with comma");
         }
         if (!isAUnit)
-             throw new IllegalArgumentException("Please enter a legal unit type");
+            throw new IllegalArgumentException("Please enter a legal unit type");
 
-        return new Army(armyName,unitsFromFile);
+        return new Army(armyName, unitsFromFile);
     }
 
     /**
      * This method writes to a file
-     * @param army, an army of units
+     *
+     * @param army,     an army of units
      * @param filename, a file where the units will be listed
      * @throws IOException, if the file does not exist
      */
     public static void writeCSV(Army army, String filename) throws IOException {
         try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename))) {
-            int i = 0;
-            for(Unit unit : army.getUnitList()) {
-                if (i == 0) {
-                    writer.write(army.getName() + "\n");
-                } else {
-                    writer.write(unit.getClass().getSimpleName() + "," + unit.getName() + "," + unit.getHealth() + "\n");
-                }
-                i++;
+            writer.write(army.getName() + "\n");
+            for (Unit unit : army.getUnitList()) {
+                writer.write(unit.getClass().getSimpleName() + "," + unit.getName() + "," + unit.getHealth() + "\n");
             }
         } catch (IOException e) {
             throw new IOException(e.getMessage());
