@@ -1,7 +1,12 @@
 package no.ntnu.idatg2001.wargames.units;
 
-import org.junit.jupiter.api.BeforeEach;
+import no.ntnu.idatg2001.wargames.Battle;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,29 +17,29 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 10.02.2022
  */
 class InfantryUnitTest {
-    // A InfantryUnit object made global
-    InfantryUnit barbarian;
-
-    @BeforeEach
-    void setUp() {
-        // Initializes the barbarian object
-        barbarian = new InfantryUnit("Barbarian", 12);
+    /**
+     * Tests that the correct amount of bonuses is returned
+     * depending on the terrain.
+     */
+    @ParameterizedTest
+    @MethodSource("attackAndResistBonus")
+    void testInfantryUnit(int attackBonus, int resistBonus, Battle.Terrain terrain) {
+        Battle.setTerrain(terrain);
+        InfantryUnit unit = new InfantryUnit("InfantryUnit", 10);
+        assertEquals(attackBonus, unit.getAttackBonus());
+        assertEquals(resistBonus, unit.getResistBonus());
     }
 
     /**
-     * Tests the attack bonus method
+     * Sends arguments with three parameters as a stream
+     * @return Stream<Arguments>, a stream of arguments with three parameters
      */
-    @Test
-    void getAttackBonus() {
-        assertEquals(2, barbarian.getAttackBonus());
-    }
-
-    /**
-     * Tests the resist bonus method
-     */
-    @Test
-    void getResistBonus() {
-        assertEquals(1, barbarian.getResistBonus());
+    private static Stream<Arguments> attackAndResistBonus() {
+        return Stream.of(
+                Arguments.of(3,2, Battle.Terrain.FOREST),
+                Arguments.of(2,1, Battle.Terrain.HILL),
+                Arguments.of(2,1, Battle.Terrain.PLAINS)
+        );
     }
 
     @Test
