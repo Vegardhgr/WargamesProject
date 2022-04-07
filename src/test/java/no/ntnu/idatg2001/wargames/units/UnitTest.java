@@ -20,28 +20,11 @@ class UnitTest {
             public int getResistBonus() {
                 return 0;
             }
+
         };
         assertEquals("Archer", unit.getName());
     }
 
-    @Test
-    void attack() {
-        Unit unit2 = new Unit("Swordsman", 120, 15, 7) {
-            @Override
-            public int getAttackBonus() {
-                return 0;
-            }
-
-            @Override
-            public int getResistBonus() {
-                return 0;
-            }
-        };
-
-        assertEquals(100, unit.getHealth());
-        unit2.attack(unit);
-        assertEquals(90, unit.getHealth());
-    }
 
     @Test
     void getName() {
@@ -70,14 +53,5 @@ class UnitTest {
         assertEquals(95, unit.getHealth());
         unit.setHealth(-100);
         assertEquals(0, unit.getHealth());
-    }
-
-    @Test
-    void getAttackBonus() {
-    }
-
-    @Test
-    void getResistBonus() {
-
     }
 }
