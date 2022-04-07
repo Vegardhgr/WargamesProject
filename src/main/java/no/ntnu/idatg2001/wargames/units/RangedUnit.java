@@ -16,7 +16,7 @@ public class RangedUnit extends Unit {
     private static final int ARMOR = 8;
     private static final int ATTACK_BONUS = 3;
     private static final int ATTACK_BONUS_TERRAIN = 2;
-    private int timesAttacked = 0;
+    private int timesAttacked;
 
     /**
      * Initializes all the fields in the superclass.
@@ -28,6 +28,7 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
+        this.timesAttacked = 0;
     }
 
     /**
@@ -40,6 +41,7 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health) {
         super(name, health, ATTACK, ARMOR);
+        this.timesAttacked = 0;
     }
 
     /**
