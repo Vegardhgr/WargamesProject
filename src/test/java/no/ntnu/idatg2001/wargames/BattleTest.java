@@ -88,8 +88,6 @@ class BattleTest {
         return weakArmyList;
     }
 
-    //Lag en init der man lager et battle objekt.
-
     @Test
     void simulate() {
         setUp();
@@ -109,19 +107,19 @@ class BattleTest {
 
     @Test
     void setTerrainForest() {
-        this.battle.setTerrain(Battle.Terrain.FOREST);
-        assertEquals(Battle.Terrain.FOREST, this.battle.getTerrain());
+        Battle.setTerrain(Battle.Terrain.FOREST);
+        assertEquals(Battle.Terrain.FOREST, Battle.getTerrain());
     }
 
     @Test
     void setTerrainHill() {
-        this.battle.setTerrain(Battle.Terrain.HILL);
-        assertEquals(Battle.Terrain.HILL, battle.getTerrain());
+        Battle.setTerrain(Battle.Terrain.HILL);
+        assertEquals(Battle.Terrain.HILL, Battle.getTerrain());
     }
 
     @Test
     void setTerrainPlains() {
-        this.battle.setTerrain(Battle.Terrain.PLAINS);
-        assertEquals(Battle.Terrain.PLAINS, battle.getTerrain());
+        Battle.setTerrain(Battle.Terrain.PLAINS);
+        assertEquals(Battle.Terrain.PLAINS, Battle.getTerrain());
     }
 }
