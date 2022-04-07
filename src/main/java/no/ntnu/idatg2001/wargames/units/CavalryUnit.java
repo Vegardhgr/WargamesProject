@@ -1,5 +1,7 @@
 package no.ntnu.idatg2001.wargames.units;
 
+import no.ntnu.idatg2001.wargames.Battle;
+
 /**
  * A subclass of Unit. This unit, cavalry unit, has the
  * advantage that it does more damage the first time it
@@ -15,6 +17,7 @@ public class CavalryUnit extends Unit {
     private static final int ARMOR = 12;
     private static final int ATTACK_BONUS = 2;
     private static final int RESIST_BONUS = 1;
+    private static final int ATTACK_BONUS_TERRAIN = 2;
 
     // Keeps track of how many times a cavalry unit has attacked an opponent
     private int attackCounter;
@@ -29,6 +32,7 @@ public class CavalryUnit extends Unit {
      */
     public CavalryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
+        this.attackCounter = 0;
     }
 
     /**
@@ -41,6 +45,7 @@ public class CavalryUnit extends Unit {
      */
     public CavalryUnit(String name, int health) {
         super(name, health, ATTACK, ARMOR);
+        this.attackCounter = 0;
     }
 
     /**
@@ -58,9 +63,8 @@ public class CavalryUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
-        if (attackCounter == 1) {
-            return (ATTACK_BONUS + 4);
-        }
+        if (attackCounter == 0 && Battle.getTerrain().equals(Battle.Terrain.PLAINS))
+            return ATTACK_BONUS + 4 + ATTACK_BONUS_TERRAIN;
         return ATTACK_BONUS;
     }
 
@@ -71,6 +75,8 @@ public class CavalryUnit extends Unit {
      */
     @Override
     public int getResistBonus() {
+        if (Battle.getTerrain().equals(Battle.Terrain.FOREST))
+            return 0;
         return RESIST_BONUS;
     }
 
@@ -85,6 +91,4 @@ public class CavalryUnit extends Unit {
         super.attack(opponent);
         attackCounter++;
     }
-
-
 }
