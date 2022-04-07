@@ -1,5 +1,7 @@
 package no.ntnu.idatg2001.wargames.units;
 
+import no.ntnu.idatg2001.wargames.Battle;
+
 /**
  * A subclass of Unit. This unit, infantry unit, has its
  * advantage in close combat.
@@ -14,6 +16,8 @@ public class InfantryUnit extends Unit {
     private static final int ARMOR = 10;
     private static final int ATTACK_BONUS = 2;
     private static final int RESIST_BONUS = 1;
+    private static final int ATTACK_BONUS_TERRAIN = 1;
+    private static final int RESIST_BONUS_TERRAIN = 1;
 
     /**
      * Initializes all the fields for the Infantry unit
@@ -46,6 +50,8 @@ public class InfantryUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
+        if (Battle.getTerrain().equals(Battle.Terrain.FOREST))
+            return ATTACK_BONUS + ATTACK_BONUS_TERRAIN;
         return ATTACK_BONUS;
     }
 
@@ -56,6 +62,8 @@ public class InfantryUnit extends Unit {
      */
     @Override
     public int getResistBonus() {
+        if (Battle.getTerrain().equals(Battle.Terrain.FOREST))
+            return RESIST_BONUS + RESIST_BONUS_TERRAIN;
         return RESIST_BONUS;
     }
 }
