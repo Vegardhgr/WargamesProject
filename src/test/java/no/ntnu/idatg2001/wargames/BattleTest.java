@@ -3,10 +3,8 @@ package no.ntnu.idatg2001.wargames;
 import no.ntnu.idatg2001.wargames.units.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Math;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +25,7 @@ class BattleTest {
         this.strongArmy = new Army("Strong army", makeStrongArmy());
         this.weakArmy = new Army("Weak army", makeWeakArmy());
 
-        battle = new Battle(this.strongArmy, this.weakArmy);
+        this.battle = new Battle(this.strongArmy, this.weakArmy);
     }
 
     private List<Unit> makeStrongArmy() {
@@ -107,5 +105,23 @@ class BattleTest {
 
         String winningArmy = battle.toString();
         assertEquals("The winning army is " + strongArmy.getName(), winningArmy);
+    }
+
+    @Test
+    void setTerrainForest() {
+        this.battle.setTerrain(Battle.Terrain.FOREST);
+        assertEquals(Battle.Terrain.FOREST, this.battle.getTerrain());
+    }
+
+    @Test
+    void setTerrainHill() {
+        this.battle.setTerrain(Battle.Terrain.HILL);
+        assertEquals(Battle.Terrain.HILL, battle.getTerrain());
+    }
+
+    @Test
+    void setTerrainPlains() {
+        this.battle.setTerrain(Battle.Terrain.PLAINS);
+        assertEquals(Battle.Terrain.PLAINS, battle.getTerrain());
     }
 }
