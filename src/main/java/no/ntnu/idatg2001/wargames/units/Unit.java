@@ -1,5 +1,7 @@
 package no.ntnu.idatg2001.wargames.units;
 
+import no.ntnu.idatg2001.wargames.Battle;
+
 /**
  * This is an abstract superclass and contains everything that
  * the units, or the subclasses, have in common.
@@ -24,7 +26,7 @@ public abstract class Unit {
      * @param attack
      * @param armor
      */
-    public Unit(String name, int health, int attack, int armor) {
+    protected Unit(String name, int health, int attack, int armor) {
         this.name = name;
         setHealth(health);
         this.health = health;
@@ -38,7 +40,8 @@ public abstract class Unit {
      * @param opponent
      */
     public void attack(Unit opponent) {
-        int health = opponent.health - (attack + getAttackBonus()) + (opponent.armor + opponent.getResistBonus());
+        int health = opponent.health - (attack + getAttackBonus() + getAttackBonusTerrain(Battle.getTerrain())
+                + (opponent.armor + opponent.getResistBonus() + opponent.getResistBonusTerrain(Battle.getTerrain())));
         opponent.setHealth(health);
     }
 
@@ -105,4 +108,8 @@ public abstract class Unit {
     public abstract int getAttackBonus();
 
     public abstract int getResistBonus();
+
+    public abstract int getAttackBonusTerrain(Battle.Terrain terrain);
+
+    public abstract int getResistBonusTerrain(Battle.Terrain terrain);
 }
