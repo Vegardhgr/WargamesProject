@@ -13,6 +13,7 @@ public class Battle {
     private Army armyOne;
     private Army armyTwo;
     private Army winningArmy;
+    private static Terrain terrain;
 
     /**
      * Initializes the global army objects
@@ -23,6 +24,14 @@ public class Battle {
     public Battle(Army armyOne, Army armyTwo) {
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
+    }
+
+    public static Terrain getTerrain() {
+        return Battle.terrain;
+    }
+
+    public static void setTerrain(Terrain terrain) {
+        Battle.terrain = terrain;
     }
 
     /**
@@ -61,9 +70,6 @@ public class Battle {
                     }
                 }
             }
-            // System.out.println("Human army unit: " + armyOneUnit.getHealth());
-            // System.out.println("Orcish horde unit: " + armyTwoUnit.getHealth());
-            // Changing who is the attacker
             armyOneAttacks = !armyOneAttacks;
         }
         return null;
@@ -84,6 +90,10 @@ public class Battle {
         }
     }
 
-
+    public enum Terrain {
+        FOREST,
+        HILL,
+        PLAINS
+    }
 }
 
