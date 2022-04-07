@@ -1,5 +1,7 @@
 package no.ntnu.idatg2001.wargames.units;
 
+import no.ntnu.idatg2001.wargames.Battle;
+
 /**
  * A subclass of Unit. This unit, ranged unit, has the
  * advantage that it can attack from distance.
@@ -13,8 +15,8 @@ public class RangedUnit extends Unit {
     private static final int ATTACK = 15;
     private static final int ARMOR = 8;
     private static final int ATTACK_BONUS = 3;
-
-    private int timesAttacked;
+    private static final int ATTACK_BONUS_TERRAIN = 2;
+    private int timesAttacked = 0;
 
     /**
      * Initializes all the fields in the superclass.
@@ -33,8 +35,8 @@ public class RangedUnit extends Unit {
      * and uses the constants ATTACK and ARMOR to define the amount of
      * damage the character does, and how much armor the character has.
      *
-     * @param name   The characters name
-     * @param health The characters health
+     * @param name   The character's name
+     * @param health The character's health
      */
     public RangedUnit(String name, int health) {
         super(name, health, ATTACK, ARMOR);
@@ -47,6 +49,10 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
+        if (Battle.getTerrain().equals(Battle.Terrain.HILL))
+            return ATTACK_BONUS + ATTACK_BONUS_TERRAIN;
+        else if (Battle.getTerrain().equals(Battle.Terrain.FOREST))
+            return ATTACK_BONUS - 1;
         return ATTACK_BONUS;
     }
 
@@ -60,9 +66,9 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getResistBonus() {
-        if (timesAttacked == 1) {
+        if (timesAttacked == 0) {
             return 6;
-        } else if (timesAttacked == 2) {
+        } else if (timesAttacked == 1) {
             return 4;
         } else {
             return 2;
