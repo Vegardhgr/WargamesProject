@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.MainScreenController">
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames" wrappingWidth="271.1250382065773" BorderPane.alignment="CENTER">
          <font>
@@ -19,7 +19,7 @@
       <AnchorPane prefHeight="320.0" prefWidth="514.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="241.0" layoutY="69.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Simulate Battle" />
-            <Button layoutX="241.0" layoutY="227.0" mnemonicParsing="false" onAction="#createArmy" prefHeight="25.0" prefWidth="117.0" text="Create Army" />
+            <Button layoutX="241.0" layoutY="227.0" mnemonicParsing="false" onAction="#loadCreateArmyScene" prefHeight="25.0" prefWidth="117.0" text="Create Army" />
             <Button layoutX="241.0" layoutY="141.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="117.0" text="View Army&#10;Details" textAlignment="CENTER" />
          </children>
       </AnchorPane>
