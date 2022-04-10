@@ -8,10 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class ArmyFileHandlerTest {
+class CSVFileHandlerTest {
     @Test
     void readCSVTest() throws IOException {
-        Army army = ArmyFileHandler.readCSV("src/humanArmyTestFile.csv");
+        Army army = CSVFileHandler.readCSVArmy("src/humanArmyTestFile.csv");
         Assertions.assertEquals("Human Army", army.getName());
         Assertions.assertEquals(1, army.getUnitList().size());
     }
@@ -19,22 +19,22 @@ class ArmyFileHandlerTest {
     @Test
     void readCSVFileNotFound() {
         String filename = "filename not existing";
-        Assertions.assertThrows(IOException.class, () -> ArmyFileHandler.readCSV(filename));
+        Assertions.assertThrows(IOException.class, () -> CSVFileHandler.readCSVArmy(filename));
     }
 
     @Test
     void writeCSVTest() throws IOException {
         String filename = "src/orcishHordeArmyTestFile.csv";
         List<Unit> units = new ArrayList<>();
-        ArmyFileHandler.writeCSV(new Army("", units), filename);
-        Assertions.assertEquals("", ArmyFileHandler.readCSV(filename).getName());
-        Assertions.assertEquals(0, ArmyFileHandler.readCSV(filename).getUnitList().size());
+        CSVFileHandler.writeCSVArmy(new Army("", units), filename);
+        Assertions.assertEquals("", CSVFileHandler.readCSVArmy(filename).getName());
+        Assertions.assertEquals(0, CSVFileHandler.readCSVArmy(filename).getUnitList().size());
         units.add(new CommanderUnit("Mountain King", 180));
         units.add(new InfantryUnit("Footman", 100));
         units.add(new CavalryUnit("Knight", 100));
         units.add(new RangedUnit("Archer", 100));
-        ArmyFileHandler.writeCSV(new Army("Orcish Horde Army", units), filename);
-        Army army = ArmyFileHandler.readCSV(filename);
+        CSVFileHandler.writeCSVArmy(new Army("Orcish Horde Army", units), filename);
+        Army army = CSVFileHandler.readCSVArmy(filename);
         Assertions.assertEquals("Orcish Horde Army", army.getName());
         Assertions.assertEquals(4, army.getUnitList().size());
     }
