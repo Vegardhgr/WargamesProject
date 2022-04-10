@@ -21,35 +21,37 @@
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text layoutX="245.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army 1" wrappingWidth="111.11688232421875">
-               <font>
-                  <Font size="33.0" />
-               </font>
-            </Text>
-            <Text layoutX="53.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click browse and select a file&#10;from your directory " wrappingWidth="170.63658142089844" />
-            <TextField fx:id="pathField" layoutX="53.0" layoutY="194.0" prefHeight="25.0" prefWidth="332.0" text="Path:" />
-            <Button layoutX="424.0" layoutY="194.0" mnemonicParsing="false" onMouseClicked="#openDirectory" prefHeight="25.0" prefWidth="78.0" text="Browse" />
-            <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="313.0" layoutY="58.0" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
-               <fill>
-                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </fill>
-            </Line>
-            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToCreateArmyScreen" text="Go Back" />
-         </children>
+         <Text layoutX="245.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army 1" wrappingWidth="111.11688232421875">
+            <font>
+               <Font size="33.0" />
+            </font>
+         </Text>
+         <Text layoutX="53.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click browse and select a file&#10;from your directory " wrappingWidth="170.63658142089844" />
+         <TextField fx:id="pathField" layoutX="53.0" layoutY="172.0" prefHeight="25.0" prefWidth="332.0" text="Path:" />
+         <Button layoutX="407.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#openDirectory" prefHeight="25.0" prefWidth="78.0" text="Browse" />
+         <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="313.0" layoutY="58.0" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
+            <fill>
+               <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </fill>
+         </Line>
+         <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToCreateArmyScreen" text="Go Back" />
+         <Button layoutX="53.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#savePathArmy1" prefHeight="25.0" prefWidth="79.0" text="Save" />
+         <Button layoutX="179.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Clear" />
+         <Text layoutX="53.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save path" />
+         <Text layoutX="179.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear path" />
       </AnchorPane>
    </center>
 </BorderPane>
