@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import no.ntnu.idatg2001.wargames.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.SingletonClass;
 import java.io.File;
 import java.io.IOException;
@@ -30,11 +31,22 @@ public class FetchArmy1Controller implements Initializable{
         File file = dirChooser.showOpenDialog(stage);
 
         if (file != null)
-            pathField.setText("Path: " + file.getAbsolutePath());
+            pathField.setText(file.getAbsolutePath());
+    }
+
+    @FXML
+    private void savePathArmy1(MouseEvent event) throws IOException {
+        String path = pathField.getText();
+        CSVFileHandler.writeCSVArmyPath("src/pathToArmy.csv", path, 1);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pathField.setEditable(false);
+        try {
+            pathField.setText(CSVFileHandler.readCSVArmyPath("src/pathToArmy.csv", 1));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
