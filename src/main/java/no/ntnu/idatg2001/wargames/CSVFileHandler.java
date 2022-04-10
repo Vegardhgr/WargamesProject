@@ -18,9 +18,9 @@ import java.util.List;
  * @author Vegard Groder
  * @version 20.03.2022
  */
-public class ArmyFileHandler {
+public class CSVFileHandler {
 
-    private ArmyFileHandler() {
+    private CSVFileHandler() {
     }
 
     /**
@@ -33,7 +33,7 @@ public class ArmyFileHandler {
      * @throws NumberFormatException,         if a String cannot be parsed to an integer
      * @throws ArrayIndexOutOfBoundsException
      */
-    public static Army readCSV(String filename) throws IOException, NumberFormatException,
+    public static Army readCSVArmy(String filename) throws IOException, NumberFormatException,
             ArrayIndexOutOfBoundsException {
         String armyName = null;
         boolean isAUnit = true;
@@ -94,7 +94,7 @@ public class ArmyFileHandler {
      * @param filename, a file where the units will be listed
      * @throws IOException, if the file does not exist
      */
-    public static void writeCSV(Army army, String filename) throws IOException {
+    public static void writeCSVArmy(Army army, String filename) throws IOException {
         try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename))) {
             writer.write(army.getName() + "\n");
             for (Unit unit : army.getUnitList()) {
