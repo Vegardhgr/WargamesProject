@@ -49,7 +49,7 @@
          </Line>
          <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToCreateArmyScreen" text="Go Back" />
          <Button layoutX="53.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#savePathArmy1" prefHeight="25.0" prefWidth="79.0" text="Save" />
-         <Button layoutX="179.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Clear" />
+         <Button layoutX="179.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#clearTextField" prefHeight="25.0" prefWidth="80.0" text="Clear" />
          <Text layoutX="53.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save path" />
          <Text layoutX="179.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear path" />
       </AnchorPane>
