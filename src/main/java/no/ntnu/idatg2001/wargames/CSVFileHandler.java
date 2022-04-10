@@ -31,10 +31,8 @@ public class CSVFileHandler {
      * @return Army, an army object
      * @throws IOException,                   if the file does not exist
      * @throws NumberFormatException,         if a String cannot be parsed to an integer
-     * @throws ArrayIndexOutOfBoundsException
      */
-    public static Army readCSVArmy(String filename) throws IOException, NumberFormatException,
-            ArrayIndexOutOfBoundsException {
+    public static Army readCSVArmy(String filename) throws IOException, NumberFormatException {
         String armyName = null;
         boolean isAUnit = true;
         List<Unit> unitsFromFile = new ArrayList<>();
@@ -47,9 +45,9 @@ public class CSVFileHandler {
             while ((lineOfText = reader.readLine()) != null) {
                 int i = 0;
                 String[] words = lineOfText.split(",");
-                Iterator it = Arrays.stream(words).iterator();
+                Iterator<String> it = Arrays.stream(words).iterator();
                 while (it.hasNext()) {
-                    words[i] = it.next().toString().strip();
+                    words[i] = it.next().strip();
                     i++;
                 }
                 if (iterations == 0) {
@@ -113,10 +111,8 @@ public class CSVFileHandler {
      * @return String, path to a file
      * @throws IOException,                   if the file does not exist
      * @throws NumberFormatException,         if a String cannot be parsed to an integer
-     * @throws ArrayIndexOutOfBoundsException
      */
-    public static String readCSVArmyPath(String filename, int armyNumber) throws IOException, NumberFormatException,
-            ArrayIndexOutOfBoundsException {
+    public static String readCSVArmyPath(String filename, int armyNumber) throws IOException, NumberFormatException {
         Path path = Path.of(filename);
         String armyPath = null;
 
@@ -151,14 +147,18 @@ public class CSVFileHandler {
      * @throws IOException, if the file does not exist
      */
     public static void writeCSVArmyPath(String filename, String content, int armyNumber) throws IOException {
-        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename).toAbsolutePath())) {
-            String contentToBeWritten = Path.of(content).toAbsolutePath().toString();
-            if (armyNumber == 1)
-                writer.write(contentToBeWritten + "\n");
-            else
-                writer.write(contentToBeWritten);
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
+        if (content!=null) {
+            try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename).toAbsolutePath())) {
+                if (!content.isBlank()) {
+                    String contentToBeWritten = Path.of(content).toAbsolutePath().toString();
+                    if (armyNumber == 1)
+                        writer.write(contentToBeWritten + "\n");
+                    else
+                        writer.write(contentToBeWritten);
+                }
+            } catch(IOException e){
+                throw new IOException(e.getMessage());
+            }
         }
     }
 }
