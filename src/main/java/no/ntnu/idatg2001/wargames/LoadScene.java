@@ -59,4 +59,14 @@ public class LoadScene {
         String path = "/fxmlFiles/FetchArmy1.fxml";
         loadScene(event, path);
     }
+
+    /**
+     * Sends the fetchArmy2Screen path to the loadScene method
+     * @param event, the action event
+     * @throws IOException, exception to be thrown if the file does not exist
+     */
+    public void fetchArmy2Screen(MouseEvent event) throws IOException {
+        String path = "/fxmlFiles/FetchArmy2.fxml";
+        loadScene(event, path);
+    }
 }
