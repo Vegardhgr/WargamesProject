@@ -37,7 +37,7 @@ public class FetchArmy1Controller implements Initializable{
     @FXML
     private void savePathArmy1(MouseEvent event) throws IOException {
         String path = pathField.getText();
-        CSVFileHandler.writeCSVArmyPath("src/pathToArmy.csv", path, 1);
+        CSVFileHandler.writeCSVArmyPath("src/pathToArmy1.csv", path, 1);
     }
 
     @FXML
@@ -49,7 +49,7 @@ public class FetchArmy1Controller implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pathField.setEditable(false);
         try {
-            pathField.setText(CSVFileHandler.readCSVArmyPath("src/pathToArmy.csv", 1));
+            pathField.setText(CSVFileHandler.readCSVArmyPath("src/pathToArmy1.csv", 1));
         } catch (IOException e) {
             e.printStackTrace();
         }
