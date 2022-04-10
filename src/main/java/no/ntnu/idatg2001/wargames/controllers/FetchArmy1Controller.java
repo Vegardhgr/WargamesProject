@@ -40,6 +40,11 @@ public class FetchArmy1Controller implements Initializable{
         CSVFileHandler.writeCSVArmyPath("src/pathToArmy.csv", path, 1);
     }
 
+    @FXML
+    private void clearTextField(MouseEvent event) {
+        pathField.clear();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pathField.setEditable(false);
