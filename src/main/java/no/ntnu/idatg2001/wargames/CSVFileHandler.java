@@ -104,4 +104,61 @@ public class CSVFileHandler {
             throw new IOException(e.getMessage());
         }
     }
+
+    /**
+     * This method reads and handles the content of a file that is passed as
+     * a parameter
+     *
+     * @param filename, the path of the file
+     * @return String, path to a file
+     * @throws IOException,                   if the file does not exist
+     * @throws NumberFormatException,         if a String cannot be parsed to an integer
+     * @throws ArrayIndexOutOfBoundsException
+     */
+    public static String readCSVArmyPath(String filename, int armyNumber) throws IOException, NumberFormatException,
+            ArrayIndexOutOfBoundsException {
+        Path path = Path.of(filename);
+        String armyPath = null;
+
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String lineOfText;
+            while ((lineOfText = reader.readLine()) != null) {
+                if (armyNumber == 1) {
+                    //Army 1 path
+                    armyPath = lineOfText;
+                } else {
+                    while ((lineOfText = reader.readLine()) != null) {
+                        //Army 2 path
+                        armyPath = lineOfText;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Wrong input. " + e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new ArrayIndexOutOfBoundsException("Please make sure that you have entered three values, " +
+                    "and that all the values are seperated with comma");
+        }
+        return armyPath;
+    }
+
+    /**
+     * This method writes to a csv file
+     *
+     * @param filename, a file where the units will be listed
+     * @throws IOException, if the file does not exist
+     */
+    public static void writeCSVArmyPath(String filename, String content, int armyNumber) throws IOException {
+        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename).toAbsolutePath())) {
+            String contentToBeWritten = Path.of(content).toAbsolutePath().toString();
+            if (armyNumber == 1)
+                writer.write(contentToBeWritten + "\n");
+            else
+                writer.write(contentToBeWritten);
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        }
+    }
 }
