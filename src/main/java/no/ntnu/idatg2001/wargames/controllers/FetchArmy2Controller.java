@@ -26,6 +26,11 @@ public class FetchArmy2Controller implements Initializable {
     }
 
     @FXML
+    private void backToMainScreen(MouseEvent event) throws IOException {
+        SingletonClass.getInstance().getScene().loadMainScreen(event);
+    }
+
+    @FXML
     private void openDirectory(MouseEvent event) {
         FileChooser dirChooser = SingletonClass.getInstance().getFileChooser();
         Stage stage = (Stage) borderPaneId.getScene().getWindow();
