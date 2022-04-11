@@ -36,7 +36,7 @@ public class LoadScene {
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void loadMainScreen(MouseEvent event) throws IOException {
-        String path = "/fxmlFiles/MainScreen.fxml";
+        String path = "/fxmlFiles/createArmy/MainScreen.fxml";
         loadScene(event, path);
     }
 
@@ -46,7 +46,7 @@ public class LoadScene {
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void loadCreateArmyScene(MouseEvent event) throws IOException {
-        String path = "/fxmlFiles/CreateArmy.fxml";
+        String path = "/fxmlFiles/createArmy/CreateArmy.fxml";
         loadScene(event, path);
     }
 
@@ -56,7 +56,7 @@ public class LoadScene {
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void fetchArmy1Screen(MouseEvent event) throws IOException {
-        String path = "/fxmlFiles/FetchArmy1.fxml";
+        String path = "/fxmlFiles/createArmy/FetchArmy1.fxml";
         loadScene(event, path);
     }
 
@@ -66,7 +66,7 @@ public class LoadScene {
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void fetchArmy2Screen(MouseEvent event) throws IOException {
-        String path = "/fxmlFiles/FetchArmy2.fxml";
+        String path = "/fxmlFiles/createArmy/FetchArmy2.fxml";
         loadScene(event, path);
     }
 }
