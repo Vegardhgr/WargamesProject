@@ -22,7 +22,7 @@ public class WargamesApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        String path = "/fxmlFiles/MainScreen.fxml";
+        String path = "/fxmlFiles/createArmy/MainScreen.fxml";
         URL url = getClass().getResource(path);
         Parent root = FXMLLoader.load(Objects.requireNonNull(url));
         Scene scene = new Scene(root);
