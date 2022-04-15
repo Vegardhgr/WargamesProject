@@ -112,22 +112,12 @@ public class CSVFileHandler {
      * @throws IOException,                   if the file does not exist
      * @throws NumberFormatException,         if a String cannot be parsed to an integer
      */
-    public static String readCSVArmyPath(String filename, int armyNumber) throws IOException, NumberFormatException {
+    public static String readCSVArmyPath(String filename) throws IOException, NumberFormatException {
         Path path = Path.of(filename);
-        String armyPath = null;
-
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String lineOfText;
-            while ((lineOfText = reader.readLine()) != null) {
-                if (armyNumber == 1) {
-                    //Army 1 path
-                    armyPath = lineOfText;
-                } else {
-                    while ((lineOfText = reader.readLine()) != null) {
-                        //Army 2 path
-                        armyPath = lineOfText;
-                    }
-                }
+            if ((lineOfText = reader.readLine()) != null) {
+                return lineOfText;
             }
         } catch (IOException e) {
             throw new IOException(e.getMessage());
@@ -137,7 +127,7 @@ public class CSVFileHandler {
             throw new ArrayIndexOutOfBoundsException("Please make sure that you have entered three values, " +
                     "and that all the values are seperated with comma");
         }
-        return armyPath;
+        return null;
     }
 
     /**
@@ -146,15 +136,12 @@ public class CSVFileHandler {
      * @param filename, a file where the units will be listed
      * @throws IOException, if the file does not exist
      */
-    public static void writeCSVArmyPath(String filename, String content, int armyNumber) throws IOException {
+    public static void writeCSVArmyPath(String filename, String content) throws IOException {
         if (content!=null) {
             try (BufferedWriter writer = Files.newBufferedWriter(Path.of(filename).toAbsolutePath())) {
                 if (!content.isBlank()) {
                     String contentToBeWritten = Path.of(content).toAbsolutePath().toString();
-                    if (armyNumber == 1)
                         writer.write(contentToBeWritten + "\n");
-                    else
-                        writer.write(contentToBeWritten);
                 }
             } catch(IOException e){
                 throw new IOException(e.getMessage());
