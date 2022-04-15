@@ -17,7 +17,7 @@ import java.util.Objects;
 public class LoadScene {
     /**
      * Loads the scenes
-     * @param event, the action event
+     * @param event, the mouse event
      * @param path, the path to the new scene
      * @throws IOException, exception to be thrown if the file does not exist
      */
@@ -32,7 +32,7 @@ public class LoadScene {
 
     /**
      * Sends the main screen path to the loadScene method
-     * @param event, the action event
+     * @param event, the mouse event
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void loadMainScreen(MouseEvent event) throws IOException {
@@ -41,8 +41,8 @@ public class LoadScene {
     }
 
     /**
-     * Sends the loadViewArmyDetails path to the loadScene method
-     * @param event, the action event
+     * Sends the loadViewArmy1Details path to the loadScene method
+     * @param event, the mouse event
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void loadViewArmy1Details(MouseEvent event) throws IOException {
@@ -51,8 +51,18 @@ public class LoadScene {
     }
 
     /**
+     * Sends the loadViewArmy2Details path to the loadScene method
+     * @param event, the mouse event
+     * @throws IOException, exception to be thrown if the file does not exist
+     */
+    public void loadViewArmy2Details(MouseEvent event) throws IOException {
+        String path = "/fxmlFiles/viewArmyDetails/Army2Details.fxml";
+        loadScene(event, path);
+    }
+
+    /**
      * Sends the loadCreateArmyScene path to the loadScene method
-     * @param event, the action event
+     * @param event, the mouse event
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void loadCreateArmyScene(MouseEvent event) throws IOException {
@@ -62,7 +72,7 @@ public class LoadScene {
 
     /**
      * Sends the fetchArmy1Screen path to the loadScene method
-     * @param event, the action event
+     * @param event, the mouse event
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void fetchArmy1Screen(MouseEvent event) throws IOException {
@@ -72,7 +82,7 @@ public class LoadScene {
 
     /**
      * Sends the fetchArmy2Screen path to the loadScene method
-     * @param event, the action event
+     * @param event, the mouse event
      * @throws IOException, exception to be thrown if the file does not exist
      */
     public void fetchArmy2Screen(MouseEvent event) throws IOException {
