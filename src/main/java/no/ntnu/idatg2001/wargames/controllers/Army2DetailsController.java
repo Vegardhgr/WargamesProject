@@ -68,4 +68,9 @@ public class Army2DetailsController implements Initializable {
     private void backToMainScreen(MouseEvent event) throws IOException {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
+
+    @FXML
+    private void viewArmy1Details(MouseEvent event) throws IOException {
+        SingletonClass.getInstance().getScene().loadViewArmy1Details(event);
+    }
 }
