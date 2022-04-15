@@ -41,6 +41,16 @@ public class LoadScene {
     }
 
     /**
+     * Sends the loadViewArmyDetails path to the loadScene method
+     * @param event, the action event
+     * @throws IOException, exception to be thrown if the file does not exist
+     */
+    public void loadViewArmy1Details(MouseEvent event) throws IOException {
+        String path = "/fxmlFiles/viewArmyDetails/Army1Details.fxml";
+        loadScene(event, path);
+    }
+
+    /**
      * Sends the loadCreateArmyScene path to the loadScene method
      * @param event, the action event
      * @throws IOException, exception to be thrown if the file does not exist
