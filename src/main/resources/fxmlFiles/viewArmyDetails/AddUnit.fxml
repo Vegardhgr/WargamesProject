@@ -47,16 +47,16 @@
                   </RadialGradient>
                </fill>
             </Line>
-            <TextField layoutX="229.0" layoutY="161.0" text="Name" />
-            <TextField layoutX="394.0" layoutY="161.0" text="Health" />
-            <TextField layoutX="132.0" layoutY="224.0" text="Attack" />
-            <TextField layoutX="321.0" layoutY="224.0" text="Armor" />
+            <TextField fx:id="nameField" layoutX="229.0" layoutY="161.0" text="Name" />
+            <TextField fx:id="healthField" layoutX="394.0" layoutY="161.0" text="Health" />
+            <TextField fx:id="attackField" layoutX="132.0" layoutY="224.0" text="Attack" />
+            <TextField fx:id="armorField" layoutX="321.0" layoutY="224.0" text="Armor" />
             <Text layoutX="98.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional fields are not filled out, default values will be used.">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <ComboBox layoutX="55.0" layoutY="161.0" prefWidth="150.0" promptText="Unit Type" />
+            <ComboBox fx:id="unitTypeComboBox" layoutX="55.0" layoutY="161.0" prefWidth="150.0" promptText="Unit Type" />
             <Text layoutX="247.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required fields">
                <font>
                   <Font size="16.0" />
