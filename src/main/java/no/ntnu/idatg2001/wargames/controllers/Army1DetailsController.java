@@ -70,6 +70,11 @@ public class Army1DetailsController implements Initializable {
     }
 
     @FXML
+    private void addUnit(MouseEvent event) throws IOException {
+        SingletonClass.getInstance().getScene().loadAddUnit(event);
+    }
+
+    @FXML
     private void viewArmy2Details(MouseEvent event) throws IOException {
         SingletonClass.getInstance().getScene().loadViewArmy2Details(event);
     }
