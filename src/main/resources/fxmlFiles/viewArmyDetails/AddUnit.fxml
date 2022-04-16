@@ -12,65 +12,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.AddUnitController">
-   <top>
-      <Text onMouseClicked="#backToMainScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="57.0" />
-         </font>
-      </Text>
-   </top>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text layoutX="234.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Unit" wrappingWidth="131.79376220703125">
-               <font>
-                  <Font size="33.0" />
-               </font>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="no.ntnu.idatg2001.wargames.controllers.AddUnitController">
+    <top>
+        <Text onMouseClicked="#backToMainScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames"
+              BorderPane.alignment="CENTER">
+            <font>
+                <Font size="57.0"/>
+            </font>
+        </Text>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Text layoutX="234.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Unit"
+                  wrappingWidth="131.79376220703125">
+                <font>
+                    <Font size="33.0"/>
+                </font>
             </Text>
-            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Go Back" />
-            <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="313.0" layoutY="46.0" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
-               <fill>
-                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </fill>
+            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen"
+                    text="Go Back"/>
+            <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="313.0" layoutY="46.0"
+                  startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
+                <fill>
+                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color/>
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color red="1.0" green="1.0" blue="1.0"/>
+                                </color>
+                            </Stop>
+                        </stops>
+                    </RadialGradient>
+                </fill>
             </Line>
-            <TextField fx:id="nameField" layoutX="229.0" layoutY="161.0" text="Name" />
-            <TextField fx:id="healthField" layoutX="394.0" layoutY="161.0" text="Health" />
-            <TextField fx:id="attackField" layoutX="132.0" layoutY="224.0" text="Attack" />
-            <TextField fx:id="armorField" layoutX="321.0" layoutY="224.0" text="Armor" />
-            <Text layoutX="98.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional fields are not filled out, default values will be used.">
-               <font>
-                  <Font size="14.0" />
-               </font>
+            <TextField fx:id="nameField" layoutX="229.0" layoutY="161.0" promptText="Name"/>
+            <TextField fx:id="healthField" layoutX="394.0" layoutY="161.0" promptText="Health"/>
+            <TextField fx:id="attackField" layoutX="132.0" layoutY="224.0" promptText="Attack"/>
+            <TextField fx:id="armorField" layoutX="321.0" layoutY="224.0" promptText="Armor"/>
+            <Text layoutX="98.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional fields are not filled out, default values will be used.">
+                <font>
+                    <Font size="14.0"/>
+                </font>
             </Text>
-            <ComboBox fx:id="unitTypeComboBox" layoutX="55.0" layoutY="161.0" prefWidth="150.0" promptText="Unit Type" />
+            <ComboBox fx:id="unitTypeComboBox" layoutX="55.0" layoutY="161.0" prefWidth="150.0" promptText="Unit Type"/>
             <Text layoutX="247.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required fields">
-               <font>
-                  <Font size="16.0" />
-               </font>
+                <font>
+                    <Font size="16.0"/>
+                </font>
             </Text>
-            <Line endX="241.0" layoutX="299.0" layoutY="151.0" startX="-241.0" />
-            <Line endX="166.0" endY="-1.52587890625E-5" layoutX="300.0" layoutY="216.0" startX="-167.0" startY="-1.52587890625E-5" />
+            <Line endX="241.0" layoutX="299.0" layoutY="151.0" startX="-241.0"/>
+            <Line endX="166.0" endY="-1.52587890625E-5" layoutX="300.0" layoutY="216.0" startX="-167.0"
+                  startY="-1.52587890625E-5"/>
             <Text layoutX="251.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Optional fields">
-               <font>
-                  <Font size="16.0" />
-               </font>
+                <font>
+                    <Font size="16.0"/>
+                </font>
             </Text>
-            <Button layoutX="474.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="65.0" text="Add" />
-         </children>
-      </AnchorPane>
-   </center>
+            <Button layoutX="474.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0"
+                    prefWidth="65.0" text="Add"/>
+        </AnchorPane>
+    </center>
 </BorderPane>
