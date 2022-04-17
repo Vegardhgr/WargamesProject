@@ -7,11 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import no.ntnu.idatg2001.wargames.Army;
+import no.ntnu.idatg2001.wargames.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.SingletonClass;
+import no.ntnu.idatg2001.wargames.units.Unit;
 import no.ntnu.idatg2001.wargames.units.UnitFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,10 +47,20 @@ public class AddUnitController implements Initializable {
     }
 
     @FXML
-    private void addUnit(MouseEvent event) {
+    private void addUnit(MouseEvent event) throws IOException {
         UnitFactory.UnitType unitType = unitTypeComboBox.getValue();
         String name = nameField.getText();
         int health = Integer.parseInt(healthField.getText());
-        UnitFactory.getInstance().createOneUnit(unitType, name, health);
+        String armySelected = armyComboBox.getValue();
+        Unit unit = UnitFactory.getInstance().createOneUnit(unitType, name, health);
+        String path = null;
+        if (armySelected.equalsIgnoreCase("Army 1")) {
+            path = FetchArmy1Controller.getArmy1Path();
+        }
+        if (path != null) {
+            Army army = CSVFileHandler.readCSVArmy(path);
+            army.getUnitList().add(unit);
+            CSVFileHandler.writeCSVArmy(army, path);
+        }
     }
 }
