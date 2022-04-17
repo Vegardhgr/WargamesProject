@@ -33,7 +33,7 @@ public class AddUnitController implements Initializable {
     @Override
     public void initialize(URL var1, ResourceBundle var2) {
         List<UnitFactory.UnitType> unitTypes = new ArrayList<>(Arrays.asList(UnitFactory.UnitType.values()));
-        ObservableList<UnitFactory.UnitType> observableListUnitTypes= FXCollections.observableList(unitTypes);
+        ObservableList<UnitFactory.UnitType> observableListUnitTypes = FXCollections.observableList(unitTypes);
         unitTypeComboBox.setItems(observableListUnitTypes);
         List<String> armies = new ArrayList<>();
         armies.add("Army 1");
@@ -53,14 +53,13 @@ public class AddUnitController implements Initializable {
         int health = Integer.parseInt(healthField.getText());
         String armySelected = armyComboBox.getValue();
         Unit unit = UnitFactory.getInstance().createOneUnit(unitType, name, health);
-        String path = null;
-        if (armySelected.equalsIgnoreCase("Army 1")) {
+        String path;
+        if (armySelected.equalsIgnoreCase("Army 1"))
             path = FetchArmy1Controller.getArmy1Path();
-        }
-        if (path != null) {
-            Army army = CSVFileHandler.readCSVArmy(path);
-            army.getUnitList().add(unit);
-            CSVFileHandler.writeCSVArmy(army, path);
-        }
+        else
+            path = FetchArmy2Controller.getArmy2Path();
+        Army army = CSVFileHandler.readCSVArmy(path);
+        army.getUnitList().add(unit);
+        CSVFileHandler.writeCSVArmy(army, path);
     }
 }
