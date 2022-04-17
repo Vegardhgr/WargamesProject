@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FetchArmy2Controller implements Initializable {
+    private static final String PATH_ARMY_2 = "src/pathToArmy2.csv";
     @FXML
     private TextField pathField;
     @FXML
@@ -43,7 +44,7 @@ public class FetchArmy2Controller implements Initializable {
     @FXML
     private void savePathArmy2(MouseEvent event) throws IOException {
         String path = pathField.getText();
-        CSVFileHandler.writeCSVArmyPath("src/pathToArmy2.csv", path);
+        CSVFileHandler.writeCSVArmyPath(PATH_ARMY_2, path);
     }
 
     @FXML
@@ -55,9 +56,18 @@ public class FetchArmy2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pathField.setEditable(false);
         try {
-            pathField.setText(CSVFileHandler.readCSVArmyPath("src/pathToArmy2.csv"));
+            pathField.setText(CSVFileHandler.readCSVArmyPath(PATH_ARMY_2));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Path to the file where army 1 is stored.
+     * @return String, the path.
+     * @throws IOException, if the file does not exist.
+     */
+    public static String getArmy1Path() throws IOException {
+        return CSVFileHandler.readCSVArmyPath(PATH_ARMY_2);
     }
 }
