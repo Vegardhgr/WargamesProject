@@ -46,22 +46,29 @@
                     </RadialGradient>
                 </fill>
             </Line>
-            <TextField fx:id="nameField" layoutX="146.0" layoutY="211.0" promptText="Name" />
-            <TextField fx:id="healthField" layoutX="319.0" layoutY="211.0" promptText="Health" />
-            <Text layoutX="98.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional fields are not filled out, default values will be used.">
+            <TextField fx:id="nameField" layoutX="141.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Name" />
+            <TextField fx:id="healthField" layoutX="314.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Health" />
+            <Text layoutX="98.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional field is not filled out, default value &quot;1&quot; will be used.">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Text>
-            <ComboBox fx:id="unitTypeComboBox" layoutX="144.0" layoutY="161.0" prefWidth="150.0" promptText="Unit Type" />
-            <Text layoutX="247.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required fields">
+            <ComboBox fx:id="unitTypeComboBox" layoutX="141.0" layoutY="136.0" prefWidth="150.0" promptText="Unit Type" />
+            <Text layoutX="247.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required fields">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Text>
-            <Line endX="169.0" layoutX="299.0" layoutY="151.0" startX="-153.95384216308594" />
-            <Button layoutX="481.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="65.0" text="Add" />
-         <ComboBox fx:id="armyComboBox" layoutX="319.0" layoutY="161.0" prefWidth="150.0" promptText="Army" />
+            <Line endX="169.0" layoutX="295.0" layoutY="132.0" startX="-153.95384216308594" />
+            <Button layoutX="474.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="65.0" text="Add" />
+         <ComboBox fx:id="armyComboBox" layoutX="314.0" layoutY="136.0" prefWidth="150.0" promptText="Army" />
+         <TextField layoutX="227.0" layoutY="225.0" prefWidth="150.0" promptText="Quantity" />
+         <Text layoutX="251.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Optional field">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Line endX="169.0" layoutX="295.0" layoutY="218.0" startX="-153.95384216308594" />
         </AnchorPane>
     </center>
 </BorderPane>
