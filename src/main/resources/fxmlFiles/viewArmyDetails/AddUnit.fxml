@@ -61,7 +61,7 @@
             </Text>
             <Line endX="169.0" layoutX="299.0" layoutY="151.0" startX="-153.95384216308594" />
             <Button layoutX="481.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="65.0" text="Add" />
-         <ComboBox layoutX="319.0" layoutY="161.0" prefWidth="150.0" promptText="Army" />
+         <ComboBox fx:id="armyCoboBox" layoutX="319.0" layoutY="161.0" prefWidth="150.0" promptText="Army" />
         </AnchorPane>
     </center>
 </BorderPane>
