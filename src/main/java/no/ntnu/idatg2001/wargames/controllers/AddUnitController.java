@@ -29,6 +29,8 @@ public class AddUnitController implements Initializable {
     TextField healthField;
     @FXML
     ComboBox<String> armyComboBox;
+    @FXML
+    TextField quantityField;
 
     @Override
     public void initialize(URL var1, ResourceBundle var2) {
@@ -52,14 +54,19 @@ public class AddUnitController implements Initializable {
         String name = nameField.getText();
         int health = Integer.parseInt(healthField.getText());
         String armySelected = armyComboBox.getValue();
-        Unit unit = UnitFactory.getInstance().createOneUnit(unitType, name, health);
+        int quantity;
+        if (!quantityField.getText().isEmpty())
+            quantity = Integer.parseInt(quantityField.getText());
+        else
+            quantity = 1;
+        List<Unit> units = UnitFactory.getInstance().createMultipleUnits(unitType, name, health, quantity);
         String path;
         if (armySelected.equalsIgnoreCase("Army 1"))
             path = FetchArmy1Controller.getArmy1Path();
         else
             path = FetchArmy2Controller.getArmy2Path();
         Army army = CSVFileHandler.readCSVArmy(path);
-        army.getUnitList().add(unit);
+        army.getUnitList().addAll(units);
         CSVFileHandler.writeCSVArmy(army, path);
     }
 }
