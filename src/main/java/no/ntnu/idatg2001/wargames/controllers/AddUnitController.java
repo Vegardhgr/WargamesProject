@@ -11,6 +11,7 @@ import no.ntnu.idatg2001.wargames.SingletonClass;
 import no.ntnu.idatg2001.wargames.units.UnitFactory;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,15 +26,17 @@ public class AddUnitController implements Initializable {
     @FXML
     TextField healthField;
     @FXML
-    TextField attackField;
-    @FXML
-    TextField armorField;
+    ComboBox<String> armyComboBox;
 
     @Override
     public void initialize(URL var1, ResourceBundle var2) {
         List<UnitFactory.UnitType> unitTypes = new ArrayList<>(Arrays.asList(UnitFactory.UnitType.values()));
         ObservableList<UnitFactory.UnitType> observableListUnitTypes= FXCollections.observableList(unitTypes);
         unitTypeComboBox.setItems(observableListUnitTypes);
+        List<String> armies = new ArrayList<>();
+        armies.add("Army 1");
+        armies.add("Army 2");
+        armyComboBox.setItems(FXCollections.observableList(armies));
     }
 
     @FXML
