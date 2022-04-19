@@ -20,7 +20,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The controller for the AddUnit.fxml file
+ *
+ * @author Vegard Groder
+ */
 public class AddUnitController implements Initializable {
+    // All the fields
     @FXML
     ComboBox<UnitFactory.UnitType> unitTypeComboBox;
     @FXML
@@ -32,22 +38,47 @@ public class AddUnitController implements Initializable {
     @FXML
     TextField quantityField;
 
+    /**
+     * Fills the combo boxes with values.
+     * @param var1, the url
+     * @param var2, the resource bundle
+     */
     @Override
     public void initialize(URL var1, ResourceBundle var2) {
         List<UnitFactory.UnitType> unitTypes = new ArrayList<>(Arrays.asList(UnitFactory.UnitType.values()));
         ObservableList<UnitFactory.UnitType> observableListUnitTypes = FXCollections.observableList(unitTypes);
         unitTypeComboBox.setItems(observableListUnitTypes);
-        List<String> armies = new ArrayList<>();
-        armies.add("Army 1");
-        armies.add("Army 2");
+        List<String> armies = numberOfArmies();
         armyComboBox.setItems(FXCollections.observableList(armies));
     }
 
+    /**
+     * Returns a list of army strings.
+     * @return List<String>, n armies
+     */
+    public List<String> numberOfArmies() {
+        List<String> armies = new ArrayList<>();
+        for (int i = 1; i <= 2; i++) {
+            armies.add("Army " + i);
+        }
+        return armies;
+    }
+
+    /**
+     * Loads the main screen window
+     * @param event, mouse event
+     * @throws IOException, if the file does not exist.
+     */
     @FXML
     private void backToMainScreen(MouseEvent event) throws IOException {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
 
+    /**
+     * Adds a unit to the table view and writes that unit to file.
+     * @param event, mouse event
+     * @throws IOException, if the file does not exist.
+     */
     @FXML
     private void addUnit(MouseEvent event) throws IOException {
         UnitFactory.UnitType unitType = unitTypeComboBox.getValue();
@@ -68,5 +99,15 @@ public class AddUnitController implements Initializable {
         Army army = CSVFileHandler.readCSVArmy(path);
         army.getUnitList().addAll(units);
         CSVFileHandler.writeCSVArmy(army, path);
+        clearInput();
+    }
+
+    /**
+     * Clears the input fields.
+     */
+    private void clearInput() {
+        nameField.clear();
+        healthField.clear();
+        quantityField.clear();
     }
 }
