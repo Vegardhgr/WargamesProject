@@ -63,6 +63,7 @@
             </TableView>
          <Button layoutX="528.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#viewArmy2Details" prefHeight="25.0" prefWidth="63.0" text="Army 2" />
          <Button layoutX="528.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="63.0" text="Add Unit" />
+         <Button layoutX="528.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Remove" />
         </AnchorPane>
     </center>
 </BorderPane>
