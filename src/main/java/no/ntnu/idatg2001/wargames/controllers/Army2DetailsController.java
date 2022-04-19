@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Army2DetailsController implements Initializable {
+    private static final String PATH_TO_ARMY_2 = "src/pathToArmy1.csv";
     @FXML
     Text amountOfUnits;
     @FXML
@@ -55,7 +56,7 @@ public class Army2DetailsController implements Initializable {
     }
 
     private ObservableList<Unit> readArmy2() throws IOException {
-        String pathToArmy2 = CSVFileHandler.readCSVArmyPath("src/pathToArmy2.csv");
+        String pathToArmy2 = CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2);
         if (pathToArmy2 != null) {
             Army army = CSVFileHandler.readCSVArmy(pathToArmy2);
             List<Unit> units = army.getUnitList();
@@ -77,5 +78,15 @@ public class Army2DetailsController implements Initializable {
     @FXML
     private void viewArmy1Details(MouseEvent event) throws IOException {
         SingletonClass.getInstance().getScene().loadViewArmy1Details(event);
+    }
+
+    @FXML
+    private void removeUnit(MouseEvent event) throws IOException {
+        Unit unit = tableViewArmy2.getSelectionModel().getSelectedItem();
+        tableViewArmy2.getItems().remove(unit);
+        String armyName = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2)).getName();
+        Army army = new Army(armyName, tableViewArmy2.getItems().stream().toList());
+        CSVFileHandler.writeCSVArmy(army, CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+        amountOfUnits.setText("Total units: " + readArmy2().size());
     }
 }
