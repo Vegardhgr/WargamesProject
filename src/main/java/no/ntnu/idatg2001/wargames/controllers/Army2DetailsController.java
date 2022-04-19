@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Army2DetailsController implements Initializable {
-    private static final String PATH_TO_ARMY_2 = "src/pathToArmy1.csv";
+    private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
     @FXML
     Text amountOfUnits;
     @FXML
