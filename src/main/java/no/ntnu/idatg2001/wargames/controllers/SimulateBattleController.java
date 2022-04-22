@@ -6,7 +6,7 @@ import no.ntnu.idatg2001.wargames.SingletonClass;
 
 import java.io.IOException;
 
-public class SimulateBattle {
+public class SimulateBattleController {
 
     @FXML
     private void backToMainScreen(MouseEvent event) throws IOException {
