@@ -27,7 +27,7 @@
                     <Font size="33.0" />
                 </font>
             </Text>
-            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Go Back" />
+            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToEditArmy" text="Go Back" />
             <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="313.0" layoutY="46.0" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
                 <fill>
                     <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
