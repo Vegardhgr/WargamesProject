@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="no.ntnu.idatg2001.wargames.controllers.EditArmyController">
+    <top>
+        <Text onMouseClicked="#backToMainScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames"
+              BorderPane.alignment="CENTER">
+            <font>
+                <Font size="57.0"/>
+            </font>
+        </Text>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Text layoutX="153.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army 1"
+                  wrappingWidth="111.11688232421875">
+                <font>
+                    <Font size="33.0"/>
+                </font>
+            </Text>
+            <Button layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen"
+                    text="Go Back"/>
+            <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="222.0" layoutY="60.0"
+                  startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
+                <fill>
+                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color/>
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color red="1.0" green="1.0" blue="1.0"/>
+                                </color>
+                            </Stop>
+                        </stops>
+                    </RadialGradient>
+                </fill>
+            </Line>
+            <Text fx:id="amountOfUnits" layoutX="153.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Total units: ">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Text>
+            <TableView fx:id="tableViewArmy1" layoutX="14.0" layoutY="97.0" onMouseClicked="#tableViewArmy1Clicked"
+                       prefHeight="380.0" prefWidth="391.0">
+                <columns>
+                    <TableColumn fx:id="unitTypeColumn" prefWidth="102.0" text="Unit Type"/>
+                    <TableColumn fx:id="nameColumn" prefWidth="90.0" text="Name"/>
+                    <TableColumn fx:id="healthColumn" prefWidth="61.0" text="Health"/>
+                    <TableColumn fx:id="attackColumn" prefWidth="61.0" text="Attack"/>
+                    <TableColumn fx:id="armorColumn" prefWidth="61.0" text="Armor"/>
+                </columns>
+            </TableView>
+            <Button layoutX="418.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0"
+                    prefWidth="63.0" text="Add Unit"/>
+            <Button layoutX="418.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#removeUnit"
+                    prefHeight="25.0" prefWidth="63.0" text="Remove"/>
+            <TableView fx:id="tableViewArmy2" layoutX="496.0" layoutY="97.0" onMouseClicked="#tableViewArmy2Clicked"
+                       prefHeight="379.0" prefWidth="391.0">
+                <columns>
+                    <TableColumn fx:id="unitTypeColumn2" prefWidth="102.0" text="Unit Type"/>
+                    <TableColumn fx:id="nameColumn2" prefWidth="90.0" text="Name"/>
+                    <TableColumn fx:id="healthColumn2" prefWidth="61.0" text="Health"/>
+                    <TableColumn fx:id="attackColumn2" prefWidth="61.0" text="Attack"/>
+                    <TableColumn fx:id="armorColumn2" prefWidth="61.0" text="Armor"/>
+                </columns>
+            </TableView>
+            <Text layoutX="635.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army 2"
+                  wrappingWidth="111.11688232421875">
+                <font>
+                    <Font size="33.0"/>
+                </font>
+            </Text>
+            <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="704.0" layoutY="60.0"
+                  startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
+                <fill>
+                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color/>
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color red="1.0" green="1.0" blue="1.0"/>
+                                </color>
+                            </Stop>
+                        </stops>
+                    </RadialGradient>
+                </fill>
+            </Line>
+            <Text fx:id="amountOfUnits2" layoutX="635.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Total units: ">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Text>
+        </AnchorPane>
+    </center>
+</BorderPane>
