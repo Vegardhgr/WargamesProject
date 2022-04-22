@@ -13,7 +13,7 @@ public class MainScreenController {
     }
 
     @FXML
-    private void viewArmy1Details(MouseEvent event) throws IOException {
-        SingletonClass.getInstance().getScene().loadViewArmy1Details(event);
+    private void editArmy(MouseEvent event) throws IOException {
+        SingletonClass.getInstance().getScene().loadEditArmy(event);
     }
 }
