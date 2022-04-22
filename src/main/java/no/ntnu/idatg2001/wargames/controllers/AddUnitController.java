@@ -70,8 +70,8 @@ public class AddUnitController implements Initializable {
      * @throws IOException, if the file does not exist.
      */
     @FXML
-    private void backToMainScreen(MouseEvent event) throws IOException {
-        SingletonClass.getInstance().getScene().loadMainScreen(event);
+    private void backToEditArmy(MouseEvent event) throws IOException {
+        SingletonClass.getInstance().getScene().loadEditArmy(event);
     }
 
     /**
@@ -100,6 +100,11 @@ public class AddUnitController implements Initializable {
         army.getUnitList().addAll(units);
         CSVFileHandler.writeCSVArmy(army, path);
         clearInput();
+    }
+
+    @FXML
+    private void backToMainScreen(MouseEvent event) throws IOException {
+        SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
 
     /**
