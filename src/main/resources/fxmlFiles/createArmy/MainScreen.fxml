@@ -18,7 +18,7 @@
       <AnchorPane prefHeight="320.0" prefWidth="514.0" BorderPane.alignment="CENTER">
          <Button layoutX="241.0" layoutY="69.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Simulate Battle" />
          <Button layoutX="241.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#loadCreateArmyScene" prefHeight="25.0" prefWidth="117.0" text="Create Army" />
-         <Button layoutX="241.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#viewArmy1Details" prefHeight="42.0" prefWidth="117.0" text="View Army&#10;Details" textAlignment="CENTER" />
+         <Button layoutX="241.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#editArmy" prefHeight="25.0" prefWidth="117.0" text="Edit army" textAlignment="CENTER" />
       </AnchorPane>
    </center>
 </BorderPane>
