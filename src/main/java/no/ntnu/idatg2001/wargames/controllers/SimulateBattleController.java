@@ -1,8 +1,11 @@
 package no.ntnu.idatg2001.wargames.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -12,9 +15,10 @@ import no.ntnu.idatg2001.wargames.Battle;
 import no.ntnu.idatg2001.wargames.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.SingletonClass;
 import no.ntnu.idatg2001.wargames.units.Unit;
-
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SimulateBattleController implements Initializable {
@@ -28,6 +32,9 @@ public class SimulateBattleController implements Initializable {
     GridPane gridPane;
 
     @FXML
+    ComboBox<Battle.Terrain> terrainComboBox;
+
+    @FXML
     private void backToMainScreen(MouseEvent event) throws IOException {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
@@ -35,12 +42,11 @@ public class SimulateBattleController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gridPane.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         gridPane.setGridLinesVisible(true);
+        fillTerrainComboBox();
         try {
-            this.army1 = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
-            this.army2 = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            remakeArmies();
             makeArmy1Rectangles();
             makeArmy2Rectangles();
-            battle = new Battle(army1, army2);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,5 +86,24 @@ public class SimulateBattleController implements Initializable {
             gridPane.add(rectangle, j, i);
             i++;
         }
+    }
+
+    public void fillTerrainComboBox() {
+        List<Battle.Terrain> terrainList = new ArrayList<>(List.of(Battle.Terrain.values()));
+        ObservableList<Battle.Terrain> terrainObservableList = FXCollections.observableList(terrainList);
+        terrainComboBox.setItems(terrainObservableList);
+    }
+
+    public void remakeArmies() throws IOException {
+        this.army1 = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
+        this.army2 = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+        this.battle = new Battle(army1, army2);
+    }
+
+    @FXML
+    public void startSimulation() throws IOException {
+        remakeArmies();
+        Battle.setTerrain(terrainComboBox.getValue());
+        System.out.println(battle.simulate().getName());
     }
 }
