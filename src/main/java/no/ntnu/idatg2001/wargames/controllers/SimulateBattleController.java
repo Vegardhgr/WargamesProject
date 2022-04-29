@@ -26,7 +26,7 @@ public class SimulateBattleController implements Initializable {
     private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
     private Army army1;
     private Army army2;
-    Battle battle;
+    private Battle battle;
 
     @FXML
     GridPane gridPane;
