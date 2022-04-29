@@ -9,48 +9,40 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="no.ntnu.idatg2001.wargames.controllers.SimulateBattleController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.SimulateBattleController">
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <GridPane layoutX="228.0" layoutY="89.0">
+            <GridPane fx:id="gridPane" layoutX="228.0" layoutY="89.0">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0"
-                                       prefWidth="20.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0"
-                                       prefWidth="20.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0"
-                                       prefWidth="20.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0"
-                                       prefWidth="20.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0"
-                                       prefWidth="20.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0"
-                                       prefWidth="20.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0"
-                                       prefWidth="20.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0" prefWidth="20.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0" prefWidth="20.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0" prefWidth="20.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0" prefWidth="20.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0" prefWidth="20.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.66148506841725" minWidth="10.0" prefWidth="20.0" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                 </rowConstraints>
             </GridPane>
-            <Button layoutX="25.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen"
-                    text="Go Back"/>
+            <Button layoutX="25.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Go Back" />
         </AnchorPane>
     </center>
     <top>
-        <Text onMouseClicked="#backToMainScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames"
-              BorderPane.alignment="CENTER">
+        <Text onMouseClicked="#backToMainScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames" BorderPane.alignment="CENTER">
             <font>
-                <Font size="57.0"/>
+                <Font size="57.0" />
             </font>
         </Text>
     </top>
