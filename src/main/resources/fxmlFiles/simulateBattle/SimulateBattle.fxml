@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -12,7 +13,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.SimulateBattleController">
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <GridPane fx:id="gridPane" layoutX="228.0" layoutY="89.0">
+            <GridPane fx:id="gridPane" layoutX="190.0" layoutY="92.0">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0" prefWidth="20.0" />
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.75386177740162" minWidth="10.0" prefWidth="20.0" />
@@ -37,6 +38,8 @@
                 </rowConstraints>
             </GridPane>
             <Button layoutX="25.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Go Back" />
+         <ComboBox fx:id="terrainComboBox" layoutX="427.0" layoutY="36.0" prefHeight="25.0" prefWidth="133.0" promptText="--Select Terrain--" />
+         <Button layoutX="427.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#startSimulation" prefHeight="25.0" prefWidth="103.0" text="Start simulation" />
         </AnchorPane>
     </center>
     <top>
