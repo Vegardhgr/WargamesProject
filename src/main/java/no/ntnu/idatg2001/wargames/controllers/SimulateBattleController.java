@@ -19,6 +19,9 @@ import java.util.ResourceBundle;
 public class SimulateBattleController implements Initializable {
     private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
     private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
+    List<Unit> unitList1;
+    List<Unit> unitList2;
+
 
     @FXML
     GridPane gridPane;
@@ -32,6 +35,8 @@ public class SimulateBattleController implements Initializable {
         gridPane.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         gridPane.setGridLinesVisible(true);
         try {
+            this.unitList1 = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1)).getUnitList();
+            this.unitList2 = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2)).getUnitList();
             makeArmy1Rectangles();
             makeArmy2Rectangles();
         } catch (IOException e) {
@@ -40,11 +45,10 @@ public class SimulateBattleController implements Initializable {
     }
 
 
-    public void makeArmy1Rectangles() throws IOException {
+    public void makeArmy1Rectangles() {
         int j = 0;
         int i = 0;
-        List<Unit> unitList = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1)).getUnitList();
-        for (Unit unit : unitList) {
+        for (Unit unit : this.unitList1) {
             if ((i+1)%(gridPane.getRowCount()+1) == 0) {
                 j++;
                 i = 0;
@@ -59,12 +63,11 @@ public class SimulateBattleController implements Initializable {
 
     }
 
-    public void makeArmy2Rectangles() throws IOException {
+    public void makeArmy2Rectangles() {
         int j = gridPane.getColumnCount();
         int i = 0;
 
-        List<Unit> unitList = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2)).getUnitList();
-        for (Unit unit : unitList) {
+        for (Unit unit : this.unitList2) {
             if ((i+1)%(gridPane.getRowCount()+1) == 0) {
                 j--;
                 i = 0;
@@ -77,4 +80,6 @@ public class SimulateBattleController implements Initializable {
             i++;
         }
     }
+
+
 }
