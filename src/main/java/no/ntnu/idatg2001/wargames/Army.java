@@ -5,7 +5,6 @@ import no.ntnu.idatg2001.wargames.units.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 /**
  * This class creates an army
@@ -18,6 +17,7 @@ public class Army {
     // The class fields
     private String name;
     private List<Unit> unitList;
+    private Random randNr;
 
     /**
      * Initializes the class fields
@@ -27,6 +27,7 @@ public class Army {
     public Army(String name) {
         this.name = name;
         this.unitList = new ArrayList<>();
+        this.randNr = new Random();
     }
 
     /**
@@ -38,6 +39,7 @@ public class Army {
     public Army(String name, List<Unit> unitList) {
         this.name = name;
         this.unitList = unitList;
+        this.randNr = new Random();
     }
 
     /**
@@ -66,7 +68,7 @@ public class Army {
         return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == InfantryUnit.class)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     /**
@@ -77,7 +79,7 @@ public class Army {
         return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == CavalryUnit.class)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     /**
@@ -88,7 +90,7 @@ public class Army {
         return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == CommanderUnit.class)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     /**
@@ -99,7 +101,7 @@ public class Army {
         return this.unitList
                 .stream()
                 .filter(unit -> unit.getClass() == RangedUnit.class)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     /**
@@ -117,9 +119,7 @@ public class Army {
      * @param units A list of unit objects
      */
     public void addAll(List<Unit> units) {
-        for (Unit unit : units) {
-            this.unitList.add(unit);
-        }
+        this.unitList.addAll(units);
     }
 
     /**
@@ -150,9 +150,13 @@ public class Army {
      * @return Unit A random unit object
      */
     public Unit getRandom() {
-        Random randNr = new Random();
         int upperbound = this.unitList.size();
-        int randomNumber = randNr.nextInt(upperbound);
+        int randomNumber = this.randNr.nextInt(upperbound);
         return this.unitList.get(randomNumber);
+    }
+
+    public int getRandomNumber() {
+        int upperbound = this.unitList.size();
+        return this.randNr.nextInt(upperbound);
     }
 }
