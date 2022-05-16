@@ -49,8 +49,6 @@ public class Battle {
                 armyOneUnit.attack(armyTwoUnit);
                 if (armyTwoUnit.getHealth() <= 0) {
                     armyTwo.remove(armyTwoUnit);
-                    //System.out.println("A orcish horde unit down");
-                    // Checking if armyTwo has more units left
                     if (!armyTwo.hasUnit()) {
                         fighting = false;
                         winningArmy = armyOne;
@@ -61,8 +59,6 @@ public class Battle {
                 armyTwoUnit.attack(armyOneUnit);
                 if (armyOneUnit.getHealth() <= 0) {
                     armyOne.remove(armyOneUnit);
-                    //System.out.println("A human army unit down");
-                    // Checking if armyOne has more units left
                     if (!armyOne.hasUnit()) {
                         fighting = false;
                         winningArmy = armyTwo;
@@ -73,6 +69,18 @@ public class Battle {
             armyOneAttacks = !armyOneAttacks;
         }
         return null;
+    }
+
+    /**
+     * Simulates a battle between two units
+     *
+     * @param attacker, the attacking unit
+     * @param defender, the defending unit
+     */
+    public void oneStepBattle(Unit attacker, Unit defender) {
+        attacker.attack(defender);
+        if (defender.getHealth() <= 0)
+            armyTwo.remove(defender);
     }
 
     /**
