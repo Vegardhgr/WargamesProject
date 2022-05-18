@@ -10,8 +10,8 @@ import no.ntnu.idatg2001.wargames.units.Unit;
  */
 public class Battle {
     // Global fields
-    private Army armyOne;
-    private Army armyTwo;
+    private final Army armyOne;
+    private final Army armyTwo;
     private Army winningArmy;
     private static Terrain terrain;
 
@@ -77,15 +77,16 @@ public class Battle {
      * @param attacker, the attacking unit
      * @param defender, the defending unit
      */
-    public void oneStepBattle(Unit attacker, Unit defender) {
+    public boolean oneStepBattle(Unit attacker, Unit defender) {
         attacker.attack(defender);
         if (defender.getHealth() <= 0)
-            armyTwo.remove(defender);
+            return true;
+        return false;
     }
 
     /**
      * Before a battle, it returns which armies that are fighting.
-     * After a battle it returnes the winning army
+     * After a battle it returns the winning army
      *
      * @return String
      */
