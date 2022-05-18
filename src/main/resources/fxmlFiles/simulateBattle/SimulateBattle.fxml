@@ -36,7 +36,8 @@
         <SplitPane prefHeight="524.0" prefWidth="148.0" BorderPane.alignment="CENTER">
             <AnchorPane prefHeight="456.0" prefWidth="250.0">
                 <ComboBox fx:id="terrainComboBox" layoutX="7.0" layoutY="22.0" onAction="#changeBattleColor" prefHeight="25.0" prefWidth="133.0" promptText="--Select Terrain--" />
-                <Button layoutX="22.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#startSimulation" prefHeight="25.0" prefWidth="103.0" text="Start simulation" />
+                <Button fx:id="startSimulationBtn" layoutX="22.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#startSimulation" prefHeight="25.0" prefWidth="103.0" text="Start Simulation" />
+            <Button fx:id="resetArmyBtn" layoutX="22.0" layoutY="483.0" mnemonicParsing="false" onMouseClicked="#resetArmy" prefHeight="25.0" prefWidth="103.0" text="Reset Army" />
             </AnchorPane>
         </SplitPane>
     </right>
