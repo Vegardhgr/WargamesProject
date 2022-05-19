@@ -158,7 +158,7 @@ class ArmyTest {
         army.addAll(inputUnits);
         infantryUnitList = army.getInfantryUnit();
         assertEquals(1, infantryUnitList.size());
-        infantryUnitList.forEach(unit -> assertTrue(unit.getClass() == InfantryUnit.class));
+        infantryUnitList.forEach(unit -> assertSame(unit.getClass(), InfantryUnit.class));
         infantryUnitList.forEach(unit ->
                 assertFalse(unit.getClass() ==  CavalryUnit.class ||
                         unit.getClass() == CommanderUnit.class || unit.getClass() == RangedUnit.class)
@@ -172,7 +172,7 @@ class ArmyTest {
         army.addAll(inputUnits);
         cavalryUnitList = army.getCavalryUnit();
         assertEquals(1, cavalryUnitList.size());
-        cavalryUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CavalryUnit.class));
+        cavalryUnitList.forEach(unit -> assertSame(unit.getClass(), CavalryUnit.class));
         cavalryUnitList.forEach(unit ->
                 assertFalse(unit.getClass() == InfantryUnit.class ||
                         unit.getClass() == CommanderUnit.class || unit.getClass() == RangedUnit.class)
@@ -186,10 +186,10 @@ class ArmyTest {
         army.addAll(inputUnits);
         commanderUnitList = army.getCommanderUnitList();
         assertEquals(1, commanderUnitList.size());
-        commanderUnitList.forEach(unit -> assertTrue(unit.getClass() ==  CommanderUnit.class));
+        commanderUnitList.forEach(unit -> assertSame(unit.getClass(), CommanderUnit.class));
         /* Tests specifically that commanderUnitList does not contain any units with
             type CavalryUnit, since the CommanderUnit class inherits from CavalryUnit*/
-        commanderUnitList.forEach(unit -> assertFalse(unit.getClass() == CavalryUnit.class));
+        commanderUnitList.forEach(unit -> assertNotSame(unit.getClass(), CavalryUnit.class));
         commanderUnitList.forEach(unit ->
                 assertFalse(unit.getClass() == InfantryUnit.class ||
                         unit.getClass() == CavalryUnit.class || unit.getClass() == RangedUnit.class)
@@ -203,10 +203,18 @@ class ArmyTest {
         army.addAll(inputUnits);
         rangedUnitList = army.getRangedUnitList();
         assertEquals(1, rangedUnitList.size());
-        rangedUnitList.forEach(unit -> assertTrue(unit.getClass() == RangedUnit.class));
+        rangedUnitList.forEach(unit -> assertSame(unit.getClass(), RangedUnit.class));
         rangedUnitList.forEach(unit ->
                 assertFalse(unit.getClass() == InfantryUnit.class ||
                         unit.getClass() == CavalryUnit.class || unit.getClass() == CommanderUnit.class)
         );
+    }
+
+    @Test
+    void checkForDifferentArmies() {
+        Army army = new Army("Army",inputUnits);
+        Army army2 = new Army(army);
+        assertNotSame(army, army2);
+        assertEquals(army, army2);
     }
 }
