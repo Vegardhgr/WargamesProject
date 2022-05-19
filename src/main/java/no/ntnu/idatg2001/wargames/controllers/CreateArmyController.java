@@ -2,7 +2,7 @@ package no.ntnu.idatg2001.wargames.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
 
 import java.io.IOException;
 

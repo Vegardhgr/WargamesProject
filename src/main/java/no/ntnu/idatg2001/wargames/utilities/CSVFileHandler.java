@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames;
+package no.ntnu.idatg2001.wargames.utilities;
 
 import no.ntnu.idatg2001.wargames.units.*;
 

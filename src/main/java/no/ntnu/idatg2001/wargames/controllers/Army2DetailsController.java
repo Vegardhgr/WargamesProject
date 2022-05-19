@@ -10,9 +10,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import no.ntnu.idatg2001.wargames.Army;
-import no.ntnu.idatg2001.wargames.CSVFileHandler;
-import no.ntnu.idatg2001.wargames.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.Army;
+import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
 import no.ntnu.idatg2001.wargames.units.Unit;
 
 import java.io.IOException;

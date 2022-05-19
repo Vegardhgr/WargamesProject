@@ -7,9 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.Army;
-import no.ntnu.idatg2001.wargames.CSVFileHandler;
-import no.ntnu.idatg2001.wargames.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.Army;
+import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
 import no.ntnu.idatg2001.wargames.units.Unit;
 import no.ntnu.idatg2001.wargames.units.UnitFactory;
 
