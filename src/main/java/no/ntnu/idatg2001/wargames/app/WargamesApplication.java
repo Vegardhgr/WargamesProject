@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames;
+package no.ntnu.idatg2001.wargames.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,6 +1,6 @@
 package no.ntnu.idatg2001.wargames.units;
 
-import no.ntnu.idatg2001.wargames.Battle;
+import no.ntnu.idatg2001.wargames.utilities.Battle;
 
 /**
  * A subclass of Unit. This unit, infantry unit, has its

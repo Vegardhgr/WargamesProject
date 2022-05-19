@@ -50,7 +50,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>no.ntnu.idatg2001.wargames.WargamesApplication</mainClass>
+                            <mainClass>no.ntnu.idatg2001.wargames.app.WargamesApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -74,7 +74,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>no.ntnu.idatg2001.wargames.WargamesApplication
+                            <mainClass>no.ntnu.idatg2001.wargames.app.WargamesApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

@@ -1,6 +1,8 @@
 package no.ntnu.idatg2001.wargames;
 
 import no.ntnu.idatg2001.wargames.units.*;
+import no.ntnu.idatg2001.wargames.utilities.Army;
+import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ class CSVFileHandlerTest {
     void readCSVTest() throws IOException {
         Army army = CSVFileHandler.readCSVArmy("src/humanArmyTestFile.csv");
         Assertions.assertEquals("Human Army", army.getName());
-        Assertions.assertEquals(1, army.getUnitList().size());
+        Assertions.assertEquals(273, army.getUnitList().size());
     }
 
     @Test
