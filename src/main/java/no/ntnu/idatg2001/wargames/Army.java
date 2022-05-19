@@ -33,13 +33,29 @@ public class Army {
     /**
      * Initializes the class fields
      *
-     * @param name  The name of the army
+     * @param name     The name of the army
      * @param unitList A list containing unit objects
      */
     public Army(String name, List<Unit> unitList) {
         this.name = name;
         this.unitList = unitList;
         this.randNr = new Random();
+    }
+
+    /**
+     * Copy constructor that takes an army as a parameter, and clones
+     * this army
+     * @param army, the army that should be cloned
+     */
+    public Army(Army army) {
+        this.randNr = new Random();
+        this.name = army.getName();
+        this.unitList = new ArrayList<>();
+        for (Unit unit : army.getUnitList()) {
+            unitList.add(UnitFactory.getInstance()
+                    .createOneUnit(UnitFactory.UnitType.valueOf(
+                            unit.getClass().getSimpleName().toUpperCase()), unit.getName(), unit.getHealth()));
+        }
     }
 
     /**
@@ -62,6 +78,7 @@ public class Army {
 
     /**
      * Returns a list of all the infantry units in one army
+     *
      * @return List<Unit>, a list of infantry units
      */
     public List<Unit> getInfantryUnit() {
@@ -73,6 +90,7 @@ public class Army {
 
     /**
      * Returns a list of all the cavalry units in one army
+     *
      * @return List<Unit>, a list of cavalry units
      */
     public List<Unit> getCavalryUnit() {
@@ -84,6 +102,7 @@ public class Army {
 
     /**
      * Returns a list of all the commander units in one army
+     *
      * @return List<Unit>, a list of commander units
      */
     public List<Unit> getCommanderUnitList() {
@@ -95,6 +114,7 @@ public class Army {
 
     /**
      * Returns a list of all the ranged units in one army
+     *
      * @return List<Unit>, a list of ranged units
      */
     public List<Unit> getRangedUnitList() {
@@ -147,7 +167,7 @@ public class Army {
     /**
      * Searches for a random unit in the army
      *
-     * @return Unit A random unit object
+     * @return Unit, a random unit object
      */
     public Unit getRandom() {
         int upperbound = this.unitList.size();
@@ -155,8 +175,36 @@ public class Army {
         return this.unitList.get(randomNumber);
     }
 
+    /**
+     * Returns a random number based on the army size
+     *
+     * @return int, the number of units in the army
+     */
     public int getRandomNumber() {
         int upperbound = this.unitList.size();
         return this.randNr.nextInt(upperbound);
+    }
+
+
+    /**
+     * Compares two armies
+     *
+     * @param comparableArmy, the army to be compared with
+     * @return boolean, true if the two armies have equal values
+     */
+    @Override
+    public boolean equals(Object comparableArmy) {
+        if (comparableArmy instanceof Army army2 && this.getName().equals(army2.getName())) {
+            for (int i = 0; i < this.getUnitList().size(); i++) {
+                if (!((this.getUnitList().get(i).getName().equals(army2.getUnitList().get(i).getName())) &&
+                        (this.getUnitList().get(i).getHealth() == (army2.getUnitList().get(i).getHealth())) &&
+                        (this.getUnitList().get(i).getAttack() == (army2.getUnitList().get(i).getAttack())) &&
+                        (this.getUnitList().get(i).getArmor() == (army2.getUnitList().get(i).getArmor())))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }
