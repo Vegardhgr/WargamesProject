@@ -1,9 +1,11 @@
 package no.ntnu.idatg2001.wargames.controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -12,7 +14,6 @@ import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
 import no.ntnu.idatg2001.wargames.units.Unit;
 import no.ntnu.idatg2001.wargames.units.UnitFactory;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -75,6 +76,31 @@ public class AddUnitController implements Initializable {
     }
 
     /**
+     * Checker for the health input field
+     */
+    @FXML
+    private void healthFieldInputChecker() {
+        healthField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!(newValue.matches("\\d*"))) {
+                healthField.setText(newValue.replaceAll("[^\\d]", ""));
+            } else {
+                if (newValue.equals("")) {
+                    healthField.setText("");
+                } else if (Long.parseLong(newValue) >= 2147483647) {
+                    healthField.setText("2147483647");
+                } else if (newValue.indexOf("0") == 0) {
+                    Platform.runLater(() ->
+                        healthField.setText("1")
+                    );
+                }
+            }
+
+        });
+    }
+
+    //TODO: Add a checker for the quantity field
+
+    /**
      * Adds a unit to the table view and writes that unit to file.
      * @param event, mouse event
      * @throws IOException, if the file does not exist.
@@ -82,7 +108,28 @@ public class AddUnitController implements Initializable {
     @FXML
     private void addUnit(MouseEvent event) throws IOException {
         UnitFactory.UnitType unitType = unitTypeComboBox.getValue();
-        String name = nameField.getText();
+        String name = null;
+        if (unitTypeComboBox.getSelectionModel().getSelectedItem() == null ||
+            armyComboBox.getSelectionModel().getSelectedItem() == null ||
+            nameField.getText().isBlank() ||
+            healthField.getText().isBlank()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid input");
+            alert.setTitle("Error");
+            alert.setContentText("One or more required fields are empty");
+            alert.showAndWait();
+            return;
+        }
+        if (nameField.getText().contains(",")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid input");
+            alert.setTitle("Error");
+            alert.setContentText("Cannot contain \",\"");
+            alert.showAndWait();
+            return;
+        } else {
+            name = nameField.getText();
+        }
         int health = Integer.parseInt(healthField.getText());
         String armySelected = armyComboBox.getValue();
         int quantity;
@@ -102,6 +149,11 @@ public class AddUnitController implements Initializable {
         clearInput();
     }
 
+    /**
+     * Goes back to the main screen window
+     * @param event, a mouse event
+     * @throws IOException, if the file does not exist
+     */
     @FXML
     private void backToMainScreen(MouseEvent event) throws IOException {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
