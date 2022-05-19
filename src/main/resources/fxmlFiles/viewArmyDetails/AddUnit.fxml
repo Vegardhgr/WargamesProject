@@ -47,7 +47,7 @@
                 </fill>
             </Line>
             <TextField fx:id="nameField" layoutX="141.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Name" />
-            <TextField fx:id="healthField" layoutX="314.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Health" />
+            <TextField fx:id="healthField" layoutX="314.0" layoutY="172.0" onKeyPressed="#healthFieldInputChecker" prefHeight="25.0" prefWidth="150.0" promptText="Health" />
             <Text layoutX="98.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional field is not filled out, default value &quot;1&quot; will be used.">
                 <font>
                     <Font size="14.0" />
