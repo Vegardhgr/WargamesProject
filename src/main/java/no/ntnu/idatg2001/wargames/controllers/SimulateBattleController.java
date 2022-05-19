@@ -94,6 +94,7 @@ public class SimulateBattleController implements Initializable {
         this.rectangleArmy2List = new ArrayList<>();
         this.isArmyOnesTurn = true;
         this.timeline = new Timeline();
+        timeline();
 
         try {
             loadArmies();
@@ -241,8 +242,8 @@ public class SimulateBattleController implements Initializable {
      * Refreshes the armies
      */
     public void refreshArmies() {
-        this.army1 = army1Stored;
-        this.army2 = army2Stored;
+        this.army1 = new Army(army1Stored);
+        this.army2 = new Army(army2Stored);
         this.battle = new Battle(army1, army2);
     }
 
@@ -252,7 +253,6 @@ public class SimulateBattleController implements Initializable {
     private void timeline() {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(1), this::oneStepSimulation));
-        timeline.play();
     }
 
     /**
@@ -263,12 +263,7 @@ public class SimulateBattleController implements Initializable {
     public void startSimulation() {
         if (terrainComboBox.getSelectionModel().getSelectedItem() != null) {
             startSimulationBtn.setDisable(true);
-            try {
-                loadArmies();
-            } catch (IOException e) {
-                e.getMessage();
-            }
-            timeline();
+            timeline.play();
         } else {
             System.out.println("Select a terrain");
         }
@@ -307,7 +302,7 @@ public class SimulateBattleController implements Initializable {
             defendingRectangleList = rectangleArmy1List;
         }
 
-        Rectangle defendingRectangle = checkForUnitInRange(attacker, isArmyOnesTurn);
+        Rectangle defendingRectangle = checkForUnitInRange(isArmyOnesTurn);
         if (defendingRectangle != null) {
             //Fetching the unit based on the index of rectangle that represents it
             Unit defendingUnit = defender.getUnitList().get(defendingRectangleList.indexOf(defendingRectangle));
@@ -413,17 +408,12 @@ public class SimulateBattleController implements Initializable {
         }
     }
 
-    /*private void checkUnitClosest(Unit attacker, boolean attackingArmy) {
-        // todo: If I have time: search through the opponent list and take the unit with the least distance
-    }*/
-
     /**
      * Checks for a unit
-     * @param attacker, the attacking unit
      * @param attackingArmy, the attacking army
      * @return Rectangle, the rectangle/unit that is within the attacker's range
      */
-    private Rectangle checkForUnitInRange(Unit attacker, boolean attackingArmy) {
+    private Rectangle checkForUnitInRange(boolean attackingArmy) {
         List<Rectangle> defendingArmy;
         if (attackingArmy)
             defendingArmy = rectangleArmy2List;
@@ -451,11 +441,7 @@ public class SimulateBattleController implements Initializable {
         gridPane.getChildren().removeAll(rectangleArmy2List);
         rectangleArmy1List.clear();
         rectangleArmy2List.clear();
-        try {
-            loadArmies();
-        } catch (IOException e) {
-            e.getMessage();
-        }
+        refreshArmies();
         makeArmy1Rectangles();
         makeArmy2Rectangles();
         resetArmyBtn.setDisable(true);
