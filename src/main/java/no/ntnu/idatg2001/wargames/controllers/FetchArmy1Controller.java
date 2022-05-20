@@ -21,33 +21,33 @@ public class FetchArmy1Controller implements Initializable{
     @FXML
     private BorderPane borderPaneId;
     @FXML
-    private void backToCreateArmyScreen(MouseEvent event) throws IOException {
+    private void backToCreateArmyScreen(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadCreateArmyScene(event);
     }
 
     @FXML
-    private void backToMainScreen(MouseEvent event) throws IOException {
+    private void backToMainScreen(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
 
     @FXML
-    private void openDirectory(MouseEvent event) {
-        FileChooser dirChooser = SingletonClass.getInstance().getFileChooser();
+    private void openDirectory() {
+        FileChooser fileChooser = SingletonClass.getInstance().getFileChooser();
         Stage stage = (Stage) borderPaneId.getScene().getWindow();
-        File file = dirChooser.showOpenDialog(stage);
+        File file = fileChooser.showOpenDialog(stage);
 
         if (file != null)
             pathField.setText(file.getAbsolutePath());
     }
 
     @FXML
-    private void savePathArmy1(MouseEvent event) throws IOException {
+    private void savePathArmy1() throws IOException {
         String path = pathField.getText();
         CSVFileHandler.writeCSVArmyPath(PATH_TO_ARMY_1, path);
     }
 
     @FXML
-    private void clearTextField(MouseEvent event) {
+    private void clearTextField() {
         pathField.clear();
     }
 
