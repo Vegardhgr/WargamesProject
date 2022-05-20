@@ -61,8 +61,8 @@
             </Text>
             <Line endX="169.0" layoutX="295.0" layoutY="132.0" startX="-153.95384216308594" />
             <Button layoutX="474.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="65.0" text="Add" />
-         <ComboBox fx:id="armyComboBox" layoutX="314.0" layoutY="136.0" prefWidth="150.0" promptText="Army" />
-         <TextField fx:id="quantityField" layoutX="227.0" layoutY="225.0" prefWidth="150.0" promptText="Quantity" />
+         <ComboBox fx:id="armyComboBox" layoutX="314.0" layoutY="136.0" onAction="#armyComboBoxAction" prefWidth="150.0" promptText="Army" />
+         <TextField fx:id="quantityField" layoutX="227.0" layoutY="225.0" onKeyPressed="#quantityFieldInputChecker" prefWidth="150.0" promptText="Quantity" />
          <Text layoutX="251.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Optional field">
             <font>
                <Font size="16.0" />
