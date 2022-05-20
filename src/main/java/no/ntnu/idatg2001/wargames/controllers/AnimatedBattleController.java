@@ -17,10 +17,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import no.ntnu.idatg2001.wargames.utilities.Army;
-import no.ntnu.idatg2001.wargames.utilities.Battle;
-import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
-import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.*;
 import no.ntnu.idatg2001.wargames.units.Unit;
 import java.io.IOException;
 import java.net.URL;
@@ -30,9 +27,9 @@ import java.util.ResourceBundle;
 
 /**
  * The controller class for Simulate Battle. This class contains code for
- * the simulation.
+ * the animated simulation.
  */
-public class SimulateBattleController implements Initializable {
+public class AnimatedBattleController implements Initializable {
     private Timeline timeline;
     //isArmyOnesTurn is true if it is army1's turn. If false, it is army2's turn
     private boolean isArmyOnesTurn;
@@ -75,10 +72,9 @@ public class SimulateBattleController implements Initializable {
     /**
      * Goes back to main screen
      * @param event, a mouse event
-     * @throws IOException, if the path to the main screen does not exist
      */
     @FXML
-    private void backToMainScreen(MouseEvent event) throws IOException {
+    private void backToMainScreen(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
 
@@ -99,6 +95,7 @@ public class SimulateBattleController implements Initializable {
         try {
             loadArmies();
         } catch (IOException e) {
+            //Todo: Handle exception
             e.getMessage();
         }
 
@@ -252,7 +249,8 @@ public class SimulateBattleController implements Initializable {
      */
     private void timeline() {
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(1), this::oneStepSimulation));
+        //TODO: Let the user choose the speed of the timeline
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(10), this::oneStepSimulation));
     }
 
     /**
@@ -261,11 +259,11 @@ public class SimulateBattleController implements Initializable {
      */
     @FXML
     public void startSimulation() {
-        if (terrainComboBox.getSelectionModel().getSelectedItem() != null) {
+        if (terrainComboBox.getSelectionModel().getSelectedItem() == null)
+            Dialogs.getInstance().selectTerrain();
+        else {
             startSimulationBtn.setDisable(true);
             timeline.play();
-        } else {
-            System.out.println("Select a terrain");
         }
     }
 
