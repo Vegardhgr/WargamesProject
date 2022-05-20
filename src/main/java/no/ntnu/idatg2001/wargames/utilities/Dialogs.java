@@ -30,7 +30,63 @@ public class Dialogs {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Path error");
-        alert.setContentText("Cannot load the scene");
+        alert.setContentText("Cannot load the scene.");
+        alert.showAndWait();
+    }
+
+    /**
+     * Shows an error dialog if the file is not found
+     */
+    public void fileNotFound() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("File not find error");
+        alert.setContentText("Cannot find the file that is selected.");
+        alert.showAndWait();
+    }
+
+    /**
+     * Informs the user to close the file
+     */
+    public void closeFile() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText("Close file");
+        alert.setContentText("The file you are saving this army to is open.\n" +
+                "Please close this file and try again.");
+        alert.showAndWait();
+    }
+
+    /**
+     * Informs the user to close the file
+     */
+    public void selectTerrain() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText("Select terrain");
+        alert.setContentText("Please select a terrain before starting the simulation.");
+        alert.showAndWait();
+    }
+
+    /**
+     * Informs the user to close the file
+     */
+    public void tooManyUnits() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText("Too many units");
+        alert.setContentText("You cannot have more than 1000 units in each army in this simulation.");
+        alert.showAndWait();
+    }
+
+    /**
+     * Informs the user to select a number of battles
+     */
+    public void selectNumberOfBattles() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText("Select number of battles");
+        alert.setContentText("Selecting a number of battles is required before running the simulation.");
         alert.showAndWait();
     }
 }
