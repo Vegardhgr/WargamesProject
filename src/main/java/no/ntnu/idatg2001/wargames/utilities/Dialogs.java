@@ -2,6 +2,9 @@ package no.ntnu.idatg2001.wargames.utilities;
 
 import javafx.scene.control.Alert;
 
+/**
+ * This class contains often used dialogs
+ */
 public class Dialogs {
     private static volatile Dialogs instance;
     private Dialogs() {}
@@ -19,6 +22,10 @@ public class Dialogs {
         return Dialogs.instance;
     }
 
+    /**
+     * Shows an error dialog if the path to the file does
+     * not exist.
+     */
     public void cannotLoadScene() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
