@@ -28,9 +28,7 @@ public class LoadScene {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (IOException e) {
-            Dialogs.getInstance().cannotLoadScene();
-        } catch (RuntimeException e) {
+        } catch (IOException|RuntimeException e) {
             Dialogs.getInstance().cannotLoadScene();
         }
     }
@@ -38,20 +36,36 @@ public class LoadScene {
     /**
      * Sends the main screen path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void loadMainScreen(MouseEvent event) throws IOException {
+    public void loadMainScreen(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/MainScreen.fxml";
         loadScene(event, path);
     }
 
     /**
+     * Sends the chooseBattleType path to the loadScene method
+     * @param event, the mouse event
+     */
+    public void loadChooseBattleType(MouseEvent event) {
+        String path = "/fxmlFiles/simulateBattle/ChooseBattleType.fxml";
+        loadScene(event, path);
+    }
+
+    /**
      * Sends the loadEditArmy path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void loadSimulateBattle(MouseEvent event) throws IOException {
-        String path = "/fxmlFiles/simulateBattle/SimulateBattle.fxml";
+    public void loadAnimatedBattle(MouseEvent event) {
+        String path = "/fxmlFiles/simulateBattle/AnimatedBattle.fxml";
+        loadScene(event, path);
+    }
+
+    /**
+     * Sends the quickBattle path to the loadScene method
+     * @param event, the mouse event
+     */
+    public void loadQuickBattle(MouseEvent event) {
+        String path = "/fxmlFiles/simulateBattle/QuickBattle.fxml";
         loadScene(event, path);
     }
 
@@ -59,9 +73,8 @@ public class LoadScene {
     /**
      * Sends the loadEditArmy path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void loadEditArmy(MouseEvent event) throws IOException {
+    public void loadEditArmy(MouseEvent event) {
         String path = "/fxmlFiles/viewArmyDetails/EditArmy.fxml";
         loadScene(event, path);
     }
@@ -69,9 +82,8 @@ public class LoadScene {
     /**
      * Sends the loadViewArmy1Details path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void loadViewArmy1Details(MouseEvent event) throws IOException {
+    public void loadViewArmy1Details(MouseEvent event) {
         String path = "/fxmlFiles/viewArmyDetails/Army1Details.fxml";
         loadScene(event, path);
     }
@@ -79,9 +91,8 @@ public class LoadScene {
     /**
      * Sends the loadViewArmy2Details path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void loadViewArmy2Details(MouseEvent event) throws IOException {
+    public void loadViewArmy2Details(MouseEvent event) {
         String path = "/fxmlFiles/viewArmyDetails/Army2Details.fxml";
         loadScene(event, path);
     }
@@ -89,9 +100,8 @@ public class LoadScene {
     /**
      * Sends the addUnit path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void loadAddUnit(MouseEvent event) throws IOException {
+    public void loadAddUnit(MouseEvent event) {
         String path = "/fxmlFiles/viewArmyDetails/AddUnit.fxml";
         loadScene(event, path);
     }
@@ -99,9 +109,8 @@ public class LoadScene {
     /**
      * Sends the loadCreateArmyScene path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void loadCreateArmyScene(MouseEvent event) throws IOException {
+    public void loadCreateArmyScene(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/CreateArmy.fxml";
         loadScene(event, path);
     }
@@ -109,9 +118,8 @@ public class LoadScene {
     /**
      * Sends the fetchArmy1Screen path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void fetchArmy1Screen(MouseEvent event) throws IOException {
+    public void fetchArmy1Screen(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/FetchArmy1.fxml";
         loadScene(event, path);
     }
@@ -119,9 +127,8 @@ public class LoadScene {
     /**
      * Sends the fetchArmy2Screen path to the loadScene method
      * @param event, the mouse event
-     * @throws IOException, exception to be thrown if the file does not exist
      */
-    public void fetchArmy2Screen(MouseEvent event) throws IOException {
+    public void fetchArmy2Screen(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/FetchArmy2.fxml";
         loadScene(event, path);
     }
