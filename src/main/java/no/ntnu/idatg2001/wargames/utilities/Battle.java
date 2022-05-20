@@ -1,6 +1,7 @@
 package no.ntnu.idatg2001.wargames.utilities;
 
 import no.ntnu.idatg2001.wargames.units.Unit;
+import java.util.Random;
 
 /**
  * This class creates a battle between two armies
@@ -14,6 +15,7 @@ public class Battle {
     private final Army armyTwo;
     private Army winningArmy;
     private static Terrain terrain;
+    private Random random;
 
     /**
      * Initializes the global army objects
@@ -24,6 +26,7 @@ public class Battle {
     public Battle(Army armyOne, Army armyTwo) {
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
+        this.random = new Random();
     }
 
     public static Terrain getTerrain() {
@@ -40,7 +43,7 @@ public class Battle {
      * @return winningArmy, the winner of the battle
      */
     public Army simulate() {
-        boolean armyOneAttacks = true;
+        boolean armyOneAttacks = randomizeTheFirstAttackingArmy();
         boolean fighting = true;
         while (fighting) {
             Unit armyOneUnit = armyOne.getRandom();
@@ -69,6 +72,15 @@ public class Battle {
             armyOneAttacks = !armyOneAttacks;
         }
         return null;
+    }
+
+    private boolean randomizeTheFirstAttackingArmy() {
+        boolean army1Attacks = true;
+        int randomNumber = this.random.nextInt(2);
+        if (randomNumber == 0) {
+            return army1Attacks;
+        }
+        return !army1Attacks;
     }
 
     /**
