@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import no.ntnu.idatg2001.wargames.utilities.Army;
 import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.utilities.Dialogs;
 import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
 import no.ntnu.idatg2001.wargames.units.Unit;
 import no.ntnu.idatg2001.wargames.units.UnitFactory;
@@ -28,6 +29,8 @@ import java.util.ResourceBundle;
  */
 public class AddUnitController implements Initializable {
     // All the fields
+    private static final int MAX_NUMBER_OF_UNITS = 10000;
+    private int numberOfUnitsInSelectedArmy;
     @FXML
     ComboBox<UnitFactory.UnitType> unitTypeComboBox;
     @FXML
@@ -68,10 +71,9 @@ public class AddUnitController implements Initializable {
     /**
      * Loads the main screen window
      * @param event, mouse event
-     * @throws IOException, if the file does not exist.
      */
     @FXML
-    private void backToEditArmy(MouseEvent event) throws IOException {
+    private void backToEditArmy(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadEditArmy(event);
     }
 
@@ -83,32 +85,91 @@ public class AddUnitController implements Initializable {
         healthField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!(newValue.matches("\\d*"))) {
                 healthField.setText(newValue.replaceAll("[^\\d]", ""));
-            } else {
-                if (newValue.equals("")) {
-                    healthField.setText("");
-                } else if (Long.parseLong(newValue) >= 2147483647) {
-                    healthField.setText("2147483647");
-                } else if (newValue.indexOf("0") == 0) {
-                    Platform.runLater(() ->
+            } else if (newValue.equals("")) {
+                healthField.setText("");
+            } else if (Long.parseLong(newValue) >= 2147483647) {
+                healthField.setText("2147483647");
+            } else if (newValue.indexOf("0") == 0) {
+                Platform.runLater(() ->
                         healthField.setText("1")
-                    );
-                }
+                );
             }
-
         });
     }
 
-    //TODO: Add a checker for the quantity field
+    @FXML
+    private void armyComboBoxAction() {
+        String army = armyComboBox.getSelectionModel().getSelectedItem();
+        if (!quantityField.getText().equals("")) {
+            try {
+                if (army.equals("Army 1")) {
+                    numberOfUnitsInSelectedArmy =
+                            CSVFileHandler.readCSVArmy(
+                                    FetchArmy1Controller.getArmy1Path()).getUnitList().size();
+                    if (Integer.parseInt(quantityField.getText()) > MAX_NUMBER_OF_UNITS - numberOfUnitsInSelectedArmy)
+                        quantityField.setText(MAX_NUMBER_OF_UNITS - numberOfUnitsInSelectedArmy + "");
+                } else {
+                    numberOfUnitsInSelectedArmy =
+                            CSVFileHandler.readCSVArmy(
+                                    FetchArmy2Controller.getArmy2Path()).getUnitList().size();
+                    if (Integer.parseInt(quantityField.getText()) > MAX_NUMBER_OF_UNITS - numberOfUnitsInSelectedArmy)
+                        quantityField.setText(MAX_NUMBER_OF_UNITS - numberOfUnitsInSelectedArmy + "");
+                }
+            } catch (IOException e) {
+                Dialogs.getInstance().closeFile();
+            }
+        }
+    }
+
+    @FXML
+    private void quantityFieldInputChecker() {
+        quantityField.textProperty().addListener((observable, oldValue, newValue) -> {
+            String army = armyComboBox.getSelectionModel().getSelectedItem();
+            if (!(newValue.matches("\\d*")) && quantityField.getText().equals("")) {
+                quantityField.setText(newValue.replaceAll("[^\\d]", ""));
+            } else {
+                try {
+                    if (army != null) {
+                        if (army.equals("Army 1")) {
+                            numberOfUnitsInSelectedArmy =
+                                    CSVFileHandler.readCSVArmy(
+                                            FetchArmy1Controller.getArmy1Path()).getUnitList().size();
+                        } else {
+                            numberOfUnitsInSelectedArmy =
+                                    CSVFileHandler.readCSVArmy(
+                                            FetchArmy2Controller.getArmy2Path()).getUnitList().size();
+                        }
+                    } else {
+                        numberOfUnitsInSelectedArmy = 0;
+                    }
+                } catch (IOException e) {
+                    Dialogs.getInstance().closeFile();
+                }
+                int numberOfUnitsInField = MAX_NUMBER_OF_UNITS - numberOfUnitsInSelectedArmy;
+                if (!(newValue.matches("\\d*"))) {
+                    quantityField.setText(newValue.replaceAll("[^\\d]", ""));
+                } else if (!quantityField.getText().equals("") && Integer.parseInt(quantityField.getText()) > 10000) {
+                    quantityField.setText("10000");
+                } else if (newValue.equals("")) {
+                    quantityField.setText("");
+                } else if (Integer.parseInt(newValue) >= (numberOfUnitsInField)) {
+                    quantityField.setText(numberOfUnitsInField + "");
+                } else if (newValue.indexOf("0") == 0) {
+                    Platform.runLater(() ->
+                            quantityField.setText("1")
+                    );
+                }
+            }
+        });
+    }
 
     /**
      * Adds a unit to the table view and writes that unit to file.
-     * @param event, mouse event
-     * @throws IOException, if the file does not exist.
      */
     @FXML
-    private void addUnit(MouseEvent event) throws IOException {
+    private void addUnit() {
         UnitFactory.UnitType unitType = unitTypeComboBox.getValue();
-        String name = null;
+        String name;
         if (unitTypeComboBox.getSelectionModel().getSelectedItem() == null ||
             armyComboBox.getSelectionModel().getSelectedItem() == null ||
             nameField.getText().isBlank() ||
@@ -137,25 +198,29 @@ public class AddUnitController implements Initializable {
             quantity = Integer.parseInt(quantityField.getText());
         else
             quantity = 1;
+
         List<Unit> units = UnitFactory.getInstance().createMultipleUnits(unitType, name, health, quantity);
         String path;
-        if (armySelected.equalsIgnoreCase("Army 1"))
-            path = FetchArmy1Controller.getArmy1Path();
-        else
-            path = FetchArmy2Controller.getArmy2Path();
-        Army army = CSVFileHandler.readCSVArmy(path);
-        army.getUnitList().addAll(units);
-        CSVFileHandler.writeCSVArmy(army, path);
-        clearInput();
+        try {
+            if (armySelected.equalsIgnoreCase("Army 1"))
+                path = FetchArmy1Controller.getArmy1Path();
+            else
+                path = FetchArmy2Controller.getArmy2Path();
+            Army army = CSVFileHandler.readCSVArmy(path);
+            army.getUnitList().addAll(units);
+            CSVFileHandler.writeCSVArmy(army, path);
+            clearInput();
+        } catch (IOException e) {
+            Dialogs.getInstance().closeFile();
+        }
     }
 
     /**
      * Goes back to the main screen window
      * @param event, a mouse event
-     * @throws IOException, if the file does not exist
      */
     @FXML
-    private void backToMainScreen(MouseEvent event) throws IOException {
+    private void backToMainScreen(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
 
