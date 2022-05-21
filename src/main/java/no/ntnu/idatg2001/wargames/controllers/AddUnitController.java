@@ -23,22 +23,28 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * The controller for the AddUnit.fxml file
+ * The controller for the AddUnit.fxml file.
  *
  * @author Vegard Groder
  */
 public class AddUnitController implements Initializable {
-    // All the fields
+    //The max number of units that can be added to the army
     private static final int MAX_NUMBER_OF_UNITS = 10000;
+    //The number of units in the army
     private int numberOfUnitsInSelectedArmy;
+    //A combo box that contains the unit types
     @FXML
     ComboBox<UnitFactory.UnitType> unitTypeComboBox;
+    //The name field for a unit
     @FXML
     TextField nameField;
+    //Health field for a unit
     @FXML
     TextField healthField;
+    //Army combo box. The selected army is where the units will be added to
     @FXML
     ComboBox<String> armyComboBox;
+    //The number of units that should be made
     @FXML
     TextField quantityField;
 
@@ -69,7 +75,7 @@ public class AddUnitController implements Initializable {
     }
 
     /**
-     * Loads the main screen window
+     * Loads the edit army window
      * @param event, mouse event
      */
     @FXML
@@ -78,7 +84,8 @@ public class AddUnitController implements Initializable {
     }
 
     /**
-     * Checker for the health input field
+     * Checker for the health input field. Only numbers can be written in the field.
+     * Numbers starting with zero is not allowed.
      */
     @FXML
     private void healthFieldInputChecker() {
@@ -97,6 +104,10 @@ public class AddUnitController implements Initializable {
         });
     }
 
+    /**
+     * Based on which army that is selected, the number of allowed units in the
+     * quantity field changes.
+     */
     @FXML
     private void armyComboBoxAction() {
         String army = armyComboBox.getSelectionModel().getSelectedItem();
@@ -121,6 +132,10 @@ public class AddUnitController implements Initializable {
         }
     }
 
+    /**
+     * Input checker for the quantity field. Only numbers can be written in the field.
+     * Numbers starting with zero is not allowed.
+     */
     @FXML
     private void quantityFieldInputChecker() {
         quantityField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -164,7 +179,8 @@ public class AddUnitController implements Initializable {
     }
 
     /**
-     * Adds a unit to the table view and writes that unit to file.
+     * Adds a unit to the table view if all the input fields that
+     * are required to create a unit is filled in. Then it writes those units to file.
      */
     @FXML
     private void addUnit() {

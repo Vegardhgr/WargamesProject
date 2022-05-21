@@ -10,7 +10,7 @@ import java.util.Random;
  * @version 23.02.2022
  */
 public class Battle {
-    // Global fields
+    // Class fields and objects
     private final Army armyOne;
     private final Army armyTwo;
     private Army winningArmy;
@@ -18,7 +18,7 @@ public class Battle {
     private Random random;
 
     /**
-     * Initializes the global army objects
+     * Initializes the class fields and objects
      *
      * @param armyOne, Army object
      * @param armyTwo, Army object
@@ -29,10 +29,18 @@ public class Battle {
         this.random = new Random();
     }
 
+    /**
+     * Returns the terrain
+     * @return terrain, the terrain
+     */
     public static Terrain getTerrain() {
         return Battle.terrain;
     }
 
+    /**
+     * Sets the terrain
+     * @param terrain, the terrain
+     */
     public static void setTerrain(Terrain terrain) {
         Battle.terrain = terrain;
     }
@@ -74,6 +82,10 @@ public class Battle {
         return null;
     }
 
+    /**
+     * Randomizes which army that will attack first
+     * @return boolean, true if army1 will attack first, false if army2 will attack first
+     */
     private boolean randomizeTheFirstAttackingArmy() {
         boolean army1Attacks = true;
         int randomNumber = this.random.nextInt(2);
@@ -97,7 +109,7 @@ public class Battle {
     }
 
     /**
-     * Before a battle, it returns which armies that are fighting.
+     * Returns which armies that are fighting.
      * After a battle it returns the winning army
      *
      * @return String
@@ -111,6 +123,9 @@ public class Battle {
         }
     }
 
+    /**
+     * The terrains that can be used in the battle
+     */
     public enum Terrain {
         FOREST,
         HILL,

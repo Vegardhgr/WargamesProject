@@ -15,11 +15,14 @@ import java.util.Objects;
  * This class loads the different scenes
  */
 public class LoadScene {
+    // The path to the path where army1 is stored
     private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
+    // The path to the path where army2 is stored
     private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
+
     /**
      * Loads the scenes
-     * @param event, the mouse event
+     * @param event, a mouse event
      * @param path, the path to the new scene
      */
     private void loadScene(MouseEvent event, String path) {
@@ -37,7 +40,7 @@ public class LoadScene {
 
     /**
      * Sends the main screen path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadMainScreen(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/MainScreen.fxml";
@@ -46,7 +49,7 @@ public class LoadScene {
 
     /**
      * Sends the chooseBattleType path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadChooseBattleType(MouseEvent event) {
         String path = "/fxmlFiles/simulateBattle/ChooseBattleType.fxml";
@@ -55,7 +58,7 @@ public class LoadScene {
 
     /**
      * Sends the loadAnimatedBattle path to the loadScene method if the armies are valid
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadAnimatedBattle(MouseEvent event) {
         try {
@@ -71,7 +74,7 @@ public class LoadScene {
 
     /**
      * Sends the quickBattle path to the loadScene method if the armies are valid
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadQuickBattle(MouseEvent event) {
         try {
@@ -88,7 +91,7 @@ public class LoadScene {
 
     /**
      * Sends the loadEditArmy path to the loadScene method if the armies are valid
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadEditArmy(MouseEvent event) {
         try {
@@ -106,7 +109,7 @@ public class LoadScene {
 
     /**
      * Sends the loadViewArmy1Details path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadViewArmy1Details(MouseEvent event) {
         String path = "/fxmlFiles/viewArmyDetails/Army1Details.fxml";
@@ -115,7 +118,7 @@ public class LoadScene {
 
     /**
      * Sends the loadViewArmy2Details path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadViewArmy2Details(MouseEvent event) {
         String path = "/fxmlFiles/viewArmyDetails/Army2Details.fxml";
@@ -124,7 +127,7 @@ public class LoadScene {
 
     /**
      * Sends the addUnit path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadAddUnit(MouseEvent event) {
         String path = "/fxmlFiles/viewArmyDetails/AddUnit.fxml";
@@ -133,7 +136,7 @@ public class LoadScene {
 
     /**
      * Sends the loadCreateArmyScene path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void loadCreateArmyScene(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/CreateArmy.fxml";
@@ -142,7 +145,7 @@ public class LoadScene {
 
     /**
      * Sends the fetchArmy1Screen path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void fetchArmy1Screen(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/FetchArmy1.fxml";
@@ -151,7 +154,7 @@ public class LoadScene {
 
     /**
      * Sends the fetchArmy2Screen path to the loadScene method
-     * @param event, the mouse event
+     * @param event, a mouse event
      */
     public void fetchArmy2Screen(MouseEvent event) {
         String path = "/fxmlFiles/createArmy/FetchArmy2.fxml";

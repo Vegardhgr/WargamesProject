@@ -30,6 +30,10 @@ public class WargamesApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Launces the application
+     * @param args, the arguments
+     */
     public static void main(String[] args) {
         launch();
     }

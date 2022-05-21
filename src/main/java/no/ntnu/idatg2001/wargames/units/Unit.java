@@ -19,10 +19,10 @@ public abstract class Unit {
     /**
      * Initializes all the fields
      *
-     * @param name
-     * @param health
-     * @param attack
-     * @param armor
+     * @param name, name of the unit
+     * @param health, the unit's health
+     * @param attack, the unit's attack
+     * @param armor, the unit's armor
      */
     protected Unit(String name, int health, int attack, int armor) {
         this.name = name;
@@ -35,7 +35,7 @@ public abstract class Unit {
     /**
      * The opponent's health after getting attacked
      *
-     * @param opponent
+     * @param opponent, the unit that is getting attacked
      */
     public void attack(Unit opponent) {
         int health = opponent.health - (attack + getAttackBonus()
@@ -44,36 +44,36 @@ public abstract class Unit {
     }
 
     /**
-     * Returns the name of the character
+     * Returns the name of the unit
      *
-     * @return name
+     * @return name, the unit's name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Returns the health of the character
+     * Returns the health of the unit
      *
-     * @return health
+     * @return health, unit's health
      */
     public int getHealth() {
         return health;
     }
 
     /**
-     * Returns attack value
+     * Returns the unit's attack value
      *
-     * @return attack
+     * @return attack, the attack value
      */
     public int getAttack() {
         return attack;
     }
 
     /**
-     * Returns the armor value
+     * Returns the unit's armor value
      *
-     * @return armor
+     * @return armor, the armor value
      */
     public int getArmor() {
         return armor;
@@ -82,7 +82,7 @@ public abstract class Unit {
     /**
      * Sets the character's new health
      *
-     * @param health
+     * @param health, the new health
      */
     public void setHealth(int health) {
         if (health < 0) {
@@ -95,7 +95,7 @@ public abstract class Unit {
     /**
      * Returns how a unit object should be printed
      *
-     * @return String
+     * @return String, the string representation of the unit
      */
     @Override
     public String toString() {
@@ -103,7 +103,13 @@ public abstract class Unit {
                 " | Attack: " + getAttack() + " | Armor: " + getArmor();
     }
 
+    /**
+     * A method all inherited classes must implement
+     */
     public abstract int getAttackBonus();
 
+    /**
+     * A method all inherited classes must implement
+     */
     public abstract int getResistBonus();
 }

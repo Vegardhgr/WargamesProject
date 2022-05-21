@@ -14,13 +14,13 @@ import java.util.Random;
  */
 public class Army {
 
-    // The class fields
+    // The class fields and objects
     private String name;
     private List<Unit> unitList;
     private Random randNr;
 
     /**
-     * Initializes the class fields
+     * Initializes the class fields and objects
      *
      * @param name The name of the army
      */
@@ -31,7 +31,7 @@ public class Army {
     }
 
     /**
-     * Initializes the class fields
+     * Initializes the class fields and objects
      *
      * @param name     The name of the army
      * @param unitList A list containing unit objects
@@ -43,7 +43,7 @@ public class Army {
     }
 
     /**
-     * Copy constructor that takes an army as a parameter, and clones
+     * Copy constructor that takes an army as a parameter and clones
      * this army
      * @param army, the army that should be cloned
      */
@@ -68,7 +68,7 @@ public class Army {
     }
 
     /**
-     * Returns the army list
+     * Returns the unit list
      *
      * @return name The name of the army
      */
@@ -154,7 +154,7 @@ public class Army {
     /**
      * Checks if the army contains one or more units
      *
-     * @return boolean True if the army is not empty, false if the army is empty
+     * @return boolean, True if the army is not empty, false if the army is empty
      */
     public boolean hasUnit() {
         boolean listNotEmpty = true;
@@ -165,7 +165,7 @@ public class Army {
     }
 
     /**
-     * Searches for a random unit in the army
+     * Returns a random unit in the army
      *
      * @return Unit, a random unit object
      */

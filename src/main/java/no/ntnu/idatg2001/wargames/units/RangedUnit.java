@@ -64,7 +64,7 @@ public class RangedUnit extends Unit {
      * to its health. After the character is attacked twice,
      * it will return 2.
      *
-     * @return Int, the resist bonus
+     * @return int, the resist bonus
      */
     @Override
     public int getResistBonus() {

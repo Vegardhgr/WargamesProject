@@ -27,8 +27,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * The controller class for Simulate Battle. This class contains code for
+ * The controller class for animated battle. This class contains code for
  * the animated simulation.
+ *
+ * @author Vegard Grøder
  */
 public class AnimatedBattleController implements Initializable {
     private Timeline timeline;
@@ -42,15 +44,21 @@ public class AnimatedBattleController implements Initializable {
     private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
     //A path to the path where army2 is stored
     private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
+    //The column size
     private float columnSize;
+    //The row size
     private float rowSize;
     //Height of the grid pane
     private static final float GRID_PANE_HEIGHT = 400;
     //Width of the grid pane
     private static final float GRID_PANE_WIDTH = 600;
+    //Stores army1
     private Army army1Stored;
+    //Stores army2
     private Army army2Stored;
+    //This army is used in battles
     private Army army1;
+    //This army is used in battles
     private Army army2;
     private Battle battle;
     //The column index of the attacking unit
@@ -58,18 +66,23 @@ public class AnimatedBattleController implements Initializable {
     //The row index of the attacking unit
     private int rectangleRow;
 
+    //The grid pane
     @FXML
     GridPane gridPane;
 
+    //The combo box for terrain
     @FXML
     ComboBox<Battle.Terrain> terrainComboBox;
 
+    //Button to start a simulation
     @FXML
     Button startSimulationBtn;
 
+    //Button to reset the armies and make them ready for a new battle
     @FXML
     Button resetArmyBtn;
 
+    //A slider to change the speed of the simulation
     @FXML
     Slider sliderSimulationSpeed;
 
@@ -97,6 +110,7 @@ public class AnimatedBattleController implements Initializable {
         timeline();
         loadArmies();
         greatestArmy = checkGreatestArmy();
+        //The amount of rows needed based on the army size
         int numberOfRows = generateNumberOfRows(greatestArmy);
 
         //Dividing the grid pane width into 15 columns
@@ -106,7 +120,9 @@ public class AnimatedBattleController implements Initializable {
 
         gridPaneHandler(numberOfRows);
         fillTerrainComboBox();
+        //Creates the rectangles for army1 in the grid pane
         makeArmy1Rectangles();
+        //Creates the rectangles for army2 in the grid pane
         makeArmy2Rectangles();
     }
 
@@ -122,14 +138,15 @@ public class AnimatedBattleController implements Initializable {
     }
 
     /**
-     * Generates the number of rows. If the greatest army contains less than
-     * 25 units, there will be 5 rows. Else the number of rows will be generated based on
+     * Generates the number of rows. If the greatest army has less than
+     * 25 units, 5 rows is created. Else the number of rows will be generated based on
      * the number of units in the greatest army divided by 5.
      *
      * @param greatestArmy, the greatest army
      * @return int, number of rows.
      */
     public int generateNumberOfRows(Army greatestArmy) {
+        //The least amount of rows is 5
         if (greatestArmy.getUnitList().size() < 25)
             return 5;
         return greatestArmy.getUnitList().size() / 5;
@@ -223,7 +240,7 @@ public class AnimatedBattleController implements Initializable {
     }
 
     /**
-     * Loads the armies with new units
+     * Stores the two armies in two different variables
      */
     public void loadArmies() {
         try {
@@ -244,6 +261,9 @@ public class AnimatedBattleController implements Initializable {
         this.battle = new Battle(army1, army2);
     }
 
+    /**
+     * The speed of the simulation
+     */
     @FXML
     private void simulationSpeed() {
         sliderSimulationSpeed.valueProperty().addListener((observableValue, number, t1) ->
@@ -259,8 +279,7 @@ public class AnimatedBattleController implements Initializable {
     }
 
     /**
-     * Creates the armies, starts the timeline and also sets the button that was clicked
-     * to be disabled.
+     * Sets the button that was clicked to be disabled and then the timeline starts
      */
     @FXML
     public void startSimulation() {
@@ -296,22 +315,27 @@ public class AnimatedBattleController implements Initializable {
         Army defender;
         List<Rectangle> defendingRectangleList;
         if (isArmyOnesTurn) {
+            //Sets up who is the attacker and who is the defender
             attacker = army1.getUnitList().get(rectangleArmy1List.indexOf(attackingRectangle));
             defender = army2;
             defendingRectangleList = rectangleArmy2List;
         } else {
+            //Sets up who is the attacker and who is the defender
             attacker = army2.getUnitList().get(rectangleArmy2List.indexOf(attackingRectangle));
             defender = army1;
             defendingRectangleList = rectangleArmy1List;
         }
 
+        /*The defending unit. If defendingRectangle is null, then there are no units
+          nearby the attacker.*/
         Rectangle defendingRectangle = checkForUnitInRange(isArmyOnesTurn);
         if (defendingRectangle != null) {
             //Fetching the unit based on the index of rectangle that represents it
             Unit defendingUnit = defender.getUnitList().get(defendingRectangleList.indexOf(defendingRectangle));
-            //removeRectangle is true if the defending unit's health is zero
+            //removeRectangle is true if the defending unit is dead
             boolean removeRectangle = battle.oneStepBattle(attacker, defendingUnit);
             if (removeRectangle) {
+                //Removes the rectangle from the grid pane
                 gridPane.getChildren().remove(defendingRectangle);
                 defender.getUnitList().remove(defendingUnit);
                 defendingRectangleList.remove(defendingRectangle);
@@ -323,6 +347,7 @@ public class AnimatedBattleController implements Initializable {
         isArmyOnesTurn = !isArmyOnesTurn;
 
         if (defender.getUnitList().isEmpty()) {
+            //Stops the timeline because there is a winner
             timeline.stop();
             resetArmyBtn.setDisable(false);
         }
@@ -373,11 +398,11 @@ public class AnimatedBattleController implements Initializable {
     }
 
     /**
-     * Returns a node if the parameters column and row matches with a
+     * Returns a node if the parameters, column and row, matches with a
      * node's column and row index. If there is no match, it returns null
      * @param column, an int
      * @param row, an int
-     * @return Node
+     * @return Node, the node that matches the parameters
      */
     private Node getNodeFromGridPane(int column, int row) {
         ObservableList<Node> children = gridPane.getChildren();
@@ -416,7 +441,7 @@ public class AnimatedBattleController implements Initializable {
     }
 
     /**
-     * Checks for a unit
+     * Checks for a unit in range
      * @param attackingArmy, the attacking army
      * @return Rectangle, the rectangle/unit that is within the attacker's range
      */
