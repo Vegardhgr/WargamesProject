@@ -70,11 +70,13 @@ public class QuickBattleController implements Initializable {
         army2Name.setEditable(false);
         army1Wins.setEditable(false);
         army2Wins.setEditable(false);
-        army1Name.setText(army1Stored.getName());
-        army1Name.setAlignment(Pos.CENTER);
-        army2Name.setText(army2Stored.getName());
-        army2Name.setAlignment(Pos.CENTER);
-        Platform.runLater(this::loadArmies);
+        Platform.runLater(() -> {
+            loadArmies();
+            army1Name.setText(army1Stored.getName());
+            army1Name.setAlignment(Pos.CENTER);
+            army2Name.setText(army2Stored.getName());
+            army2Name.setAlignment(Pos.CENTER);
+        });
     }
 
     /**
