@@ -70,7 +70,6 @@ public class EditArmyController implements Initializable {
         healthColumn2.setCellValueFactory(new PropertyValueFactory<>("Health"));
         attackColumn2.setCellValueFactory(new PropertyValueFactory<>("Attack"));
         armorColumn2.setCellValueFactory(new PropertyValueFactory<>("Armor"));
-
         fillTableViewArmy1();
         fillTableViewArmy2();
         army1Name.setEditable(false);
@@ -80,31 +79,29 @@ public class EditArmyController implements Initializable {
     }
 
     private void fillTableViewArmy1() {
-        try {
-            this.army1 = readArmy(PATH_TO_ARMY_1);
-            army1Name.setText(army1.getName());
-            amountOfUnits.setText("Total units: " + army1.getUnitList().size());
-            unitTypeColumn.setCellValueFactory(p -> new ReadOnlyObjectWrapper<>(p.getValue()
-                    .getClass()
-                    .getSimpleName()));
-            tableViewArmy1.setItems(FXCollections.observableList(army1.getUnitList()));
-        } catch (NullPointerException e) {
-            //TODO:Maybe add a dialog here
+        this.army1 = readArmy(PATH_TO_ARMY_1);
+        if (army1 == null ) {
+            return;
         }
+        army1Name.setText(army1.getName());
+        amountOfUnits.setText("Total units: " + army1.getUnitList().size());
+        unitTypeColumn.setCellValueFactory(p -> new ReadOnlyObjectWrapper<>(p.getValue()
+                .getClass()
+                .getSimpleName()));
+        tableViewArmy1.setItems(FXCollections.observableList(army1.getUnitList()));
     }
 
     private void fillTableViewArmy2() {
-        try {
-            this.army2 = readArmy(PATH_TO_ARMY_2);
-            army2Name.setText(army2.getName());
-            amountOfUnits2.setText("Total units: " + army2.getUnitList().size());
-            unitTypeColumn2.setCellValueFactory(p -> new ReadOnlyObjectWrapper<>(p.getValue()
-                    .getClass()
-                    .getSimpleName()));
-            tableViewArmy2.setItems(FXCollections.observableList(army2.getUnitList()));
-        } catch (NullPointerException e) {
-            //TODO:Maybe add a dialog here
+        this.army2 = readArmy(PATH_TO_ARMY_2);
+        if (army2 == null) {
+            return;
         }
+        army2Name.setText(army2.getName());
+        amountOfUnits2.setText("Total units: " + army2.getUnitList().size());
+        unitTypeColumn2.setCellValueFactory(p -> new ReadOnlyObjectWrapper<>(p.getValue()
+                .getClass()
+                .getSimpleName()));
+        tableViewArmy2.setItems(FXCollections.observableList(army2.getUnitList()));
     }
 
     private Army readArmy(String path) {
