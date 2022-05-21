@@ -65,7 +65,6 @@ public class QuickBattleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillTerrainComboBox();
-        loadArmies();
         textArea.setEditable(false);
         army1Name.setEditable(false);
         army2Name.setEditable(false);
@@ -75,6 +74,7 @@ public class QuickBattleController implements Initializable {
         army1Name.setAlignment(Pos.CENTER);
         army2Name.setText(army2Stored.getName());
         army2Name.setAlignment(Pos.CENTER);
+        Platform.runLater(this::loadArmies);
     }
 
     /**
@@ -148,7 +148,7 @@ public class QuickBattleController implements Initializable {
         try {
             this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
             this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
-        } catch (IOException e) {
+        }catch (IOException e) {
             Dialogs.getInstance().cannotLoadScene();
         }
     }
