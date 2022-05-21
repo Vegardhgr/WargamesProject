@@ -20,6 +20,7 @@ import java.util.List;
  */
 public class CSVFileHandler {
 
+    //Private constructor to prevent instantiation
     private CSVFileHandler() {
     }
 
@@ -31,8 +32,9 @@ public class CSVFileHandler {
      * @return Army, an army object
      * @throws IOException,                   if the file does not exist
      * @throws NumberFormatException,         if a String cannot be parsed to an integer
+     * @throws NullPointerException,          if the file is not found
      */
-    public static Army readCSVArmy(String filename) throws IOException, NumberFormatException {
+    public static Army readCSVArmy(String filename) throws IOException, NumberFormatException, NullPointerException {
         String armyName = null;
         boolean isAUnit = true;
         List<Unit> unitsFromFile = new ArrayList<>();
@@ -71,13 +73,6 @@ public class CSVFileHandler {
                 }
                 iterations++;
             }
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException("Wrong input. " + e.getMessage());
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ArrayIndexOutOfBoundsException("Please make sure that you have entered three values, " +
-                    "and that all the values are seperated with comma");
         }
         if (!isAUnit)
             throw new IllegalArgumentException("Please enter a legal unit type");
@@ -98,8 +93,6 @@ public class CSVFileHandler {
             for (Unit unit : army.getUnitList()) {
                 writer.write(unit.getClass().getSimpleName() + "," + unit.getName() + "," + unit.getHealth() + "\n");
             }
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
         }
     }
 
@@ -112,20 +105,13 @@ public class CSVFileHandler {
      * @throws IOException,                   if the file does not exist
      * @throws NumberFormatException,         if a String cannot be parsed to an integer
      */
-    public static String readCSVArmyPath(String filename) throws IOException, NumberFormatException {
+    public static String readCSVArmyPath(String filename) throws IOException {
         Path path = Path.of(filename);
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String lineOfText;
             if ((lineOfText = reader.readLine()) != null) {
                 return lineOfText;
             }
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException("Wrong input. " + e.getMessage());
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ArrayIndexOutOfBoundsException("Please make sure that you have entered three values, " +
-                    "and that all the values are seperated with comma");
         }
         return null;
     }
@@ -143,8 +129,6 @@ public class CSVFileHandler {
                     String contentToBeWritten = Path.of(content).toAbsolutePath().toString();
                         writer.write(contentToBeWritten + "\n");
                 }
-            } catch(IOException e){
-                throw new IOException(e.getMessage());
             }
         }
     }
