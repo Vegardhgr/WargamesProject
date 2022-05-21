@@ -3,7 +3,7 @@ package no.ntnu.idatg2001.wargames.utilities;
 import javafx.scene.control.Alert;
 
 /**
- * This class contains often used dialogs
+ * This class contains dialogs to inform the user.
  */
 public class Dialogs {
     private static volatile Dialogs instance;
@@ -35,6 +35,17 @@ public class Dialogs {
     }
 
     /**
+     * Shows an error dialog if the file cannot be read as an army.
+     */
+    public void cannotReadArmies() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Army error");
+        alert.setContentText("Check that the selected file can be read as an army.");
+        alert.showAndWait();
+    }
+
+    /**
      * Shows an error dialog if the file is not found
      */
     public void fileNotFound() {
@@ -58,7 +69,7 @@ public class Dialogs {
     }
 
     /**
-     * Informs the user to close the file
+     * Informs the user to select a terrain
      */
     public void selectTerrain() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -69,7 +80,7 @@ public class Dialogs {
     }
 
     /**
-     * Informs the user to close the file
+     * Informs the user that there are too many units in the army
      */
     public void tooManyUnits() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -87,6 +98,17 @@ public class Dialogs {
         alert.setTitle("Information");
         alert.setHeaderText("Select number of battles");
         alert.setContentText("Selecting a number of battles is required before running the simulation.");
+        alert.showAndWait();
+    }
+
+    /**
+     * Informs the user to select a file
+     */
+    public void noFileIsSelected() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText("No file selected");
+        alert.setContentText("Please go to 'Create Army' and select a file.");
         alert.showAndWait();
     }
 }
