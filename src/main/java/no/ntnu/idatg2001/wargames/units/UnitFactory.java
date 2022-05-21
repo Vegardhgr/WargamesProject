@@ -3,7 +3,13 @@ package no.ntnu.idatg2001.wargames.units;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class creates units.
+ *
+ * @author Vegard Grøder
+ */
 public class UnitFactory {
+    //The instance of this class
     private static UnitFactory instance;
 
     // Private constructor to prevent instantiation
@@ -37,7 +43,7 @@ public class UnitFactory {
     }
 
     /**
-     * Creates a list of units of the given type
+     * Creates and returns a list of units of the given type
      * @param unitType, the type of units to create
      * @param name, the name of the units
      * @param health, the health of the units

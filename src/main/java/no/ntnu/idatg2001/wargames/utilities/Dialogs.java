@@ -6,7 +6,9 @@ import javafx.scene.control.Alert;
  * This class contains dialogs to inform the user.
  */
 public class Dialogs {
+    //The instance of the class
     private static volatile Dialogs instance;
+    //Private constructor to prevent instantiation
     private Dialogs() {}
 
     /**
@@ -31,6 +33,18 @@ public class Dialogs {
         alert.setTitle("Error");
         alert.setHeaderText("Path error");
         alert.setContentText("Cannot load the scene.");
+        alert.showAndWait();
+    }
+
+    /**
+     * Shows an error dialog if the path to the file does
+     * not exist.
+     */
+    public void somethingWrongWithTheFile() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("File error");
+        alert.setContentText("Something wrong happened with the file.");
         alert.showAndWait();
     }
 

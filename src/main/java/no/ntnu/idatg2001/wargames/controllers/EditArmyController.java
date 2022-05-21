@@ -19,47 +19,79 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The controller for the EditArmy.fxml file.
+ *
+ * @author Vegard Grøder
+ */
 public class EditArmyController implements Initializable {
+    //The path to the path where army1 is stored
     private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
+    //The path to the path where army2 is stored
     private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
     Army army1;
     Army army2;
+
+    //Text field for the name of army1
     @FXML
     TextField army1Name;
+    //The text field for the number of units in army1
     @FXML
     TextField amountOfUnits;
+    //Table view for the units in army1
     @FXML
     TableView<Unit> tableViewArmy1;
+    //Table column for a unit's type in army1
     @FXML
     TableColumn<Unit, String> unitTypeColumn;
+    //Table column for a unit's name in army1
     @FXML
     TableColumn<Unit, String> nameColumn;
+    //Table column for a unit's health in army1
     @FXML
     TableColumn<Unit, Integer> healthColumn;
+    //Table column for a unit's attack in army1
     @FXML
     TableColumn<Unit, Integer> attackColumn;
+    //Table column for a unit's armor in army1
     @FXML
     TableColumn<Unit, Integer> armorColumn;
 
+    //Text field for the name of army2
     @FXML
     TextField army2Name;
+    //The text field for the number of units in army2
     @FXML
     TextField amountOfUnits2;
+    //Table view for the units in army2
     @FXML
     TableView<Unit> tableViewArmy2;
+    //Table column for a unit's type in army2
     @FXML
     TableColumn<Unit, String> unitTypeColumn2;
+    //Table column for a unit's name in army2
     @FXML
     TableColumn<Unit, String> nameColumn2;
+    //Table column for a unit's health in army2
     @FXML
     TableColumn<Unit, Integer> healthColumn2;
+    //Table column for a unit's attack in army2
     @FXML
     TableColumn<Unit, Integer> attackColumn2;
+    //Table column for a unit's armor in army2
     @FXML
     TableColumn<Unit, Integer> armorColumn2;
 
+    /**
+     * Fills the table views with units from each army. Also fills the text fields
+     * with the names of the armies and the number of units in each army.
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Sets a cell value factory for each column in the table view
         unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("UnitType"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         healthColumn.setCellValueFactory(new PropertyValueFactory<>("Health"));
@@ -70,7 +102,9 @@ public class EditArmyController implements Initializable {
         healthColumn2.setCellValueFactory(new PropertyValueFactory<>("Health"));
         attackColumn2.setCellValueFactory(new PropertyValueFactory<>("Attack"));
         armorColumn2.setCellValueFactory(new PropertyValueFactory<>("Armor"));
+        //Fills the table view with units from army1
         fillTableViewArmy1();
+        //Fills the table view with units from army2
         fillTableViewArmy2();
         army1Name.setEditable(false);
         army2Name.setEditable(false);
@@ -78,6 +112,9 @@ public class EditArmyController implements Initializable {
         amountOfUnits2.setEditable(false);
     }
 
+    /**
+     * Fills the table view with units from army1.
+     */
     private void fillTableViewArmy1() {
         this.army1 = readArmy(PATH_TO_ARMY_1);
         if (army1 == null ) {
@@ -91,6 +128,9 @@ public class EditArmyController implements Initializable {
         tableViewArmy1.setItems(FXCollections.observableList(army1.getUnitList()));
     }
 
+    /**
+     * Fills the table view with units from army2.
+     */
     private void fillTableViewArmy2() {
         this.army2 = readArmy(PATH_TO_ARMY_2);
         if (army2 == null) {
@@ -104,6 +144,12 @@ public class EditArmyController implements Initializable {
         tableViewArmy2.setItems(FXCollections.observableList(army2.getUnitList()));
     }
 
+    /**
+     * Reads the army from the path specified.
+     *
+     * @param path, the path to the army.
+     * @return Army, the army.
+     */
     private Army readArmy(String path) {
         try {
             String pathToArmy = CSVFileHandler.readCSVArmyPath(path);
@@ -116,20 +162,33 @@ public class EditArmyController implements Initializable {
         return null;
     }
 
+    /**
+     * Goes back to the main screen.
+     *
+     * @param event, a mouse event.
+     */
     @FXML
     private void backToMainScreen(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
 
+    /**
+     * Goes to the add unit screen.
+     *
+     * @param event, a mouse event.
+     */
     @FXML
     private void addUnit(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadAddUnit(event);
     }
 
+    /**
+     * Removes the selected unit.
+     * @throws IOException, if there is something wrong with the file.
+     */
     @FXML
     private void removeUnit() throws IOException {
         if (tableViewArmy1.getSelectionModel().getSelectedItem() != null) {
-
             removeUnitHandler(tableViewArmy1, PATH_TO_ARMY_1);
             amountOfUnits.setText("Total units: " + this.army1.getUnitList().size());
         } else {
@@ -139,6 +198,12 @@ public class EditArmyController implements Initializable {
         }
     }
 
+    /**
+     * Removes the selected unit.
+     * @param tableViewArmy, the table view of the army.
+     * @param pathToArmy, the path to the army.
+     * @throws IOException, if there is something wrong with the file.
+     */
     private void removeUnitHandler(TableView<Unit> tableViewArmy, String pathToArmy) throws IOException {
         Unit unit = tableViewArmy.getSelectionModel().getSelectedItem();
         tableViewArmy.getItems().remove(unit);
@@ -147,10 +212,19 @@ public class EditArmyController implements Initializable {
         CSVFileHandler.writeCSVArmy(army, CSVFileHandler.readCSVArmyPath(pathToArmy));
     }
 
+    /**
+     * Clears the selection of the table view where army2 is stored,
+     * since the table view where army1 is stored is clicked.
+     */
     @FXML
     private void tableViewArmy1Clicked() {
         tableViewArmy2.getSelectionModel().clearSelection();
     }
+
+    /**
+     * Clears the selection of the table view where army1 is stored,
+     * since the table view where army2 is stored is clicked.
+     */
     @FXML
     private void tableViewArmy2Clicked() {
         tableViewArmy1.getSelectionModel().clearSelection();

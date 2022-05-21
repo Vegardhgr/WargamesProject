@@ -5,10 +5,19 @@ import javafx.scene.input.MouseEvent;
 import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.utilities.Dialogs;
 import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
-
 import java.io.IOException;
 
+/**
+ * The controller class for ChooseBattleType.fxml. This class is responsible for
+ * handling which simulation the user selects.
+ *
+ * @author Vegard Grøder
+ */
 public class ChooseBattleTypeController {
+    /**
+     * Loads the animated battle scene.
+     * @param event, a mouse event
+     */
     @FXML
     private void animatedBattle(MouseEvent event) {
         try {
@@ -30,6 +39,10 @@ public class ChooseBattleTypeController {
         }
     }
 
+    /**
+     * Loads the quick battle scene.
+     * @param event, a mouse event
+     */
     @FXML
     private void quickBattle(MouseEvent event) {
         try {
@@ -41,6 +54,10 @@ public class ChooseBattleTypeController {
         }
     }
 
+    /**
+     * Loads the main screen.
+     * @param event, a mouse event
+     */
     @FXML
     private void backToMainScreen(MouseEvent event) {
         SingletonClass.getInstance().getScene().loadMainScreen(event);

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * The controller for the QuickBattle.fxml file. This file contains code
+ * The controller class for the QuickBattle.fxml file. This file contains code
  * for the quick battle simulation.
  *
  * @author Vegard Groder
@@ -30,38 +30,49 @@ public class QuickBattleController implements Initializable {
     private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
     //A path to the path where army2 is stored
     private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
+    //Stores army1
     private Army army1Stored;
+    //Stores army2
     private Army army2Stored;
+    //This army is used in battle
     private Army army1;
+    //This army is used in battle
     private Army army2;
     Battle battle;
+    //The max number of battles
     private static final int MAX_NUMBER_OF_BATTLES = 5000;
 
+    //The combo box for terrain
     @FXML
     ComboBox<Battle.Terrain> terrainComboBox;
-
+    //Text field for the number of battles
     @FXML
     TextField numberOfBattles;
-
+    //Where the winner of each battle is printed
     @FXML
     TextArea textArea;
-
+    //Starts the simulation
     @FXML
     Button startBattleBtn;
-
+    //Where army1's name is written
     @FXML
     TextField army1Name;
-
+    //Where army2's name is written
     @FXML
     TextField army2Name;
-
+    //Where number of wins for army1 is written
     @FXML
     TextField army1Wins;
-
+    //Where number of wins for army2 is written
     @FXML
     TextField army2Wins;
 
-
+    /**
+     * Fills the terrain combo box.
+     *
+     * @param url, the url
+     * @param resourceBundle, the resource bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillTerrainComboBox();
@@ -88,12 +99,17 @@ public class QuickBattleController implements Initializable {
         terrainComboBox.setItems(terrainObservableList);
     }
 
-
+    /**
+     * Scrolls to the top of the text area when a battle is done.
+     */
     final void textUpdated() {
         textArea.setScrollTop(0);
         textArea.setScrollLeft(0);
     }
 
+    /**
+     * Starts a battle and prints the winner of each battle.
+     */
     @FXML
     private void startBattle() {
         if (!numberOfBattles.getText().isBlank()) {
@@ -116,7 +132,7 @@ public class QuickBattleController implements Initializable {
                     }
                     textArea.appendText(i + ". " + winner.getName() + "\n");
                 }
-                //Scrolls to the top of the text area
+                //Scrolls to the top of the text area at when all the battles are done.
                 Platform.runLater(this::textUpdated);
             }
             army1Wins.setText("Wins: " + army1NumberOfWins);
@@ -126,6 +142,9 @@ public class QuickBattleController implements Initializable {
         }
     }
 
+    /**
+     * Input checker for the number of battles field.
+     */
     @FXML
     private void numberOfBattlesHandler() {
         numberOfBattles.textProperty().addListener((observable, oldValue, newValue) -> {

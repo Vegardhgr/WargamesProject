@@ -102,8 +102,7 @@ public class CSVFileHandler {
      *
      * @param filename, the path of the file
      * @return String, path to a file
-     * @throws IOException,                   if the file does not exist
-     * @throws NumberFormatException,         if a String cannot be parsed to an integer
+     * @throws IOException, if the file does not exist
      */
     public static String readCSVArmyPath(String filename) throws IOException {
         Path path = Path.of(filename);
