@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPaneId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller">
+<BorderPane fx:id="borderPaneId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller">
    <top>
       <Text onMouseClicked="#backToMainScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames" BorderPane.alignment="CENTER">
          <font>
@@ -21,15 +21,15 @@
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Text layoutX="245.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army 1" wrappingWidth="111.11688232421875">
+         <Text layoutX="396.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army 1" wrappingWidth="111.11688232421875">
             <font>
                <Font size="33.0" />
             </font>
          </Text>
-         <Text layoutX="53.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click browse and select a file&#10;from your directory " wrappingWidth="170.63658142089844" />
-         <TextField fx:id="pathField" layoutX="53.0" layoutY="172.0" prefHeight="25.0" prefWidth="332.0" text="Path:" />
-         <Button layoutX="407.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#openDirectory" prefHeight="25.0" prefWidth="78.0" text="Browse" />
-         <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="313.0" layoutY="58.0" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
+         <Text layoutX="204.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click browse and select a file&#10;from your directory " wrappingWidth="170.63658142089844" />
+         <TextField fx:id="pathField" layoutX="204.0" layoutY="200.0" prefHeight="25.0" prefWidth="450.0" text="Path:" />
+         <Button layoutX="700.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#openDirectory" prefHeight="25.0" prefWidth="78.0" text="Browse" />
+         <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="464.0" layoutY="63.0" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
             <fill>
                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                   <stops>
@@ -47,11 +47,11 @@
                </RadialGradient>
             </fill>
          </Line>
-         <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToCreateArmyScreen" text="Go Back" />
-         <Button layoutX="53.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#savePathArmy1" prefHeight="25.0" prefWidth="79.0" text="Save" />
-         <Button layoutX="179.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#clearTextField" prefHeight="25.0" prefWidth="80.0" text="Clear" />
-         <Text layoutX="53.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save path" />
-         <Text layoutX="179.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear path" />
+         <Button layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#backToCreateArmyScreen" text="Go Back" />
+         <Button layoutX="204.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#savePathArmy1" prefHeight="25.0" prefWidth="79.0" text="Save" />
+         <Button layoutX="330.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#clearTextField" prefHeight="25.0" prefWidth="80.0" text="Clear" />
+         <Text layoutX="204.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save path" />
+         <Text layoutX="330.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear path" />
       </AnchorPane>
    </center>
 </BorderPane>
