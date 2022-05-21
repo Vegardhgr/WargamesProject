@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.controllers.viewArmyDetails;
+package no.ntnu.idatg2001.wargames.app.viewArmyDetails;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -9,6 +9,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
 import no.ntnu.idatg2001.wargames.utilities.Army;
 import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.utilities.Dialogs;
@@ -86,8 +88,8 @@ public class EditArmyController implements Initializable {
      * Fills the table views with units from each army. Also fills the text fields
      * with the names of the armies and the number of units in each army.
      *
-     * @param url
-     * @param resourceBundle
+     * @param url, the url
+     * @param resourceBundle, the resource bundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -106,8 +108,6 @@ public class EditArmyController implements Initializable {
         fillTableViewArmy1();
         //Fills the table view with units from army2
         fillTableViewArmy2();
-        army1Name.setEditable(false);
-        army2Name.setEditable(false);
         amountOfUnits.setEditable(false);
         amountOfUnits2.setEditable(false);
     }
@@ -169,6 +169,7 @@ public class EditArmyController implements Initializable {
      */
     @FXML
     private void backToMainScreen(MouseEvent event) {
+        checkForChangeInArmyName();
         SingletonClass.getInstance().getScene().loadMainScreen(event);
     }
 
@@ -179,6 +180,7 @@ public class EditArmyController implements Initializable {
      */
     @FXML
     private void addUnit(MouseEvent event) {
+        checkForChangeInArmyName();
         SingletonClass.getInstance().getScene().loadAddUnit(event);
     }
 
@@ -210,6 +212,20 @@ public class EditArmyController implements Initializable {
         String armyName = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(pathToArmy)).getName();
         Army army = new Army(armyName, tableViewArmy.getItems().stream().toList());
         CSVFileHandler.writeCSVArmy(army, CSVFileHandler.readCSVArmyPath(pathToArmy));
+    }
+    private void checkForChangeInArmyName() {
+        try {
+            if (!army1Name.getText().equals(army1.getName())) {
+                Army army1 = new Army(army1Name.getText(), tableViewArmy1.getItems().stream().toList());
+                CSVFileHandler.writeCSVArmy(army1, FetchArmy1Controller.getArmy1Path());
+            }
+            if (!army2Name.getText().equals(army2.getName())) {
+                Army army2 = new Army(army2Name.getText(), tableViewArmy2.getItems().stream().toList());
+                CSVFileHandler.writeCSVArmy(army2, FetchArmy2Controller.getArmy2Path());
+            }
+        } catch (IOException e) {
+            Dialogs.getInstance().somethingWrongWithTheFile();
+        }
     }
 
     /**
