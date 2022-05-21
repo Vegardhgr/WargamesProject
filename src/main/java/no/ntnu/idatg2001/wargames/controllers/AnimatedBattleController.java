@@ -12,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -69,6 +70,9 @@ public class AnimatedBattleController implements Initializable {
     @FXML
     Button resetArmyBtn;
 
+    @FXML
+    Slider sliderSimulationSpeed;
+
     /**
      * Goes back to main screen
      * @param event, a mouse event
@@ -91,14 +95,7 @@ public class AnimatedBattleController implements Initializable {
         this.isArmyOnesTurn = true;
         this.timeline = new Timeline();
         timeline();
-
-        try {
-            loadArmies();
-        } catch (IOException e) {
-            //Todo: Handle exception
-            e.getMessage();
-        }
-
+        loadArmies();
         greatestArmy = checkGreatestArmy();
         int numberOfRows = generateNumberOfRows(greatestArmy);
 
@@ -227,12 +224,15 @@ public class AnimatedBattleController implements Initializable {
 
     /**
      * Loads the armies with new units
-     * @throws IOException, if the files does not exist.
      */
-    public void loadArmies() throws IOException {
-        this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
-        this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
-        refreshArmies();
+    public void loadArmies() {
+        try {
+            this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
+            this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            refreshArmies();
+        } catch (IOException e) {
+            Dialogs.getInstance().cannotReadArmies();
+        }
     }
 
     /**
@@ -244,13 +244,18 @@ public class AnimatedBattleController implements Initializable {
         this.battle = new Battle(army1, army2);
     }
 
+    @FXML
+    private void simulationSpeed() {
+        sliderSimulationSpeed.valueProperty().addListener((observableValue, number, t1) ->
+                timeline.setRate(sliderSimulationSpeed.getValue()));
+    }
+
     /**
      * Starts the timeline
      */
     private void timeline() {
         timeline.setCycleCount(Animation.INDEFINITE);
-        //TODO: Let the user choose the speed of the timeline
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(10), this::oneStepSimulation));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(100), this::oneStepSimulation));
     }
 
     /**
@@ -313,7 +318,7 @@ public class AnimatedBattleController implements Initializable {
             }
         } else
             //Moves a rectangle in the grid
-            moveRectangleInGridPane(isArmyOnesTurn, attackingRectangle);
+            moveRectangleInGridPane(attackingRectangle);
         //Switches which army that is the attacking part
         isArmyOnesTurn = !isArmyOnesTurn;
 
@@ -325,10 +330,9 @@ public class AnimatedBattleController implements Initializable {
 
     /**
      * Moves the rectangles in the grid pane
-     * @param isArmyOnesTurn, true if it is army1's turn
      * @param attackingRectangle, the rectangle that represents the unit that attacks
      */
-    public void moveRectangleInGridPane(boolean isArmyOnesTurn, Rectangle attackingRectangle) {
+    public void moveRectangleInGridPane(Rectangle attackingRectangle) {
         if (isArmyOnesTurn) {
             //This code describes how a unit from army1 should move in the grid pain
             if (((gridPane.getColumnCount()-1)/2 > rectangleColumn) && getNodeFromGridPane(rectangleColumn + 1, rectangleRow) == null) {
@@ -343,6 +347,9 @@ public class AnimatedBattleController implements Initializable {
             } else if ((rectangleColumn > 0) && getNodeFromGridPane(rectangleColumn - 1, rectangleRow) == null) {
                 gridPane.getChildren().remove(attackingRectangle);
                 gridPane.add(attackingRectangle, rectangleColumn - 1, rectangleRow);
+            } else {
+                //If the unit cannot move, it is the same army's turn next time
+                this.isArmyOnesTurn = !isArmyOnesTurn;
             }
         } else {
             //This code describes how a unit from army2 should move in the grid pain
@@ -358,6 +365,9 @@ public class AnimatedBattleController implements Initializable {
             } else if ((gridPane.getColumnCount()-1 > rectangleColumn) && getNodeFromGridPane(rectangleColumn + 1, rectangleRow) == null) {
                 gridPane.getChildren().remove(attackingRectangle);
                 gridPane.add(attackingRectangle, rectangleColumn + 1, rectangleRow);
+            } else {
+                //If the unit cannot move, it is the same army's turn next time
+                this.isArmyOnesTurn = !isArmyOnesTurn;
             }
         }
     }
@@ -386,10 +396,9 @@ public class AnimatedBattleController implements Initializable {
 
     /**
      * Changes the color of the grid pane based on the terrain that is selected
-     * @param event, an action event
      */
     @FXML
-    private void changeBattleColor(ActionEvent event) {
+    private void changeBattleColor() {
         Battle.Terrain selectedTerrain = terrainComboBox.getSelectionModel().getSelectedItem();
         if (selectedTerrain.equals(Battle.Terrain.FOREST)) {
             gridPane.setBackground(new Background(
