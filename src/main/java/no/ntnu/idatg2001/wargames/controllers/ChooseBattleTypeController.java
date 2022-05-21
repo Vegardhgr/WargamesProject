@@ -23,14 +23,22 @@ public class ChooseBattleTypeController {
             } else {
                 SingletonClass.getInstance().getScene().loadAnimatedBattle(event);
             }
-        } catch (IOException e) {
+        } catch (IOException|IndexOutOfBoundsException e) {
             Dialogs.getInstance().cannotLoadScene();
+        } catch (NullPointerException e) {
+            Dialogs.getInstance().noFileIsSelected();
         }
     }
 
     @FXML
     private void quickBattle(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadQuickBattle(event);
+        try {
+            SingletonClass.getInstance().getScene().loadQuickBattle(event);
+        } catch (IndexOutOfBoundsException e) {
+            Dialogs.getInstance().cannotLoadScene();
+        } catch (NullPointerException e) {
+            Dialogs.getInstance().noFileIsSelected();
+        }
     }
 
     @FXML
