@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.controllers;
+package no.ntnu.idatg2001.wargames.controllers.viewArmyDetails;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -9,6 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
 import no.ntnu.idatg2001.wargames.utilities.Army;
 import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.utilities.Dialogs;

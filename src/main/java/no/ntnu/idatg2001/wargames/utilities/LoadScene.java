@@ -43,7 +43,7 @@ public class LoadScene {
      * @param event, a mouse event
      */
     public void loadMainScreen(MouseEvent event) {
-        String path = "/fxmlFiles/createArmy/MainScreen.fxml";
+        String path = "/fxmlFiles/mainScreen/MainScreen.fxml";
         loadScene(event, path);
     }
 
