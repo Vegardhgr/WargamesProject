@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.controllers;
+package no.ntnu.idatg2001.wargames.controllers.viewArmyDetails;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;

@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.controllers;
+package no.ntnu.idatg2001.wargames.controllers.mainScreen;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

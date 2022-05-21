@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames;
+package no.ntnu.idatg2001.wargames.utilities;
 
 import no.ntnu.idatg2001.wargames.units.*;
 import no.ntnu.idatg2001.wargames.utilities.Army;
@@ -15,7 +15,7 @@ class CSVFileHandlerTest {
     void readCSVTest() throws IOException {
         Army army = CSVFileHandler.readCSVArmy("src/humanArmyTestFile.csv");
         Assertions.assertEquals("Human Army", army.getName());
-        Assertions.assertEquals(273, army.getUnitList().size());
+        Assertions.assertEquals(14, army.getUnitList().size());
     }
 
     @Test
