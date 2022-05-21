@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.viewArmyDetails.AddUnitController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.app.viewArmyDetails.AddUnitController">
     <top>
         <Text onMouseClicked="#backToMainScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames" BorderPane.alignment="CENTER">
             <font>
@@ -22,13 +22,13 @@
     </top>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <Text layoutX="234.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Unit" wrappingWidth="131.79376220703125">
+            <Text layoutX="389.0" layoutY="67.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Unit" wrappingWidth="131.79376220703125">
                 <font>
                     <Font size="33.0" />
                 </font>
             </Text>
-            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#backToEditArmy" text="Go Back" />
-            <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="313.0" layoutY="46.0" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
+            <Button layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#backToEditArmy" text="Go Back" />
+            <Line endX="92.6922607421875" endY="-3.814697265625E-6" layoutX="467.0" layoutY="82.0" scaleX="1.5" scaleY="1.5" startX="-118.4000244140625" startY="-3.814697265625E-6" strokeType="OUTSIDE">
                 <fill>
                     <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                         <stops>
@@ -46,29 +46,29 @@
                     </RadialGradient>
                 </fill>
             </Line>
-            <TextField fx:id="nameField" layoutX="141.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" promptText="Name" />
-            <TextField fx:id="healthField" layoutX="314.0" layoutY="172.0" onKeyPressed="#healthFieldInputChecker" prefHeight="25.0" prefWidth="150.0" promptText="Health" />
-            <Text layoutX="98.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional field is not filled out, default value &quot;1&quot; will be used.">
+            <TextField fx:id="nameField" layoutX="217.0" layoutY="280.0" prefHeight="30.0" prefWidth="200.0" promptText="Name" />
+            <TextField fx:id="healthField" layoutX="503.0" layoutY="280.0" onKeyPressed="#healthFieldInputChecker" prefHeight="30.0" prefWidth="200.0" promptText="Health" />
+            <Text layoutX="247.0" layoutY="116.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="The unit will be added to the file that is selected in &quot;Create Army&quot;. &#10;If the optional field is not filled out, default value &quot;1&quot; will be used." translateY="10.0">
                 <font>
                     <Font size="14.0" />
                 </font>
             </Text>
-            <ComboBox fx:id="unitTypeComboBox" layoutX="141.0" layoutY="136.0" prefWidth="150.0" promptText="Unit Type" />
-            <Text layoutX="247.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required fields">
+            <ComboBox fx:id="unitTypeComboBox" layoutX="217.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" promptText="Unit Type" />
+            <Text layoutX="404.0" layoutY="173.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Required fields" translateY="10.0">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Text>
-            <Line endX="169.0" layoutX="295.0" layoutY="132.0" startX="-153.95384216308594" />
-            <Button layoutX="474.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="65.0" text="Add" />
-         <ComboBox fx:id="armyComboBox" layoutX="314.0" layoutY="136.0" onAction="#armyComboBoxAction" prefWidth="150.0" promptText="Army" />
-         <TextField fx:id="quantityField" layoutX="227.0" layoutY="225.0" onKeyPressed="#quantityFieldInputChecker" prefWidth="150.0" promptText="Quantity" />
-         <Text layoutX="251.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Optional field">
+            <Line endX="169.0" layoutX="452.0" layoutY="180.0" scaleX="1.5" scaleY="1.5" startX="-153.95384216308594" translateY="10.0" />
+            <Button layoutX="730.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="65.0" text="Add" />
+         <ComboBox fx:id="armyComboBox" layoutX="503.0" layoutY="200.0" onAction="#armyComboBoxAction" prefHeight="30.0" prefWidth="200.0" promptText="Army" />
+         <TextField fx:id="quantityField" layoutX="359.0" layoutY="372.0" onKeyPressed="#quantityFieldInputChecker" prefHeight="30.0" prefWidth="200.0" promptText="Quantity" />
+         <Text layoutX="408.0" layoutY="306.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Optional field" translateY="40.0">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Line endX="169.0" layoutX="295.0" layoutY="218.0" startX="-153.95384216308594" />
+         <Line endX="169.0" layoutX="451.0" layoutY="318.0" scaleX="1.5" scaleY="1.5" startX="-153.95384216308594" translateY="40.0" />
         </AnchorPane>
     </center>
 </BorderPane>

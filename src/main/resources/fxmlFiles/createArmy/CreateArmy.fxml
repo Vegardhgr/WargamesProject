@@ -6,12 +6,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.createArmy.CreateArmyController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.createArmy.CreateArmyController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Button layoutX="239.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#fetchArmy2Screen" prefHeight="55.0" prefWidth="122.0" text="Fetch Army 2" />
-         <Button layoutX="239.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#fetchArmy1Screen" prefHeight="55.0" prefWidth="122.0" text="Fetch Army 1" />
-         <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Go Back" />
+         <Button layoutX="381.0" layoutY="261.0" mnemonicParsing="false" onMouseClicked="#fetchArmy2Screen" prefHeight="54.0" prefWidth="147.0" text="Fetch Army 2" />
+         <Button layoutX="381.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#fetchArmy1Screen" prefHeight="54.0" prefWidth="147.0" text="Fetch Army 1" />
+         <Button layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Go Back" />
       </AnchorPane>
    </center>
    <top>
