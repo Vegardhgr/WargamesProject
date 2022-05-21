@@ -15,6 +15,8 @@ import java.util.Objects;
  * This class loads the different scenes
  */
 public class LoadScene {
+    private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
+    private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
     /**
      * Loads the scenes
      * @param event, the mouse event
@@ -52,31 +54,54 @@ public class LoadScene {
     }
 
     /**
-     * Sends the loadEditArmy path to the loadScene method
+     * Sends the loadAnimatedBattle path to the loadScene method if the armies are valid
      * @param event, the mouse event
      */
     public void loadAnimatedBattle(MouseEvent event) {
-        String path = "/fxmlFiles/simulateBattle/AnimatedBattle.fxml";
-        loadScene(event, path);
+        try {
+            //Checks if the armies are valid
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            String path = "/fxmlFiles/simulateBattle/AnimatedBattle.fxml";
+            loadScene(event, path);
+        } catch (IOException e) {
+            Dialogs.getInstance().cannotLoadScene();
+        }
     }
 
     /**
-     * Sends the quickBattle path to the loadScene method
+     * Sends the quickBattle path to the loadScene method if the armies are valid
      * @param event, the mouse event
      */
     public void loadQuickBattle(MouseEvent event) {
-        String path = "/fxmlFiles/simulateBattle/QuickBattle.fxml";
-        loadScene(event, path);
+        try {
+            //Checks if the armies are valid
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            String path = "/fxmlFiles/simulateBattle/QuickBattle.fxml";
+            loadScene(event, path);
+        } catch (IOException e) {
+            Dialogs.getInstance().cannotLoadScene();
+        }
     }
 
 
     /**
-     * Sends the loadEditArmy path to the loadScene method
+     * Sends the loadEditArmy path to the loadScene method if the armies are valid
      * @param event, the mouse event
      */
     public void loadEditArmy(MouseEvent event) {
-        String path = "/fxmlFiles/viewArmyDetails/EditArmy.fxml";
-        loadScene(event, path);
+        try {
+            //Checks if the armies are valid
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            String path = "/fxmlFiles/viewArmyDetails/EditArmy.fxml";
+            loadScene(event, path);
+        } catch (NullPointerException e) {
+            Dialogs.getInstance().noFileIsSelected();
+        } catch (IOException|ArrayIndexOutOfBoundsException e) {
+            Dialogs.getInstance().cannotLoadScene();
+        }
     }
 
     /**
