@@ -52,6 +52,7 @@
          <Button layoutX="330.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#clearTextField" prefHeight="25.0" prefWidth="80.0" text="Clear" />
          <Text layoutX="204.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save path" />
          <Text layoutX="330.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear path" />
+         <Button layoutX="791.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#createNewFile" prefHeight="25.0" prefWidth="78.0" text="New file" />
       </AnchorPane>
    </center>
 </BorderPane>

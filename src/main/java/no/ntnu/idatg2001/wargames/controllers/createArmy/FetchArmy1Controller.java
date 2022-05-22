@@ -13,6 +13,7 @@ import no.ntnu.idatg2001.wargames.utilities.LoadScene;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -78,6 +79,32 @@ public class FetchArmy1Controller implements Initializable{
 
         if (file != null)
             pathField.setText(file.getAbsolutePath());
+    }
+
+    /**
+     * Opens the file chooser and sets the path in the text field
+     */
+    @FXML
+    private void createNewFile() {
+        FileChooser fileChooser = new FileChooser();
+        Stage stage = (Stage) borderPaneId.getScene().getWindow();
+        File file = fileChooser.showSaveDialog(stage);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("csv", ".csv"));
+        if (file != null) {
+            printFileToDirectory(file.getAbsolutePath());
+            pathField.setText(file.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Creates the path the user wrote
+     * @param path, the path the user wrote
+     */
+    private void printFileToDirectory(String path) {
+        try (PrintWriter writer = new PrintWriter(path)) {
+        } catch (IOException e) {
+            Dialogs.getInstance().somethingWrongWithTheFile();
+        }
     }
 
     /**
