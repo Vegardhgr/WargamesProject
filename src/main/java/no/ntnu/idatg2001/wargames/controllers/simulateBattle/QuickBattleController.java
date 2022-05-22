@@ -130,7 +130,7 @@ public class QuickBattleController implements Initializable {
                     } else {
                         army2NumberOfWins++;
                     }
-                    textArea.appendText(i + ". " + winner.getName() + "\n");
+                    textArea.appendText(i + ". " + winner.getName() + ". Health left: " + winner.getTotalHealth() + "\n");
                 }
                 //Scrolls to the top of the text area at when all the battles are done.
                 Platform.runLater(this::textUpdated);
