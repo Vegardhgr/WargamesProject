@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.app.viewArmyDetails;
+package no.ntnu.idatg2001.wargames.controllers.viewArmyDetails;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -215,13 +215,19 @@ public class EditArmyController implements Initializable {
     }
     private void checkForChangeInArmyName() {
         try {
+            if (army1Name.getText() == null) {
+                army1Name.setText("");
+            }
             if (!army1Name.getText().equals(army1.getName())) {
-                Army army1 = new Army(army1Name.getText(), tableViewArmy1.getItems().stream().toList());
-                CSVFileHandler.writeCSVArmy(army1, FetchArmy1Controller.getArmy1Path());
+                Army army1WithNewName = new Army(army1Name.getText(), tableViewArmy1.getItems().stream().toList());
+                CSVFileHandler.writeCSVArmy(army1WithNewName, FetchArmy1Controller.getArmy1Path());
+            }
+            if (army2Name.getText() == null) {
+                army2Name.setText("");
             }
             if (!army2Name.getText().equals(army2.getName())) {
-                Army army2 = new Army(army2Name.getText(), tableViewArmy2.getItems().stream().toList());
-                CSVFileHandler.writeCSVArmy(army2, FetchArmy2Controller.getArmy2Path());
+                Army army2WithNewName = new Army(army2Name.getText(), tableViewArmy2.getItems().stream().toList());
+                CSVFileHandler.writeCSVArmy(army2WithNewName, FetchArmy2Controller.getArmy2Path());
             }
         } catch (IOException e) {
             Dialogs.getInstance().somethingWrongWithTheFile();

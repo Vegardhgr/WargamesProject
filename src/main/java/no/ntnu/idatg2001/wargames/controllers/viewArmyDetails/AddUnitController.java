@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.app.viewArmyDetails;
+package no.ntnu.idatg2001.wargames.controllers.viewArmyDetails;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
