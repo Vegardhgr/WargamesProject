@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -86,6 +87,15 @@ public class AnimatedBattleController implements Initializable {
     @FXML
     Slider sliderSimulationSpeed;
 
+    //Text field where army1's total health is stored
+    @FXML
+    TextField army1TotalHealth;
+
+    //Text field where army2's total health is stored
+    @FXML
+    TextField army2TotalHealth;
+
+
     /**
      * Goes back to main screen
      * @param event, a mouse event
@@ -124,6 +134,9 @@ public class AnimatedBattleController implements Initializable {
         makeArmy1Rectangles();
         //Creates the rectangles for army2 in the grid pane
         makeArmy2Rectangles();
+        //Displays the total health of the armies in the text fields
+        army2TotalHealth.setText(army2.getName() + " Total health left: " + army2.getTotalHealth());
+        army1TotalHealth.setText(army1.getName() + " Total health left: " + army1.getTotalHealth());
     }
 
     /**
@@ -334,6 +347,7 @@ public class AnimatedBattleController implements Initializable {
             Unit defendingUnit = defender.getUnitList().get(defendingRectangleList.indexOf(defendingRectangle));
             //removeRectangle is true if the defending unit is dead
             boolean removeRectangle = battle.oneStepBattle(attacker, defendingUnit);
+            updateArmyHealth();
             if (removeRectangle) {
                 //Removes the rectangle from the grid pane
                 gridPane.getChildren().remove(defendingRectangle);
@@ -462,6 +476,16 @@ public class AnimatedBattleController implements Initializable {
             }
         }
         return null;
+    }
+
+    /**
+     * Updates the text field where the armies' health is displayed
+     */
+    private void updateArmyHealth() {
+        if (isArmyOnesTurn)
+            army2TotalHealth.setText(army2.getName() + " Total health left: " + army2.getTotalHealth());
+        else
+            army1TotalHealth.setText(army1.getName() + " Total health left: " + army1.getTotalHealth());
     }
 
     /**

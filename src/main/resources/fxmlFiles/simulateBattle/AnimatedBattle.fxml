@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -24,6 +25,8 @@
                     <RowConstraints minHeight="0.0" prefHeight="10.0" vgrow="SOMETIMES" />
                 </rowConstraints>
             </GridPane>
+         <TextField fx:id="army1TotalHealth" layoutX="85.0" layoutY="477.0" prefHeight="25.0" prefWidth="320.0" />
+         <TextField fx:id="army2TotalHealth" layoutX="425.0" layoutY="477.0" prefHeight="25.0" prefWidth="320.0" />
         </AnchorPane>
     </center>
     <top>

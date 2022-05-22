@@ -207,4 +207,17 @@ public class Army {
         }
         return false;
     }
+
+    /**
+     * Returns an int of the total army health
+     *
+     * @return int, total army health
+     */
+    public long getTotalHealth() {
+        long totalHealth = 0;
+        for (Unit unit : this.unitList) {
+            totalHealth += unit.getHealth();
+        }
+        return totalHealth;
+    }
 }
