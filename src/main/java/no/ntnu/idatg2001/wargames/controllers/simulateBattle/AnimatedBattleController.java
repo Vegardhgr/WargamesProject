@@ -95,6 +95,10 @@ public class AnimatedBattleController implements Initializable {
     @FXML
     TextField army2TotalHealth;
 
+    //Text field where the speed of the simulation is stored
+    @FXML
+    TextField simulationSpeedDisplay;
+
 
     /**
      * Goes back to main screen
@@ -135,8 +139,16 @@ public class AnimatedBattleController implements Initializable {
         //Creates the rectangles for army2 in the grid pane
         makeArmy2Rectangles();
         //Displays the total health of the armies in the text fields
-        army2TotalHealth.setText(army2.getName() + " Total health left: " + army2.getTotalHealth());
-        army1TotalHealth.setText(army1.getName() + " Total health left: " + army1.getTotalHealth());
+        army1TotalHealth.setText(army1.getName() + " total health left: " + army1.getTotalHealth());
+        army2TotalHealth.setText(army2.getName() + " total health left: " + army2.getTotalHealth());
+        //Sets the health of the armies to not be editable
+        army1TotalHealth.setEditable(false);
+        army2TotalHealth.setEditable(false);
+        //Shows the simulation speed with just two decimals
+        String speed = String.format("%.2f", sliderSimulationSpeed.getValue());
+        //Displays the simulation speed in the text field
+        simulationSpeedDisplay.setText(speed);
+        simulationSpeedDisplay.setEditable(false);
     }
 
     /**
@@ -279,8 +291,11 @@ public class AnimatedBattleController implements Initializable {
      */
     @FXML
     private void simulationSpeed() {
-        sliderSimulationSpeed.valueProperty().addListener((observableValue, number, t1) ->
-                timeline.setRate(sliderSimulationSpeed.getValue()));
+        sliderSimulationSpeed.valueProperty().addListener((observableValue, number, t1) -> {
+                timeline.setRate(sliderSimulationSpeed.getValue());
+                String speed = String.format("%.2f", sliderSimulationSpeed.getValue());
+                simulationSpeedDisplay.setText(speed);
+        });
     }
 
     /**
@@ -483,9 +498,9 @@ public class AnimatedBattleController implements Initializable {
      */
     private void updateArmyHealth() {
         if (isArmyOnesTurn)
-            army2TotalHealth.setText(army2.getName() + " Total health left: " + army2.getTotalHealth());
+            army2TotalHealth.setText(army2.getName() + " total health left: " + army2.getTotalHealth());
         else
-            army1TotalHealth.setText(army1.getName() + " Total health left: " + army1.getTotalHealth());
+            army1TotalHealth.setText(army1.getName() + " total health left: " + army1.getTotalHealth());
     }
 
     /**
