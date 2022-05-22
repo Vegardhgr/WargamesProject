@@ -2,7 +2,7 @@ package no.ntnu.idatg2001.wargames.controllers.createArmy;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.LoadScene;
 
 /**
  * The controller class for CreateArmy.fxml. This class is responsible for
@@ -17,7 +17,7 @@ public class CreateArmyController {
      */
     @FXML
     private void backToMainScreen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadMainScreen(event);
+        LoadScene.getInstance().loadMainScreen(event);
     }
 
     /**
@@ -26,7 +26,7 @@ public class CreateArmyController {
      */
     @FXML
     private void fetchArmy1Screen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().fetchArmy1Screen(event);
+        LoadScene.getInstance().fetchArmy1Screen(event);
     }
 
     /**
@@ -35,6 +35,6 @@ public class CreateArmyController {
      */
     @FXML
     private void fetchArmy2Screen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().fetchArmy2Screen(event);
+        LoadScene.getInstance().fetchArmy2Screen(event);
     }
 }

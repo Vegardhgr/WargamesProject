@@ -2,7 +2,7 @@ package no.ntnu.idatg2001.wargames.controllers.mainScreen;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.LoadScene;
 
 /**
  * The controller class for MainScreen.fxml. This class is the main screen
@@ -17,7 +17,7 @@ public class MainScreenController {
      */
     @FXML
     private void simulateBattle(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadChooseBattleType(event);
+        LoadScene.getInstance().loadChooseBattleType(event);
     }
 
     /**
@@ -26,7 +26,7 @@ public class MainScreenController {
      */
     @FXML
     private void editArmy(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadEditArmy(event);
+        LoadScene.getInstance().loadEditArmy(event);
     }
 
     /**
@@ -35,6 +35,6 @@ public class MainScreenController {
      */
     @FXML
     private void loadCreateArmyScene(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadCreateArmyScene(event);
+        LoadScene.getInstance().loadCreateArmyScene(event);
     }
 }

@@ -14,9 +14,10 @@ import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
 import no.ntnu.idatg2001.wargames.utilities.Army;
 import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.utilities.Dialogs;
-import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
 import no.ntnu.idatg2001.wargames.units.Unit;
 import no.ntnu.idatg2001.wargames.units.UnitFactory;
+import no.ntnu.idatg2001.wargames.utilities.LoadScene;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class AddUnitController implements Initializable {
      */
     @FXML
     private void backToEditArmy(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadEditArmy(event);
+        LoadScene.getInstance().loadEditArmy(event);
     }
 
     /**
@@ -239,7 +240,7 @@ public class AddUnitController implements Initializable {
      */
     @FXML
     private void backToMainScreen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadMainScreen(event);
+        LoadScene.getInstance().loadMainScreen(event);
     }
 
     /**
