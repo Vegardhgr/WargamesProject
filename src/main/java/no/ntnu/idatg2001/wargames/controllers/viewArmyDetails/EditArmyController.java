@@ -31,58 +31,58 @@ public class EditArmyController implements Initializable {
     private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
     //The path to the path where army2 is stored
     private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
-    Army army1;
-    Army army2;
+    private Army army1;
+    private Army army2;
 
     //Text field for the name of army1
     @FXML
-    TextField army1Name;
+    private TextField army1Name;
     //The text field for the number of units in army1
     @FXML
-    TextField amountOfUnits;
+    private TextField amountOfUnits;
     //Table view for the units in army1
     @FXML
-    TableView<Unit> tableViewArmy1;
+    private TableView<Unit> tableViewArmy1;
     //Table column for a unit's type in army1
     @FXML
-    TableColumn<Unit, String> unitTypeColumn;
+    private TableColumn<Unit, String> unitTypeColumn;
     //Table column for a unit's name in army1
     @FXML
-    TableColumn<Unit, String> nameColumn;
+    private TableColumn<Unit, String> nameColumn;
     //Table column for a unit's health in army1
     @FXML
-    TableColumn<Unit, Integer> healthColumn;
+    private TableColumn<Unit, Integer> healthColumn;
     //Table column for a unit's attack in army1
     @FXML
-    TableColumn<Unit, Integer> attackColumn;
+    private TableColumn<Unit, Integer> attackColumn;
     //Table column for a unit's armor in army1
     @FXML
-    TableColumn<Unit, Integer> armorColumn;
+    private TableColumn<Unit, Integer> armorColumn;
 
     //Text field for the name of army2
     @FXML
-    TextField army2Name;
+    private TextField army2Name;
     //The text field for the number of units in army2
     @FXML
-    TextField amountOfUnits2;
+    private TextField amountOfUnits2;
     //Table view for the units in army2
     @FXML
-    TableView<Unit> tableViewArmy2;
+    private TableView<Unit> tableViewArmy2;
     //Table column for a unit's type in army2
     @FXML
-    TableColumn<Unit, String> unitTypeColumn2;
+    private TableColumn<Unit, String> unitTypeColumn2;
     //Table column for a unit's name in army2
     @FXML
-    TableColumn<Unit, String> nameColumn2;
+    private TableColumn<Unit, String> nameColumn2;
     //Table column for a unit's health in army2
     @FXML
-    TableColumn<Unit, Integer> healthColumn2;
+    private TableColumn<Unit, Integer> healthColumn2;
     //Table column for a unit's attack in army2
     @FXML
-    TableColumn<Unit, Integer> attackColumn2;
+    private TableColumn<Unit, Integer> attackColumn2;
     //Table column for a unit's armor in army2
     @FXML
-    TableColumn<Unit, Integer> armorColumn2;
+    private TableColumn<Unit, Integer> armorColumn2;
 
     /**
      * Fills the table views with units from each army. Also fills the text fields

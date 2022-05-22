@@ -38,34 +38,34 @@ public class QuickBattleController implements Initializable {
     private Army army1;
     //This army is used in battle
     private Army army2;
-    Battle battle;
+    private Battle battle;
     //The max number of battles
     private static final int MAX_NUMBER_OF_BATTLES = 5000;
 
     //The combo box for terrain
     @FXML
-    ComboBox<Battle.Terrain> terrainComboBox;
+    private ComboBox<Battle.Terrain> terrainComboBox;
     //Text field for the number of battles
     @FXML
-    TextField numberOfBattles;
+    private TextField numberOfBattles;
     //Where the winner of each battle is printed
     @FXML
-    TextArea textArea;
+    private TextArea textArea;
     //Starts the simulation
     @FXML
-    Button startBattleBtn;
+    private Button startBattleBtn;
     //Where army1's name is written
     @FXML
-    TextField army1Name;
+    private TextField army1Name;
     //Where army2's name is written
     @FXML
-    TextField army2Name;
+    private TextField army2Name;
     //Where number of wins for army1 is written
     @FXML
-    TextField army1Wins;
+    private TextField army1Wins;
     //Where number of wins for army2 is written
     @FXML
-    TextField army2Wins;
+    private TextField army2Wins;
 
     /**
      * Fills the terrain combo box.
@@ -93,7 +93,7 @@ public class QuickBattleController implements Initializable {
     /**
      * Fills the terrain combo box with all the terrains
      */
-    public void fillTerrainComboBox() {
+    private void fillTerrainComboBox() {
         List<Battle.Terrain> terrainList = new ArrayList<>(List.of(Battle.Terrain.values()));
         ObservableList<Battle.Terrain> terrainObservableList = FXCollections.observableList(terrainList);
         terrainComboBox.setItems(terrainObservableList);
@@ -102,7 +102,7 @@ public class QuickBattleController implements Initializable {
     /**
      * Scrolls to the top of the text area when a battle is done.
      */
-    final void textUpdated() {
+    private void textUpdated() {
         textArea.setScrollTop(0);
         textArea.setScrollLeft(0);
     }
@@ -165,7 +165,7 @@ public class QuickBattleController implements Initializable {
     /**
      * Loads the armies with new units
      */
-    public void loadArmies() {
+    private void loadArmies() {
         try {
             this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
             this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
@@ -177,7 +177,7 @@ public class QuickBattleController implements Initializable {
     /**
      * Refreshes the armies
      */
-    public void refreshArmies() {
+    private void refreshArmies() {
         this.army1 = new Army(army1Stored);
         this.army2 = new Army(army2Stored);
         this.battle = new Battle(army1, army2);
