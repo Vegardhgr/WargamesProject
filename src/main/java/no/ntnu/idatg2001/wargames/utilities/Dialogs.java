@@ -105,6 +105,17 @@ public class Dialogs {
     }
 
     /**
+     * Informs the user that a simulation without units cannot be run
+     */
+    public void noUnitsInArmy() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText("On or both of your armies have no units");
+        alert.setContentText("Both armies must include at least one unit in order to run a simulation.");
+        alert.showAndWait();
+    }
+
+    /**
      * Informs the user to select a number of battles
      */
     public void selectNumberOfBattles() {
