@@ -14,8 +14,12 @@ import java.io.IOException;
  * @author Vegard Grøder
  */
 public class ChooseBattleTypeController {
-    int numberOfUnitsInArmy1;
-    int numberOfUnitsInArmy2;
+    private int numberOfUnitsInArmy1;
+    private int numberOfUnitsInArmy2;
+
+    /**
+     * Gets the number of units in both armies.
+     */
     private void getNumberOfUnitsInBothArmies() {
         try {
             numberOfUnitsInArmy1 = CSVFileHandler.readCSVArmy(

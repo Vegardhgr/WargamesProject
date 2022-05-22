@@ -69,35 +69,35 @@ public class AnimatedBattleController implements Initializable {
 
     //The grid pane
     @FXML
-    GridPane gridPane;
+    private GridPane gridPane;
 
     //The combo box for terrain
     @FXML
-    ComboBox<Battle.Terrain> terrainComboBox;
+    private ComboBox<Battle.Terrain> terrainComboBox;
 
     //Button to start a simulation
     @FXML
-    Button startSimulationBtn;
+    private Button startSimulationBtn;
 
     //Button to reset the armies and make them ready for a new battle
     @FXML
-    Button resetArmyBtn;
+    private Button resetArmyBtn;
 
     //A slider to change the speed of the simulation
     @FXML
-    Slider sliderSimulationSpeed;
+    private Slider sliderSimulationSpeed;
 
     //Text field where army1's total health is stored
     @FXML
-    TextField army1TotalHealth;
+    private TextField army1TotalHealth;
 
     //Text field where army2's total health is stored
     @FXML
-    TextField army2TotalHealth;
+    private TextField army2TotalHealth;
 
     //Text field where the speed of the simulation is stored
     @FXML
-    TextField simulationSpeedDisplay;
+    private TextField simulationSpeedDisplay;
 
 
     /**
@@ -114,6 +114,7 @@ public class AnimatedBattleController implements Initializable {
      * @param url, the url
      * @param resourceBundle, the resource bundle
      */
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resetArmyBtn.setDisable(true);
         Army greatestArmy;
@@ -156,7 +157,7 @@ public class AnimatedBattleController implements Initializable {
      *
      * @return Army, the greatest army
      */
-    public Army checkGreatestArmy() {
+    private Army checkGreatestArmy() {
         if (army1.getUnitList().size() > army2.getUnitList().size())
             return army1;
         return army2;
@@ -170,7 +171,7 @@ public class AnimatedBattleController implements Initializable {
      * @param greatestArmy, the greatest army
      * @return int, number of rows.
      */
-    public int generateNumberOfRows(Army greatestArmy) {
+    private int generateNumberOfRows(Army greatestArmy) {
         //The least amount of rows is 5
         if (greatestArmy.getUnitList().size() < 25)
             return 5;
@@ -181,7 +182,7 @@ public class AnimatedBattleController implements Initializable {
      * Handles the grid pane
      * @param numberOfRows, the number of rows the grid pane should contain
      */
-    public void gridPaneHandler(int numberOfRows) {
+    private void gridPaneHandler(int numberOfRows) {
         gridPane.getRowConstraints().remove(0);
         gridPane.getColumnConstraints().remove(0);
         gridPane.setGridLinesVisible(false);
@@ -200,7 +201,7 @@ public class AnimatedBattleController implements Initializable {
     /**
      * Creates one rectangle for each unit in army1 and adds it to the grid pane
      */
-    public void makeArmy1Rectangles() {
+    private void makeArmy1Rectangles() {
         int j = 0;
         int i = 0;
         for (Unit unit : this.army1.getUnitList()) {
@@ -229,7 +230,7 @@ public class AnimatedBattleController implements Initializable {
     /**
      * Creates one rectangle for each unit in army2 and adds it to the grid pane
      */
-    public void makeArmy2Rectangles() {
+    private void makeArmy2Rectangles() {
         int j = gridPane.getColumnCount()-1;
         int i = 0;
         for (Unit unit : this.army2.getUnitList()) {
@@ -258,7 +259,7 @@ public class AnimatedBattleController implements Initializable {
     /**
      * Fills the terrain combo box with all the terrains
      */
-    public void fillTerrainComboBox() {
+    private void fillTerrainComboBox() {
         List<Battle.Terrain> terrainList = new ArrayList<>(List.of(Battle.Terrain.values()));
         ObservableList<Battle.Terrain> terrainObservableList = FXCollections.observableList(terrainList);
         terrainComboBox.setItems(terrainObservableList);
@@ -267,7 +268,7 @@ public class AnimatedBattleController implements Initializable {
     /**
      * Stores the two armies in two different variables
      */
-    public void loadArmies() {
+    private void loadArmies() {
         try {
             this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
             this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
@@ -280,7 +281,7 @@ public class AnimatedBattleController implements Initializable {
     /**
      * Refreshes the armies
      */
-    public void refreshArmies() {
+    private void refreshArmies() {
         this.army1 = new Army(army1Stored);
         this.army2 = new Army(army2Stored);
         this.battle = new Battle(army1, army2);
@@ -310,7 +311,7 @@ public class AnimatedBattleController implements Initializable {
      * Sets the button that was clicked to be disabled and then the timeline starts
      */
     @FXML
-    public void startSimulation() {
+    private void startSimulation() {
         if (terrainComboBox.getSelectionModel().getSelectedItem() == null)
             Dialogs.getInstance().selectTerrain();
         else {
@@ -323,7 +324,7 @@ public class AnimatedBattleController implements Initializable {
      * Simulates one step of the battle
      * @param event, an action event
      */
-    public void oneStepSimulation(ActionEvent event) {
+    private void oneStepSimulation(ActionEvent event) {
         //The attacking unit
         Rectangle attackingRectangle;
         if (isArmyOnesTurn) {
@@ -386,7 +387,7 @@ public class AnimatedBattleController implements Initializable {
      * Moves the rectangles in the grid pane
      * @param attackingRectangle, the rectangle that represents the unit that attacks
      */
-    public void moveRectangleInGridPane(Rectangle attackingRectangle) {
+    private void moveRectangleInGridPane(Rectangle attackingRectangle) {
         if (isArmyOnesTurn) {
             //This code describes how a unit from army1 should move in the grid pain
             if (((gridPane.getColumnCount()-1)/2 > rectangleColumn) && getNodeFromGridPane(rectangleColumn + 1, rectangleRow) == null) {
@@ -507,7 +508,7 @@ public class AnimatedBattleController implements Initializable {
      * Resets the army after a battle
      */
     @FXML
-    public void resetArmy() {
+    private void resetArmy() {
         gridPane.getChildren().removeAll(rectangleArmy1List);
         gridPane.getChildren().removeAll(rectangleArmy2List);
         rectangleArmy1List.clear();

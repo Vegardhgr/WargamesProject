@@ -37,19 +37,19 @@ public class AddUnitController implements Initializable {
     private int numberOfUnitsInSelectedArmy;
     //A combo box that contains the unit types
     @FXML
-    ComboBox<UnitFactory.UnitType> unitTypeComboBox;
+    private ComboBox<UnitFactory.UnitType> unitTypeComboBox;
     //The name field for a unit
     @FXML
-    TextField nameField;
+    private TextField nameField;
     //Health field for a unit
     @FXML
-    TextField healthField;
+    private TextField healthField;
     //Army combo box. The selected army is where the units will be added to
     @FXML
-    ComboBox<String> armyComboBox;
+    private ComboBox<String> armyComboBox;
     //The number of units that should be made
     @FXML
-    TextField quantityField;
+    private TextField quantityField;
 
     /**
      * Fills the combo boxes with values.
@@ -69,7 +69,7 @@ public class AddUnitController implements Initializable {
      * Returns a list of army strings.
      * @return List<String>, n armies
      */
-    public List<String> numberOfArmies() {
+    private List<String> numberOfArmies() {
         List<String> armies = new ArrayList<>();
         for (int i = 1; i <= 2; i++) {
             armies.add("Army " + i);
