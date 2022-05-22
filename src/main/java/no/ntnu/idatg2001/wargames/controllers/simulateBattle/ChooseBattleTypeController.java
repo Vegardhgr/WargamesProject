@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.utilities.Dialogs;
-import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.LoadScene;
 import java.io.IOException;
 
 /**
@@ -14,28 +14,35 @@ import java.io.IOException;
  * @author Vegard Grøder
  */
 public class ChooseBattleTypeController {
+    int numberOfUnitsInArmy1;
+    int numberOfUnitsInArmy2;
+    private void getNumberOfUnitsInBothArmies() {
+        try {
+            numberOfUnitsInArmy1 = CSVFileHandler.readCSVArmy(
+                            CSVFileHandler.readCSVArmyPath("src/pathToArmy1.csv"))
+                    .getUnitList().size();
+            numberOfUnitsInArmy2 = CSVFileHandler.readCSVArmy(
+                            CSVFileHandler.readCSVArmyPath("src/pathToArmy2.csv"))
+                    .getUnitList().size();
+        } catch (IOException|IndexOutOfBoundsException e) {
+            Dialogs.getInstance().cannotLoadScene();
+        } catch (NullPointerException e) {
+            Dialogs.getInstance().noFileIsSelected();
+        }
+    }
     /**
      * Loads the animated battle scene.
      * @param event, a mouse event
      */
     @FXML
     private void animatedBattle(MouseEvent event) {
-        try {
-            int numberOfUnitsInArmy1 = CSVFileHandler.readCSVArmy(
-                            CSVFileHandler.readCSVArmyPath("src/pathToArmy1.csv"))
-                    .getUnitList().size();
-            int numberOfUnitsInArmy2 = CSVFileHandler.readCSVArmy(
-                            CSVFileHandler.readCSVArmyPath("src/pathToArmy2.csv"))
-                    .getUnitList().size();
-            if (numberOfUnitsInArmy1 > 1000 || numberOfUnitsInArmy2 > 1000) {
-                Dialogs.getInstance().tooManyUnits();
-            } else {
-                SingletonClass.getInstance().getScene().loadAnimatedBattle(event);
-            }
-        } catch (IOException|IndexOutOfBoundsException e) {
-            Dialogs.getInstance().cannotLoadScene();
-        } catch (NullPointerException e) {
-            Dialogs.getInstance().noFileIsSelected();
+        getNumberOfUnitsInBothArmies();
+        if (numberOfUnitsInArmy1 > 1000 || numberOfUnitsInArmy2 > 1000) {
+            Dialogs.getInstance().tooManyUnits();
+        } else if (numberOfUnitsInArmy1 == 0 || numberOfUnitsInArmy2 == 0) {
+            Dialogs.getInstance().noUnitsInArmy();
+        } else {
+            LoadScene.getInstance().loadAnimatedBattle(event);
         }
     }
 
@@ -45,12 +52,11 @@ public class ChooseBattleTypeController {
      */
     @FXML
     private void quickBattle(MouseEvent event) {
-        try {
-            SingletonClass.getInstance().getScene().loadQuickBattle(event);
-        } catch (IndexOutOfBoundsException e) {
-            Dialogs.getInstance().cannotLoadScene();
-        } catch (NullPointerException e) {
-            Dialogs.getInstance().noFileIsSelected();
+        getNumberOfUnitsInBothArmies();
+        if (numberOfUnitsInArmy1 == 0 || numberOfUnitsInArmy2 == 0) {
+            Dialogs.getInstance().noUnitsInArmy();
+        } else {
+            LoadScene.getInstance().loadQuickBattle(event);
         }
     }
 
@@ -60,7 +66,7 @@ public class ChooseBattleTypeController {
      */
     @FXML
     private void backToMainScreen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadMainScreen(event);
+        LoadScene.getInstance().loadMainScreen(event);
     }
 
 }

@@ -189,6 +189,6 @@ public class QuickBattleController implements Initializable {
      */
     @FXML
     private void backToMainScreen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadMainScreen(event);
+        LoadScene.getInstance().loadMainScreen(event);
     }
 }

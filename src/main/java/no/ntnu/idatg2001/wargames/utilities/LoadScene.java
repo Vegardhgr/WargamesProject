@@ -15,6 +15,8 @@ import java.util.Objects;
  * This class loads the different scenes
  */
 public class LoadScene {
+    // Instance object of the class
+    private static volatile LoadScene instance;
     // The path to the path where army1 is stored
     private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
     // The path to the path where army2 is stored
@@ -37,6 +39,20 @@ public class LoadScene {
         } catch (IOException|RuntimeException e) {
             Dialogs.getInstance().cannotLoadScene();
         }
+    }
+
+    /**
+     * If a load scene object is not created, it creates one. If it is created it returns
+     * the object.
+     * @return LoadScene, a object of the class
+     */
+    public static LoadScene getInstance() {
+        if (LoadScene.instance == null) {
+            synchronized (LoadScene.class) {
+                LoadScene.instance = new LoadScene();
+            }
+        }
+        return LoadScene.instance;
     }
 
     /**

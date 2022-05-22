@@ -9,7 +9,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
 import no.ntnu.idatg2001.wargames.utilities.Dialogs;
-import no.ntnu.idatg2001.wargames.utilities.SingletonClass;
+import no.ntnu.idatg2001.wargames.utilities.LoadScene;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -54,7 +55,7 @@ public class FetchArmy1Controller implements Initializable{
      */
     @FXML
     private void backToCreateArmyScreen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadCreateArmyScene(event);
+        LoadScene.getInstance().loadCreateArmyScene(event);
     }
 
     /**
@@ -63,7 +64,7 @@ public class FetchArmy1Controller implements Initializable{
      */
     @FXML
     private void backToMainScreen(MouseEvent event) {
-        SingletonClass.getInstance().getScene().loadMainScreen(event);
+        LoadScene.getInstance().loadMainScreen(event);
     }
 
     /**
@@ -71,7 +72,7 @@ public class FetchArmy1Controller implements Initializable{
      */
     @FXML
     private void openDirectory() {
-        FileChooser fileChooser = SingletonClass.getInstance().getFileChooser();
+        FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) borderPaneId.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
 
