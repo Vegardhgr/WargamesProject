@@ -11,11 +11,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller;
 import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
-import no.ntnu.idatg2001.wargames.utilities.Army;
-import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
-import no.ntnu.idatg2001.wargames.utilities.Dialogs;
-import no.ntnu.idatg2001.wargames.utilities.LoadScene;
-import no.ntnu.idatg2001.wargames.units.Unit;
+import no.ntnu.idatg2001.wargames.core.Army;
+import no.ntnu.idatg2001.wargames.core.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.core.utilities.Dialogs;
+import no.ntnu.idatg2001.wargames.core.utilities.LoadScene;
+import no.ntnu.idatg2001.wargames.core.units.Unit;
 
 import java.io.IOException;
 import java.net.URL;
@@ -217,6 +217,8 @@ public class EditArmyController implements Initializable {
         try {
             if (army1Name.getText() == null) {
                 army1Name.setText("");
+            } else if (army1Name.getText().contains(",")) {
+                army1Name.setText(army1Name.getText().replace(",", ""));
             }
             if (!army1Name.getText().equals(army1.getName())) {
                 Army army1WithNewName = new Army(army1Name.getText(), tableViewArmy1.getItems().stream().toList());
@@ -224,6 +226,8 @@ public class EditArmyController implements Initializable {
             }
             if (army2Name.getText() == null) {
                 army2Name.setText("");
+            } else if (army2Name.getText().contains(",")) {
+                army2Name.setText(army2Name.getText().replace(",", ""));
             }
             if (!army2Name.getText().equals(army2.getName())) {
                 Army army2WithNewName = new Army(army2Name.getText(), tableViewArmy2.getItems().stream().toList());

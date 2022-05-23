@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.utilities;
+package no.ntnu.idatg2001.wargames.core.utilities;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

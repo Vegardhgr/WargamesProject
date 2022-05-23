@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.core.units;
 
 /**
  * A subclass of CavalryUnit. This unit, commander unit, is a better version

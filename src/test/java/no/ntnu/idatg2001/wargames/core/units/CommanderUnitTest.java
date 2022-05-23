@@ -1,6 +1,6 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.core.units;
 
-import no.ntnu.idatg2001.wargames.utilities.Battle;
+import no.ntnu.idatg2001.wargames.core.Battle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,26 +9,20 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * A test class for the CavalryUnit class.
- *
- * @author Vegard Grøder
- * @version 10.02.2022
- */
-class CavalryUnitTest {
+class CommanderUnitTest {
 
-    // CavalryUnit objects made global
-    CavalryUnit archer;
-    CavalryUnit barbarian;
+    // CommanderUnit objects made global
+    CommanderUnit archer;
+    CommanderUnit barbarian;
 
     @BeforeEach
     void setUp() {
         Battle.setTerrain(Battle.Terrain.PLAINS);
         // Initializes the global objects
-        archer = new CavalryUnit("Archer", 10, 3, 1);
-        barbarian = new CavalryUnit("Barbarian", 11, 2, 2);
+        archer = new CommanderUnit("Archer", 20);
+        barbarian = new CommanderUnit("Barbarian", 20);
     }
 
     /**
@@ -44,11 +38,10 @@ class CavalryUnitTest {
     }
 
     /**
-     * Tests that the method returns the correct resist bonus
+     * Tests that the getResistBonus method returns the correct resist bonus
      */
     @Test
     void getResistBonus() {
-        barbarian.attack(archer);
         assertEquals(1, barbarian.getResistBonus());
     }
 
@@ -69,9 +62,9 @@ class CavalryUnitTest {
      */
     @ParameterizedTest
     @MethodSource("attackAndResistBonus")
-    void testCavalryUnit(int attackBonus, int resistBonus, Battle.Terrain terrain) {
+    void testCommanderUnit(int attackBonus, int resistBonus, Battle.Terrain terrain) {
         Battle.setTerrain(terrain);
-        CavalryUnit unit = new CavalryUnit("CavalryUnit", 10);
+        CommanderUnit unit = new CommanderUnit("CommanderUnit", 10);
         assertEquals(attackBonus, unit.getAttackBonus());
         assertEquals(resistBonus, unit.getResistBonus());
     }
@@ -90,7 +83,7 @@ class CavalryUnitTest {
 
     @Test
     void toStringTest() {
-        Unit unit = new CavalryUnit("Cavalry", 10);
-        assertEquals("Unit: Cavalry | Health: 10 | Attack: 20 | Armor: 12", unit.toString());
+        Unit unit = new CommanderUnit("Commander", 10);
+        assertEquals("Unit: Commander | Health: 10 | Attack: 25 | Armor: 15", unit.toString());
     }
 }

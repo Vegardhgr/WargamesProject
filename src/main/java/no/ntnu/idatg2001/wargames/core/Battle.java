@@ -1,6 +1,6 @@
-package no.ntnu.idatg2001.wargames.utilities;
+package no.ntnu.idatg2001.wargames.core;
 
-import no.ntnu.idatg2001.wargames.units.Unit;
+import no.ntnu.idatg2001.wargames.core.units.Unit;
 import java.util.Random;
 
 /**

@@ -2,7 +2,7 @@ package no.ntnu.idatg2001.wargames.controllers.createArmy;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.utilities.LoadScene;
+import no.ntnu.idatg2001.wargames.core.utilities.LoadScene;
 
 /**
  * The controller class for CreateArmy.fxml. This class is responsible for

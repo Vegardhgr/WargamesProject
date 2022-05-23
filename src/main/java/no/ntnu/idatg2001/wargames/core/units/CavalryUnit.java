@@ -1,6 +1,6 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.core.units;
 
-import no.ntnu.idatg2001.wargames.utilities.Battle;
+import no.ntnu.idatg2001.wargames.core.Battle;
 
 /**
  * A subclass of Unit. This unit, cavalry unit, has the
@@ -84,7 +84,7 @@ public class CavalryUnit extends Unit {
      * Calls the attack method in the superclass, and then
      * increments the attack counter.
      *
-     * @param opponent
+     * @param opponent, the attackers opponent
      */
     @Override
     public void attack(Unit opponent) {

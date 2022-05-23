@@ -11,7 +11,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.utilities.*;
+import no.ntnu.idatg2001.wargames.core.Army;
+import no.ntnu.idatg2001.wargames.core.Battle;
+import no.ntnu.idatg2001.wargames.core.utilities.*;
 
 import java.io.IOException;
 import java.net.URL;

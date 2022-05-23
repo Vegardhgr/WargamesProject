@@ -2,9 +2,9 @@ package no.ntnu.idatg2001.wargames.controllers.simulateBattle;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
-import no.ntnu.idatg2001.wargames.utilities.Dialogs;
-import no.ntnu.idatg2001.wargames.utilities.LoadScene;
+import no.ntnu.idatg2001.wargames.core.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.core.utilities.Dialogs;
+import no.ntnu.idatg2001.wargames.core.utilities.LoadScene;
 import java.io.IOException;
 
 /**
