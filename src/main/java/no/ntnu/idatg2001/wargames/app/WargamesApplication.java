@@ -18,6 +18,9 @@ import java.util.Objects;
 
 /**
  * This class starts the application
+ *
+ * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class WargamesApplication extends Application {
 

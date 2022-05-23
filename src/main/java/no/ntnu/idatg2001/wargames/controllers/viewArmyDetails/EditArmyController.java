@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
  * The controller for the EditArmy.fxml file.
  *
  * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class EditArmyController implements Initializable {
     private Army army1;

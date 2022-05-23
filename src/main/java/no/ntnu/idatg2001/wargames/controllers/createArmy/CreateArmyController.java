@@ -9,6 +9,7 @@ import no.ntnu.idatg2001.wargames.core.utilities.LoadScene;
  * handling which army the user wants to add units to.
  *
  * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class CreateArmyController {
     /**

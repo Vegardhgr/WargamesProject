@@ -7,7 +7,7 @@ import no.ntnu.idatg2001.wargames.core.Battle;
  * advantage that it can attack from distance.
  *
  * @author Vegard Groder
- * @version 10.02.2022
+ * @version 1.0.0
  */
 public class RangedUnit extends Unit {
 

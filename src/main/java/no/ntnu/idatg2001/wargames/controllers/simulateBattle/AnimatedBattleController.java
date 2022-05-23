@@ -36,6 +36,7 @@ import java.util.ResourceBundle;
  * the animated simulation.
  *
  * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class AnimatedBattleController implements Initializable {
     private Timeline timeline;

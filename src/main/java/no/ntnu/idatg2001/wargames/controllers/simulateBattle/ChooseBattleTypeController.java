@@ -12,6 +12,7 @@ import java.io.IOException;
  * handling which simulation the user selects.
  *
  * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class ChooseBattleTypeController {
     private int numberOfUnitsInArmy1;

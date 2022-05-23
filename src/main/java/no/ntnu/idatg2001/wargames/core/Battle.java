@@ -7,7 +7,7 @@ import java.util.Random;
  * This class creates a battle between two armies
  *
  * @author Vegard Grøder
- * @version 23.02.2022
+ * @version 1.0.0
  */
 public class Battle {
     // Class fields and objects

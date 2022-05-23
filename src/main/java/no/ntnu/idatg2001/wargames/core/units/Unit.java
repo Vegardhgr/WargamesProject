@@ -5,7 +5,7 @@ package no.ntnu.idatg2001.wargames.core.units;
  * the units, or the subclasses, have in common.
  *
  * @author Vegard Groder
- * @version 10.02.2022
+ * @version 1.0.0
  */
 public abstract class Unit {
     /**

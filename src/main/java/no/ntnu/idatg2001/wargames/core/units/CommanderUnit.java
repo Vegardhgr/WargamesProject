@@ -5,7 +5,7 @@ package no.ntnu.idatg2001.wargames.core.units;
  * of cavalry units due to increased damage when attacking and more armor.
  *
  * @author Vegard Groder
- * @version 10.02.2022
+ * @version 1.0.0
  */
 public class CommanderUnit extends CavalryUnit {
 
