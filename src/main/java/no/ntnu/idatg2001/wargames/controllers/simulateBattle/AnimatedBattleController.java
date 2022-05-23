@@ -140,8 +140,7 @@ public class AnimatedBattleController implements Initializable {
         //Creates the rectangles for army2 in the grid pane
         makeArmy2Rectangles();
         //Displays the total health of the armies in the text fields
-        army1TotalHealth.setText(army1.getName() + " total health left: " + army1.getTotalHealth());
-        army2TotalHealth.setText(army2.getName() + " total health left: " + army2.getTotalHealth());
+        resetArmyHealth();
         //Sets the health of the armies to not be editable
         army1TotalHealth.setEditable(false);
         army2TotalHealth.setEditable(false);
@@ -505,6 +504,14 @@ public class AnimatedBattleController implements Initializable {
     }
 
     /**
+     * Updates the text field where the armies' health is displayed
+     */
+    private void resetArmyHealth() {
+        army1TotalHealth.setText(army1.getName() + " total health left: " + army1.getTotalHealth());
+        army2TotalHealth.setText(army2.getName() + " total health left: " + army2.getTotalHealth());
+    }
+
+    /**
      * Resets the army after a battle
      */
     @FXML
@@ -516,6 +523,7 @@ public class AnimatedBattleController implements Initializable {
         refreshArmies();
         makeArmy1Rectangles();
         makeArmy2Rectangles();
+        resetArmyHealth();
         resetArmyBtn.setDisable(true);
         startSimulationBtn.setDisable(false);
     }
