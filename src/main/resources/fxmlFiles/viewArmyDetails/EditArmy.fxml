@@ -83,6 +83,7 @@
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <Button layoutX="13.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#addUnit" prefHeight="25.0" prefWidth="63.0" text="Add Unit" />
                     <Button layoutX="13.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#removeUnit" prefHeight="25.0" prefWidth="63.0" text="Remove" />
+               <Button layoutX="7.0" layoutY="227.0" mnemonicParsing="false" onAction="#removeAllUnits" onMouseClicked="#removeUnit" prefHeight="25.0" prefWidth="75.0" text="Remove All" />
                 </AnchorPane>
             </SplitPane>
          <TextField fx:id="army1Name" layoutX="103.0" layoutY="14.0" prefHeight="29.0" prefWidth="213.0" promptText="Army name">
