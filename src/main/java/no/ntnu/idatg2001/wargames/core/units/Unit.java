@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.core.units;
 
 /**
  * This is an abstract superclass and contains everything that
@@ -38,9 +38,9 @@ public abstract class Unit {
      * @param opponent, the unit that is getting attacked
      */
     public void attack(Unit opponent) {
-        int health = opponent.health - (attack + getAttackBonus()
+        int newHealth = opponent.health - (attack + getAttackBonus()
                 + (opponent.armor + opponent.getResistBonus()));
-        opponent.setHealth(health);
+        opponent.setHealth(newHealth);
     }
 
     /**

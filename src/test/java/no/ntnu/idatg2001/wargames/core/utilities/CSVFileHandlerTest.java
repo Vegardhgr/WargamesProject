@@ -1,8 +1,7 @@
-package no.ntnu.idatg2001.wargames.utilities;
+package no.ntnu.idatg2001.wargames.core.utilities;
 
-import no.ntnu.idatg2001.wargames.units.*;
-import no.ntnu.idatg2001.wargames.utilities.Army;
-import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.core.units.*;
+import no.ntnu.idatg2001.wargames.core.Army;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

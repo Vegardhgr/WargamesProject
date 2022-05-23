@@ -1,6 +1,6 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.core.units;
 
-import no.ntnu.idatg2001.wargames.utilities.Battle;
+import no.ntnu.idatg2001.wargames.core.Battle;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

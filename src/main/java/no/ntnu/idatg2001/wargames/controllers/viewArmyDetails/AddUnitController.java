@@ -11,12 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller;
 import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
-import no.ntnu.idatg2001.wargames.utilities.Army;
-import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
-import no.ntnu.idatg2001.wargames.utilities.Dialogs;
-import no.ntnu.idatg2001.wargames.units.Unit;
-import no.ntnu.idatg2001.wargames.units.UnitFactory;
-import no.ntnu.idatg2001.wargames.utilities.LoadScene;
+import no.ntnu.idatg2001.wargames.core.Army;
+import no.ntnu.idatg2001.wargames.core.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.core.utilities.Dialogs;
+import no.ntnu.idatg2001.wargames.core.units.Unit;
+import no.ntnu.idatg2001.wargames.core.units.UnitFactory;
+import no.ntnu.idatg2001.wargames.core.utilities.LoadScene;
 
 import java.io.IOException;
 import java.net.URL;

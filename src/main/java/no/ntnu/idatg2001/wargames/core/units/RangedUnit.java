@@ -1,6 +1,6 @@
-package no.ntnu.idatg2001.wargames.units;
+package no.ntnu.idatg2001.wargames.core.units;
 
-import no.ntnu.idatg2001.wargames.utilities.Battle;
+import no.ntnu.idatg2001.wargames.core.Battle;
 
 /**
  * A subclass of Unit. This unit, ranged unit, has the

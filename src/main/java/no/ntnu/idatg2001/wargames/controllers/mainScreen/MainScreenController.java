@@ -2,7 +2,7 @@ package no.ntnu.idatg2001.wargames.controllers.mainScreen;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import no.ntnu.idatg2001.wargames.utilities.LoadScene;
+import no.ntnu.idatg2001.wargames.core.utilities.LoadScene;
 
 /**
  * The controller class for MainScreen.fxml. This class is the main screen

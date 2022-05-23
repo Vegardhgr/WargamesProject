@@ -1,6 +1,7 @@
-package no.ntnu.idatg2001.wargames.utilities;
+package no.ntnu.idatg2001.wargames.core.utilities;
 
-import no.ntnu.idatg2001.wargames.units.*;
+import no.ntnu.idatg2001.wargames.core.Army;
+import no.ntnu.idatg2001.wargames.core.units.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

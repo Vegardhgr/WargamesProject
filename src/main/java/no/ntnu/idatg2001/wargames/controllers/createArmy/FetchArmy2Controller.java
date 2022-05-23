@@ -7,9 +7,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import no.ntnu.idatg2001.wargames.utilities.CSVFileHandler;
-import no.ntnu.idatg2001.wargames.utilities.Dialogs;
-import no.ntnu.idatg2001.wargames.utilities.LoadScene;
+import no.ntnu.idatg2001.wargames.core.utilities.CSVFileHandler;
+import no.ntnu.idatg2001.wargames.core.utilities.Dialogs;
+import no.ntnu.idatg2001.wargames.core.utilities.LoadScene;
 
 import java.io.File;
 import java.io.IOException;
@@ -89,8 +89,8 @@ public class FetchArmy2Controller implements Initializable {
     private void createNewFile() {
         FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) borderPaneId.getScene().getWindow();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".csv", "*.csv"));
         File file = fileChooser.showSaveDialog(stage);
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("csv", ".csv"));
         if (file != null) {
             printFileToDirectory(file.getAbsolutePath());
             pathField.setText(file.getAbsolutePath());
@@ -103,6 +103,7 @@ public class FetchArmy2Controller implements Initializable {
      */
     private void printFileToDirectory(String path) {
         try (PrintWriter writer = new PrintWriter(path)) {
+            writer.write("");
         } catch (IOException e) {
             Dialogs.getInstance().somethingWrongWithTheFile();
         }

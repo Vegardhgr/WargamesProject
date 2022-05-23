@@ -1,8 +1,6 @@
-package no.ntnu.idatg2001.wargames.utilities;
+package no.ntnu.idatg2001.wargames.core;
 
-import no.ntnu.idatg2001.wargames.units.*;
-import no.ntnu.idatg2001.wargames.utilities.Army;
-import no.ntnu.idatg2001.wargames.utilities.Battle;
+import no.ntnu.idatg2001.wargames.core.units.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
