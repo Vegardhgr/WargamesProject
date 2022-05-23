@@ -19,6 +19,7 @@ import no.ntnu.idatg2001.wargames.core.units.Unit;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 /**
@@ -186,17 +187,20 @@ public class EditArmyController implements Initializable {
 
     /**
      * Removes the selected unit.
-     * @throws IOException, if there is something wrong with the file.
      */
     @FXML
-    private void removeUnit() throws IOException {
-        if (tableViewArmy1.getSelectionModel().getSelectedItem() != null) {
-            removeUnitHandler(tableViewArmy1, PATH_TO_ARMY_1);
-            amountOfUnits.setText("Total units: " + this.army1.getUnitList().size());
-        } else {
-            removeUnitHandler(tableViewArmy2, PATH_TO_ARMY_2);
-            amountOfUnits2.setText("Total units: " + this.army2.getUnitList().size());
+    private void removeUnit() {
+        try {
+            if (tableViewArmy1.getSelectionModel().getSelectedItem() != null) {
+                removeUnitHandler(tableViewArmy1, PATH_TO_ARMY_1);
+                amountOfUnits.setText("Total units: " + this.army1.getUnitList().size());
+            } else {
+                removeUnitHandler(tableViewArmy2, PATH_TO_ARMY_2);
+                amountOfUnits2.setText("Total units: " + this.army2.getUnitList().size());
 
+            }
+        } catch (IOException e) {
+            Dialogs.getInstance().somethingWrongWithTheFile();
         }
     }
 
@@ -213,6 +217,43 @@ public class EditArmyController implements Initializable {
         Army army = new Army(armyName, tableViewArmy.getItems().stream().toList());
         CSVFileHandler.writeCSVArmy(army, CSVFileHandler.readCSVArmyPath(pathToArmy));
     }
+
+
+    /**
+     * Removes all units.
+     */
+    @FXML
+    private void removeAllUnits() {
+        try {
+            if (tableViewArmy1.getSelectionModel().getSelectedItem() != null) {
+                removeAllUnitsHandler(tableViewArmy1, PATH_TO_ARMY_1);
+                amountOfUnits.setText("Total units: " + this.army1.getUnitList().size());
+            } else if (tableViewArmy2.getSelectionModel().getSelectedItem() != null) {
+                removeAllUnitsHandler(tableViewArmy2, PATH_TO_ARMY_2);
+                amountOfUnits2.setText("Total units: " + this.army2.getUnitList().size());
+
+            }
+        } catch (IOException e) {
+            Dialogs.getInstance().somethingWrongWithTheFile();
+        }
+    }
+    /**
+     * Removes the selected unit.
+     * @param tableViewArmy, the table view of the army.
+     * @param pathToArmy, the path to the army.
+     * @throws IOException, if there is something wrong with the file.
+     */
+    private void removeAllUnitsHandler(TableView<Unit> tableViewArmy, String pathToArmy) throws IOException {
+        TableView tableViewSelected = tableViewArmy.getSelectionModel().getTableView();
+        if (tableViewSelected.equals(tableViewArmy1))
+            tableViewArmy.getItems().removeAll(tableViewArmy1.getItems());
+        else
+            tableViewArmy.getItems().removeAll(tableViewArmy2.getItems());
+        String armyName = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(pathToArmy)).getName();
+        Army army = new Army(armyName, Collections.emptyList());
+        CSVFileHandler.writeCSVArmy(army, CSVFileHandler.readCSVArmyPath(pathToArmy));
+    }
+
     private void checkForChangeInArmyName() {
         try {
             if (army1Name.getText() == null) {
