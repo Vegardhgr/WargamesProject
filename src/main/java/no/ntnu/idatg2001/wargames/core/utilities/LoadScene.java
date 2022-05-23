@@ -127,24 +127,6 @@ public class LoadScene {
     }
 
     /**
-     * Sends the loadViewArmy1Details path to the loadScene method
-     * @param event, a mouse event
-     */
-    public void loadViewArmy1Details(MouseEvent event) {
-        String path = "/fxmlFiles/viewArmyDetails/Army1Details.fxml";
-        loadScene(event, path);
-    }
-
-    /**
-     * Sends the loadViewArmy2Details path to the loadScene method
-     * @param event, a mouse event
-     */
-    public void loadViewArmy2Details(MouseEvent event) {
-        String path = "/fxmlFiles/viewArmyDetails/Army2Details.fxml";
-        loadScene(event, path);
-    }
-
-    /**
      * Sends the addUnit path to the loadScene method
      * @param event, a mouse event
      */
