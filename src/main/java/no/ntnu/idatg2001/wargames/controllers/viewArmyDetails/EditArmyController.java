@@ -28,10 +28,6 @@ import java.util.ResourceBundle;
  * @author Vegard Grøder
  */
 public class EditArmyController implements Initializable {
-    //The path to the path where army1 is stored
-    private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
-    //The path to the path where army2 is stored
-    private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
     private Army army1;
     private Army army2;
 
@@ -117,7 +113,7 @@ public class EditArmyController implements Initializable {
      * Fills the table view with units from army1.
      */
     private void fillTableViewArmy1() {
-        this.army1 = readArmy(PATH_TO_ARMY_1);
+        this.army1 = readArmy(FetchArmy1Controller.PATH_TO_ARMY_1);
         if (army1 == null ) {
             return;
         }
@@ -133,7 +129,7 @@ public class EditArmyController implements Initializable {
      * Fills the table view with units from army2.
      */
     private void fillTableViewArmy2() {
-        this.army2 = readArmy(PATH_TO_ARMY_2);
+        this.army2 = readArmy(FetchArmy2Controller.PATH_TO_ARMY_2);
         if (army2 == null) {
             return;
         }
@@ -192,10 +188,10 @@ public class EditArmyController implements Initializable {
     private void removeUnit() {
         try {
             if (tableViewArmy1.getSelectionModel().getSelectedItem() != null) {
-                removeUnitHandler(tableViewArmy1, PATH_TO_ARMY_1);
+                removeUnitHandler(tableViewArmy1, FetchArmy1Controller.PATH_TO_ARMY_1);
                 amountOfUnits.setText("Total units: " + this.army1.getUnitList().size());
             } else {
-                removeUnitHandler(tableViewArmy2, PATH_TO_ARMY_2);
+                removeUnitHandler(tableViewArmy2, FetchArmy2Controller.PATH_TO_ARMY_2);
                 amountOfUnits2.setText("Total units: " + this.army2.getUnitList().size());
 
             }
@@ -226,10 +222,10 @@ public class EditArmyController implements Initializable {
     private void removeAllUnits() {
         try {
             if (tableViewArmy1.getSelectionModel().getSelectedItem() != null) {
-                removeAllUnitsHandler(tableViewArmy1, PATH_TO_ARMY_1);
+                removeAllUnitsHandler(tableViewArmy1, FetchArmy1Controller.PATH_TO_ARMY_1);
                 amountOfUnits.setText("Total units: " + this.army1.getUnitList().size());
             } else if (tableViewArmy2.getSelectionModel().getSelectedItem() != null) {
-                removeAllUnitsHandler(tableViewArmy2, PATH_TO_ARMY_2);
+                removeAllUnitsHandler(tableViewArmy2, FetchArmy2Controller.PATH_TO_ARMY_2);
                 amountOfUnits2.setText("Total units: " + this.army2.getUnitList().size());
 
             }

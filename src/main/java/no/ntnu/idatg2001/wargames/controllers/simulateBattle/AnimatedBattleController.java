@@ -19,6 +19,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
 import no.ntnu.idatg2001.wargames.core.Army;
 import no.ntnu.idatg2001.wargames.core.Battle;
 import no.ntnu.idatg2001.wargames.core.utilities.*;
@@ -43,10 +45,6 @@ public class AnimatedBattleController implements Initializable {
     private List<Rectangle> rectangleArmy1List;
     //A list of rectangles representing the units in army2
     private List<Rectangle> rectangleArmy2List;
-    //A path to the path where army1 is stored
-    private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
-    //A path to the path where army2 is stored
-    private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
     //The column size
     private float columnSize;
     //The row size
@@ -271,8 +269,8 @@ public class AnimatedBattleController implements Initializable {
      */
     private void loadArmies() {
         try {
-            this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
-            this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy1Controller.PATH_TO_ARMY_1));
+            this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy2Controller.PATH_TO_ARMY_2));
             refreshArmies();
         } catch (IOException e) {
             Dialogs.getInstance().cannotReadArmies();

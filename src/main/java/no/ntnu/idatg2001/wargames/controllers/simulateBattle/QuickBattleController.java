@@ -11,6 +11,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
 import no.ntnu.idatg2001.wargames.core.Army;
 import no.ntnu.idatg2001.wargames.core.Battle;
 import no.ntnu.idatg2001.wargames.core.utilities.*;
@@ -28,10 +30,6 @@ import java.util.ResourceBundle;
  * @author Vegard Groder
  */
 public class QuickBattleController implements Initializable {
-    //A path to the path where army1 is stored
-    private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
-    //A path to the path where army2 is stored
-    private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
     //Stores army1
     private Army army1Stored;
     //Stores army2
@@ -169,8 +167,8 @@ public class QuickBattleController implements Initializable {
      */
     private void loadArmies() {
         try {
-            this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
-            this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            this.army1Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy1Controller.PATH_TO_ARMY_1));
+            this.army2Stored = CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy2Controller.PATH_TO_ARMY_2));
         }catch (IOException e) {
             Dialogs.getInstance().cannotLoadScene();
         }
