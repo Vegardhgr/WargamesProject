@@ -529,4 +529,10 @@ public class AnimatedBattleController implements Initializable {
         resetArmyBtn.setDisable(true);
         startSimulationBtn.setDisable(false);
     }
+
+    @FXML
+    private void backToChooseBattleTypeController(MouseEvent event) {
+        LoadScene.getInstance().loadChooseBattleType(event);
+    }
+
 }

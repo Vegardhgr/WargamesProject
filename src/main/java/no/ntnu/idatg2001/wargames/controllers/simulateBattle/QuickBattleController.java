@@ -193,4 +193,10 @@ public class QuickBattleController implements Initializable {
     private void backToMainScreen(MouseEvent event) {
         LoadScene.getInstance().loadMainScreen(event);
     }
+
+    @FXML
+    private void backToChooseBattleTypeController(MouseEvent event) {
+        LoadScene.getInstance().loadChooseBattleType(event);
+    }
+
 }
