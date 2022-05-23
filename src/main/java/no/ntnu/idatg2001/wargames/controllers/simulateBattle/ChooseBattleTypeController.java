@@ -23,10 +23,10 @@ public class ChooseBattleTypeController {
     private void getNumberOfUnitsInBothArmies() {
         try {
             numberOfUnitsInArmy1 = CSVFileHandler.readCSVArmy(
-                            CSVFileHandler.readCSVArmyPath("src/pathToArmy1.csv"))
+                            CSVFileHandler.readCSVArmyPath("pathToArmy1.csv"))
                     .getUnitList().size();
             numberOfUnitsInArmy2 = CSVFileHandler.readCSVArmy(
-                            CSVFileHandler.readCSVArmyPath("src/pathToArmy2.csv"))
+                            CSVFileHandler.readCSVArmyPath("pathToArmy2.csv"))
                     .getUnitList().size();
         } catch (IOException|IndexOutOfBoundsException e) {
             Dialogs.getInstance().cannotLoadScene();

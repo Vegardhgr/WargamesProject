@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  */
 public class FetchArmy2Controller implements Initializable {
     //The path to the path where the army is stored.
-    private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
+    public static final String PATH_TO_ARMY_2 = "pathToArmy2.csv";
     //The text field where the path to the selected file is stored.
     @FXML
     private TextField pathField;
@@ -134,9 +134,8 @@ public class FetchArmy2Controller implements Initializable {
     /**
      * Path to the file where army 2 is stored.
      * @return String, the path.
-     * @throws IOException, if the file does not exist.
      */
-    public static String getArmy2Path() throws IOException {
-        return CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2);
+    public static String getArmy2Path() {
+        return PATH_TO_ARMY_2;
     }
 }

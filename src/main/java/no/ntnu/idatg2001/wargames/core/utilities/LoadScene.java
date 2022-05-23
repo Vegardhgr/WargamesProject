@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy1Controller;
+import no.ntnu.idatg2001.wargames.controllers.createArmy.FetchArmy2Controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,10 +21,6 @@ import java.util.Objects;
 public class LoadScene {
     // Instance object of the class
     private static volatile LoadScene instance;
-    // The path to the path where army1 is stored
-    private static final String PATH_TO_ARMY_1 = "src/pathToArmy1.csv";
-    // The path to the path where army2 is stored
-    private static final String PATH_TO_ARMY_2 = "src/pathToArmy2.csv";
 
     /**
      * Loads the scenes
@@ -82,8 +80,8 @@ public class LoadScene {
     public void loadAnimatedBattle(MouseEvent event) {
         try {
             //Checks if the armies are valid
-            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
-            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy1Controller.PATH_TO_ARMY_1));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy2Controller.PATH_TO_ARMY_2));
             String path = "/fxmlFiles/simulateBattle/AnimatedBattle.fxml";
             loadScene(event, path);
         } catch (IOException e) {
@@ -98,8 +96,8 @@ public class LoadScene {
     public void loadQuickBattle(MouseEvent event) {
         try {
             //Checks if the armies are valid
-            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
-            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy1Controller.PATH_TO_ARMY_1));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy2Controller.PATH_TO_ARMY_2));
             String path = "/fxmlFiles/simulateBattle/QuickBattle.fxml";
             loadScene(event, path);
         } catch (IOException e) {
@@ -115,8 +113,8 @@ public class LoadScene {
     public void loadEditArmy(MouseEvent event) {
         try {
             //Checks if the armies are valid
-            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1));
-            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_2));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy1Controller.PATH_TO_ARMY_1));
+            CSVFileHandler.readCSVArmy(CSVFileHandler.readCSVArmyPath(FetchArmy2Controller.PATH_TO_ARMY_2));
             String path = "/fxmlFiles/viewArmyDetails/EditArmy.fxml";
             loadScene(event, path);
         } catch (NullPointerException e) {
