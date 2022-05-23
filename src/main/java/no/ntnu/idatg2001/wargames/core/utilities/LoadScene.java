@@ -17,6 +17,7 @@ import java.util.Objects;
  * This class loads the different scenes
  *
  * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class LoadScene {
     // Instance object of the class

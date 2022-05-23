@@ -7,7 +7,7 @@ import no.ntnu.idatg2001.wargames.core.Battle;
  * advantage in close combat.
  *
  * @author Vegard Groder
- * @version 10.02.2022
+ * @version 1.0.0
  */
 public class InfantryUnit extends Unit {
 

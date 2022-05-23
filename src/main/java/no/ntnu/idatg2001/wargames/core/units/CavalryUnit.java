@@ -7,8 +7,8 @@ import no.ntnu.idatg2001.wargames.core.Battle;
  * advantage that it does more damage the first time it
  * attacks.
  *
- * @author Vegard Groder
- * @version 10.02.2022
+ * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class CavalryUnit extends Unit {
 

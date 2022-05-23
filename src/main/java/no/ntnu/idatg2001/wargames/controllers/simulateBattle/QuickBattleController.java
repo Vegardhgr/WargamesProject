@@ -27,7 +27,8 @@ import java.util.ResourceBundle;
  * The controller class for the QuickBattle.fxml file. This file contains code
  * for the quick battle simulation.
  *
- * @author Vegard Groder
+ * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class QuickBattleController implements Initializable {
     //Stores army1

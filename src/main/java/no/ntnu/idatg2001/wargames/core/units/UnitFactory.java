@@ -7,6 +7,7 @@ import java.util.List;
  * This class creates units.
  *
  * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class UnitFactory {
     //The instance of this class

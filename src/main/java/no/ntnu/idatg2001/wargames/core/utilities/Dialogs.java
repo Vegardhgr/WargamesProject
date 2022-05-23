@@ -7,6 +7,9 @@ import java.util.Optional;
 
 /**
  * This class contains dialogs to inform the user.
+ *
+ * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class Dialogs {
     //The instance of the class

@@ -17,7 +17,7 @@ import java.util.List;
  * This class handles the CSV files
  *
  * @author Vegard Groder
- * @version 20.03.2022
+ * @version 1.0.0
  */
 public class CSVFileHandler {
 

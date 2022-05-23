@@ -10,7 +10,7 @@ import java.util.Random;
  * This class creates an army
  *
  * @author Vegard Grøder
- * @version 18.02.2022
+ * @version 1.0.0
  */
 public class Army {
 

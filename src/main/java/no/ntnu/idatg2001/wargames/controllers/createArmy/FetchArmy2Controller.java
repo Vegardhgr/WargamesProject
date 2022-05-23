@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
  * handling which army the user wants to add units to.
  *
  * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class FetchArmy2Controller implements Initializable {
     //The path to the path where the army is stored.

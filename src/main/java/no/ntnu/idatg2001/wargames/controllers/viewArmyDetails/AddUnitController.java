@@ -28,7 +28,8 @@ import java.util.ResourceBundle;
 /**
  * The controller for the AddUnit.fxml file.
  *
- * @author Vegard Groder
+ * @author Vegard Grøder
+ * @version 1.0.0
  */
 public class AddUnitController implements Initializable {
     //The max number of units that can be added to the army
