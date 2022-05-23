@@ -14,7 +14,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <TextArea fx:id="textArea" layoutX="280.0" layoutY="119.0" prefHeight="340.0" prefWidth="339.0" />
-            <Button layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Go Back" />
+            <Button layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#backToChooseBattleTypeController" text="Go Back" />
             <SplitPane dividerPositions="0.502501805016047" layoutX="280.0" prefHeight="120.0" prefWidth="339.0">
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="119.0" prefWidth="166.0">
                     <TextField fx:id="army1Wins" layoutX="38.0" layoutY="90.0" prefHeight="25.0" prefWidth="88.0" text="Wins:" />
