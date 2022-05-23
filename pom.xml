@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>no.ntnu.idatg2001</groupId>
     <artifactId>wargames</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -26,7 +25,6 @@
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <javafx.version>17.0.2</javafx.version>
     </properties>
-
 
     <dependencies>
         <dependency>
@@ -59,7 +57,8 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>${javafx-maven-plugin.version}</version>
                 <configuration>
-                    <mainClass>no.ntnu.idatg2001.wargames.app.WargamesApplication</mainClass>
+                    <!-- Default configuration for running with: mvn clean javafx:run -->
+                    <mainClass>no.ntnu.idatg2001.JarApp</mainClass>
                     <launcher>app</launcher>
                     <jlinkZipName>app</jlinkZipName>
                     <jlinkImageName>app</jlinkImageName>
@@ -99,6 +98,7 @@
                 <version>${maven-shade-plugin.version}</version>
                 <executions>
                     <execution>
+                        <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
@@ -107,7 +107,7 @@
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>no.ntnu.idatg2001.wargames.app.WargamesApplication</mainClass>
+                                    <mainClass>no.ntnu.idatg2001.JarApp</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -115,7 +115,8 @@
                 </executions>
             </plugin>
             <plugin>
-                <!--
+
+            <!--
                 The jpackage plugin creates an installer (.dmg on mac, .exe on windows, .deb on ubutnu).
                 NB! Remember to run the javafx:jlink plugin prior to running this plugin.
                 I have not tested this fully, so it might not work....
@@ -128,7 +129,7 @@
                     <appVersion>1.0.0</appVersion>
                     <vendor>edu.ntnu</vendor>
                     <destination>target/dist</destination>
-                    <module>no.ntnu.idatg2001.wargames.app.WargamesApplication</module>
+                    <module>no.ntnu.idatg2001.JarApp</module>
                     <runtimeImage>target/LiteratureApp</runtimeImage>
                     <linuxShortcut>true</linuxShortcut>
                     <linuxPackageName>treefx</linuxPackageName>
@@ -142,7 +143,7 @@
             </plugin>
 
             <plugin>
-                <!-- As averything else in Maven, a Plugin is also uniquely identified by its coordinates -->
+                <!-- As everything else in Maven, a Plugin is also uniquely identified by its coordinates -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
@@ -173,19 +174,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>no.ntnu.idatg2001.wargames.app.WargamesApplication</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+
         </plugins>
     </build>
 </project>
