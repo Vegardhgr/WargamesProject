@@ -1,6 +1,9 @@
 package no.ntnu.idatg2001.wargames.core.utilities;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
 
 /**
  * This class contains dialogs to inform the user.
@@ -135,5 +138,21 @@ public class Dialogs {
         alert.setHeaderText("No file selected");
         alert.setContentText("Please go to 'Create Army' and select a file.");
         alert.showAndWait();
+    }
+
+    /**
+     * Confirmation that the user wants to delete all the units in the army
+     */
+    public boolean deleteAllUnits() {
+        boolean confirm = false;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Delete all units");
+        alert.setContentText("Are you sure you want to delete all units?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            confirm = (result.get() == ButtonType.OK);
+        }
+        return confirm;
     }
 }

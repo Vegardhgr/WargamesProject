@@ -240,7 +240,11 @@ public class EditArmyController implements Initializable {
      * @throws IOException, if there is something wrong with the file.
      */
     private void removeAllUnitsHandler(TableView<Unit> tableViewArmy, String pathToArmy) throws IOException {
-        TableView tableViewSelected = tableViewArmy.getSelectionModel().getTableView();
+        //Asks user if it wants to remove all units
+        if (!Dialogs.getInstance().deleteAllUnits()) {
+            return;
+        }
+        TableView<Unit> tableViewSelected = tableViewArmy.getSelectionModel().getTableView();
         if (tableViewSelected.equals(tableViewArmy1))
             tableViewArmy.getItems().removeAll(tableViewArmy1.getItems());
         else
