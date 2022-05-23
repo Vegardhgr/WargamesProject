@@ -132,7 +132,7 @@ public class FetchArmy1Controller implements Initializable{
     /**
      * Path to the file where army 1 is stored.
      * @return String, the path.
-     * @throws IOException, if the file does not exist.
+     * @throws IOException, if the file is not found.
      */
     public static String getArmy1Path() throws IOException {
         return CSVFileHandler.readCSVArmyPath(PATH_TO_ARMY_1);
