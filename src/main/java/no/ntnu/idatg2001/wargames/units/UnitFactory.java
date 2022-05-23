@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class UnitFactory {
     //The instance of this class
-    private static UnitFactory instance;
+    private static volatile UnitFactory instance;
 
     // Private constructor to prevent instantiation
     private UnitFactory() {}
@@ -20,10 +20,12 @@ public class UnitFactory {
      * @return UnitFactory, the only instance of UnitFactory
      */
     public static UnitFactory getInstance() {
-        if (instance == null) {
-            instance = new UnitFactory();
+        if (UnitFactory.instance == null) {
+            synchronized (UnitFactory.class) {
+                UnitFactory.instance = new UnitFactory();
+            }
         }
-        return instance;
+        return UnitFactory.instance;
     }
 
     /**
