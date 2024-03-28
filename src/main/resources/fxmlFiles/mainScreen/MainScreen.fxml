@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.wargames.controllers.mainScreen.MainScreenController">
+   <center>
+      <AnchorPane prefHeight="320.0" prefWidth="514.0" BorderPane.alignment="CENTER">
+         <Button layoutX="387.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#simulateBattle" prefHeight="47.0" prefWidth="117.0" text="Simulate Battle" />
+         <Button layoutX="387.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#loadCreateArmyScene" prefHeight="47.0" prefWidth="117.0" text="Create Army" />
+         <Button layoutX="387.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#editArmy" prefHeight="47.0" prefWidth="117.0" text="Edit army" textAlignment="CENTER" />
+      </AnchorPane>
+   </center>
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wargames" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="57.0" />
+         </font>
+      </Text>
+   </top>
+</BorderPane>
